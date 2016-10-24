@@ -25,12 +25,14 @@ public class Alarma {
         this.hora = hora;
     }
 
-    public void switchEstado(boolean activo) {
+    public String switchEstado(boolean activo) {
         if (activo) {
             estado = "Activado";
         } else {
             estado = "Desactivado";
         }
+
+        return estado;
     }
 
     public String getEstado() {
