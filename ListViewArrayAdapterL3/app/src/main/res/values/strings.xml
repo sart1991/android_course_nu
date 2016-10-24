@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ListView ArrayAdapter L3</string>
+    <string name="string_opcion">Opcion:</string>
+
+    <string-array name="horario_clases">
+        <item>Matematicas</item>
+        <item>Ciencias naturales</item>
+        <item>Ciencias sociales</item>
+        <item>Lengua castellana</item>
+        <item>Fisica</item>
+        <item>Quimica</item>
+    </string-array>
+
+    <string-array name="dias_semana">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sabado</item>
+        <item>Domingo</item>
+    </string-array>
+</resources>

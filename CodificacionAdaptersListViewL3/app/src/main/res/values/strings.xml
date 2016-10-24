@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CodificacionAdaptersListView L3</string>
+    <string name="string_main_title">Ejercicios Adapters</string>
+    <string name="string_btn_alarma">Alarma</string>
+    <string name="string_btn_reproductor">Reproductor</string>
+
+    <!--strings para alarmas_activity-->
+    <string name="string_switch_on">Activado</string>
+    <string name="string_switch_off">Desactivado</string>
+
+
+    <string-array name="horarios_alarmas">
+        <item>6:00 pm</item>
+        <item>5:00 am</item>
+        <item>7:00 am</item>
+        <item>3:00 pm</item>
+    </string-array>
+</resources>

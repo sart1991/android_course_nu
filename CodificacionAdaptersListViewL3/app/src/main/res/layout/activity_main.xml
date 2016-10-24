@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.exercise.nextu.codificacionadapterslistviewl3.MainActivity">
+
+    <TextView
+        android:id="@+id/txt_main_title"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/block_of_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/string_main_title"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+    <LinearLayout
+        android:id="@+id/block_of_buttons"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_alarma"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/string_btn_alarma"/>
+
+        <Button
+            android:id="@+id/btn_reproductor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/string_btn_reproductor"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
