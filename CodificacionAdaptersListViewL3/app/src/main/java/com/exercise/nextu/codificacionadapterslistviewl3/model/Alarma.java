@@ -11,11 +11,10 @@ import java.util.ArrayList;
 public class Alarma {
 
     private String hora;
-    private String estado;
+    private String estado = "Desactivado";
 
-    public Alarma(String hora, String estado) {
+    public Alarma(String hora) {
         this.hora = hora;
-        this.estado = estado;
     }
 
     public String getHora() {
@@ -26,19 +25,23 @@ public class Alarma {
         this.hora = hora;
     }
 
-    public String getEstado() {
-        return estado;
+    public void switchEstado(boolean activo) {
+        if (activo) {
+            estado = "Activado";
+        } else {
+            estado = "Desactivado";
+        }
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public String getEstado() {
+        return estado;
     }
 
     public ArrayList<Alarma> createArrayList(String[] horarios) {
         ArrayList<Alarma> listAlarmas = new ArrayList<>();
 
         for (int i = 0; i < horarios.length; i++) {
-            listAlarmas.add(new Alarma(horarios[i], "Desactivado"));
+            listAlarmas.add(new Alarma(horarios[i]));
         }
 
         return listAlarmas;

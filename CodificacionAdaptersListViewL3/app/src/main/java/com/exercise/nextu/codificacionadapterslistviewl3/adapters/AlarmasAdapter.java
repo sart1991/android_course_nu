@@ -1,8 +1,13 @@
 package com.exercise.nextu.codificacionadapterslistviewl3.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.exercise.nextu.codificacionadapterslistviewl3.R;
 import com.exercise.nextu.codificacionadapterslistviewl3.model.Alarma;
@@ -13,11 +18,24 @@ import java.util.List;
  * Created by Admin on 10/24/2016.
  */
 
-public class AlarmasAdapter extends ArrayAdapter {
+public class AlarmasAdapter extends ArrayAdapter<Alarma> {
 
-    public AlarmasAdapter(Context context, List<Alarma> listAlarmas) {
-        super(context, R.layout.list_alarmas_template, listAlarmas);
+    public AlarmasAdapter(Context context, List<Alarma> objetos) {
+        super(context, R.layout.list_alarmas_template, objetos);
     }
 
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View item = inflater.inflate(R.layout.list_alarmas_template, null);
 
+        TextView txtHora = (TextView) item.findViewById(R.id.txt_hora_alarma);
+        TextView txtEstado = (TextView) item.findViewById(R.id.txt_estado_alarma);
+
+        txtHora.setText(getItem(position).getHora());
+        txtEstado.setText(getItem(position).getEstado());
+
+        return item;
+    }
 }
