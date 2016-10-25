@@ -1,6 +1,4 @@
-package com.exercise.nextu.codificacionadapterslistviewl3.model;
-
-import com.exercise.nextu.codificacionadapterslistviewl3.R;
+package com.exercise.nextu.codificacionadapterslistviewl3.models;
 
 import java.util.ArrayList;
 
@@ -39,7 +37,7 @@ public class Alarma {
         return estado;
     }
 
-    public ArrayList<Alarma> createArrayList(String[] horarios) {
+    public static ArrayList<Alarma> createArrayList(String[] horarios) {
         ArrayList<Alarma> listAlarmas = new ArrayList<>();
 
         for (int i = 0; i < horarios.length; i++) {

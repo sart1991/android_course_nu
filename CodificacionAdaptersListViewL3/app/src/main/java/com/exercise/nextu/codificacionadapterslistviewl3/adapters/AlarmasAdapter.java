@@ -5,14 +5,13 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.exercise.nextu.codificacionadapterslistviewl3.R;
-import com.exercise.nextu.codificacionadapterslistviewl3.model.Alarma;
+import com.exercise.nextu.codificacionadapterslistviewl3.models.Alarma;
 
 import java.util.List;
 

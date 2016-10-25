@@ -7,6 +7,9 @@
     <!--strings para alarmas_activity-->
     <string name="string_switch_on">Activado</string>
     <string name="string_switch_off">Desactivado</string>
+    <string name="string_cancion_hint">Cancion</string>
+    <string name="string_artista_hint">Artista</string>
+    <string name="string_btn_agregar">Agregar</string>
 
 
     <string-array name="horarios_alarmas">
