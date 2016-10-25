@@ -39,7 +39,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:text="@string/string_btn_agregar"/>
+            android:text="@string/string_btn_agregar"
+            android:layout_gravity="center"
+            android:onClick="OnAgregarButtonClicked"/>
 
     </LinearLayout>
 

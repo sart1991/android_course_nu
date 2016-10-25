@@ -21,4 +21,10 @@ public class MainActivity extends AppCompatActivity {
         intent.setClass(this, AlarmaActivity.class);
         startActivity(intent);
     }
+
+
+    public void onReproductorButtonClicked(View view) {
+        intent.setClass(this, ReproductorActivity.class);
+        startActivity(intent);
+    }
 }
