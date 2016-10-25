@@ -31,7 +31,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/string_btn_alarma"/>
+            android:text="@string/string_btn_alarma"
+            android:onClick="onAlarmaButtonClicked"/>
 
         <Button
             android:id="@+id/btn_reproductor"
