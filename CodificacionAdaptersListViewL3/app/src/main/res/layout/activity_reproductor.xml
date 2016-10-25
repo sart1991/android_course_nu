@@ -23,16 +23,19 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/edit_cancion_nombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/string_cancion_hint"/>
             <EditText
+                android:id="@+id/edit_cancion_artista"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/string_artista_hint"/>
 
         </LinearLayout>
         <Button
+            android:id="@+id/btn_agregar"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -43,8 +46,7 @@
     <ListView
         android:id="@+id/list_canciones"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
     </ListView>
 
