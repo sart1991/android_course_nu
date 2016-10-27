@@ -20,6 +20,7 @@
         android:tint="@color/colorAccent"/>
 
     <EditText
+        android:id="@+id/edit_txt_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/string_hint_user_name"
@@ -27,6 +28,7 @@
         android:textColor="@color/colorPrimaryText"/>
 
     <EditText
+        android:id="@+id/edit_txt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/string_hint_password"
@@ -34,21 +36,26 @@
         android:textColor="@color/colorPrimaryText"/>
 
     <LinearLayout
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         style="?android:attr/buttonBarStyle">
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/string_btn_forget"
-            style="?android:attr/buttonBarButtonStyle"/>
-        <Button
-            android:layout_width="0dp"
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/string_btn_login"
+            android:onClick="onLoginButtonClicked"
+            style="?android:attr/button"/>
+        <Button
+            android:id="@+id/btn_forget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/string_btn_forget"
+            android:onClick="onForgetButtonClicked"
             style="?android:attr/buttonBarButtonStyle"/>
 
     </LinearLayout>

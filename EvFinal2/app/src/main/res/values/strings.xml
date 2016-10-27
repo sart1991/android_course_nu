@@ -4,4 +4,11 @@
     <string name="string_hint_password">Password</string>
     <string name="string_btn_forget">Foget my data</string>
     <string name="string_btn_login">Login</string>
+    <string name="string_activity_login_title">Login</string>
+    <string name="string_activity_gallery_title">Gallery</string>
+
+    <!--Error strings for login-->
+    <string name="string_error">Error: </string>
+    <string name="string_error_empty_field">empty field</string>
+    <string name="string_error_wrong_field">wrong data</string>
 </resources>
