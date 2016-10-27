@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">EvFinal 2</string>
+    <string name="string_hint_user_name">User name</string>
+    <string name="string_hint_password">Password</string>
+    <string name="string_btn_forget">Foget my data</string>
+    <string name="string_btn_login">Login</string>
 </resources>
