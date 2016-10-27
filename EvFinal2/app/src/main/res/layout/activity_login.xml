@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/string_hint_user_name"
+        android:inputType="text"
         android:textColor="@color/colorPrimaryText"/>
 
     <EditText
