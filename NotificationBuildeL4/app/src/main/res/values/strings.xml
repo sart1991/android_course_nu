@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NotificationBuildeL4</string>
+    <string name="string_btn_notification">Notification</string>
+    <string name="string_btn_notification_action">Notification Action</string>
+</resources>
