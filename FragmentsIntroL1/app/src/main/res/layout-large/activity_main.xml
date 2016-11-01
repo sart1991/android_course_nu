@@ -6,11 +6,11 @@
     tools:context=".MainActivity">
 
     <fragment
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:name="com.exercise.nextu.fragmentsintrol1.ListaDeVErsiones"
-        tools:layout="@layout/lista_de_versiones"/>
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:name="com.exercise.nextu.fragmentsintrol1.ListaDeVErsiones"
+    tools:layout="@layout/lista_de_versiones"/>
 
     <fragment
         android:layout_width="0dp"
