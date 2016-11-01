@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FragmentsIntroL1</string>
+    <string name="string_descripcion_fragment">Descripcion</string>
+    <string name="string_fragment_versiones_api_title">Versiones</string>
+
+    <!--String Arrays-->
+    <string-array name="array_android_versions">
+        <item>Ice Cream Sandwich</item>
+        <item>KitKat</item>
+        <item>Lollipop</item>
+        <item>Marshmellow</item>
+        <item>Nougat</item>
+    </string-array>
+</resources>
