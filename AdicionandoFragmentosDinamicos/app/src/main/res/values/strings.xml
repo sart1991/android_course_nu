@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AdicionandoFragmentosDinamicos</string>
+
+    <string-array name="contactos_email">
+        <item>Diego Buitrago</item>
+        <item>Carlos Alfonso</item>
+        <item>Maritza Pineda</item>
+        <item>Harold Castro</item>
+        <item>Carlos Ramirez</item>
+        <item>Lina Cabrera</item>
+        <item>Karen Rodriguez</item>
+    </string-array>
+</resources>
