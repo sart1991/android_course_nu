@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">DinamicFragmentsMultiActivityL3</string>
+
+    <string-array name="programacion_ayer">
+        <item>Interstellar</item>
+        <item>The hateful 8</item>
+    </string-array>
+
+    <string-array name="programacion_hoy">
+        <item>Cosmos</item>
+        <item>Space odyssey</item>
+    </string-array>
+
+    <string-array name="programacion_manana">
+        <item>Fight club</item>
+        <item>Batman begins</item>
+    </string-array>
+</resources>
