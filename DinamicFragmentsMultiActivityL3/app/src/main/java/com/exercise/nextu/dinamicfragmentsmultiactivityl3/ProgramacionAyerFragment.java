@@ -1,6 +1,6 @@
 package com.exercise.nextu.dinamicfragmentsmultiactivityl3;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -24,5 +24,14 @@ public class ProgramacionAyerFragment extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.list_view_programacion_ayer);
         listView.setAdapter(arrayAdapter);
         return view;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if (isVisibleToUser && getActivity() != null) {
+            getActivity().setTitle("Programacion Ayer");
+        }
     }
 }
