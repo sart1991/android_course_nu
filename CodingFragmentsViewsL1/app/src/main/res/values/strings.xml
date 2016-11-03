@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">CodingFragmentsViewsL1</string>
+    <string name="string_title_mail_content">Mail content</string>
+    <string name="string_btn_show_content">Show Content</string>
+    <string-array name="list_of_mails">
+        <item>Mail 1</item>
+        <item>Mail 2</item>
+        <item>Mail 3</item>
+        <item>Mail 4</item>
+        <item>Mail 5</item>
+        <item>Mail 6</item>
+        <item>Mail 7</item>
+        <item>Mail 8</item>
+        <item>Mail 9</item>
+        <item>Mail 10</item>
+    </string-array>
 </resources>
