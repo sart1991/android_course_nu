@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ActivityFragmentCommunicationW3</string>
+    <string name="fragment_mensaje_text">Mensaje</string>
+    <string name="btn_enviar_mensaje">Enviar Mensaje Al Fragmento</string>
+</resources>
