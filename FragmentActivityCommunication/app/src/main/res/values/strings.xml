@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FragmentActivityCommunication</string>
+    <string name="fragmento_mensaje_title">Fragmento Mensaje</string>
+    <string name="fragment_mensaje_subtitle">fragment_mensaje.xml</string>
+    <string name="fragment_mensaje_content_title">Parametros obtenidos:</string>
+    <string name="fragment_mensaje_parameter_one">Parametro 1</string>
+    <string name="fragment_mensaje_parameter_two">Parametro 2</string>
+    <string name="fragment_mensaje_parameter_three">Parametro 3</string>
+</resources>
