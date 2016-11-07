@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_header_details"
+        style="@style/FullWidthTextView"
+        android:text="@string/note_details_title"/>
+
+    <view style="@style/ViewSeparatorVertical"/>
+
+    <EditText
+        android:id="@+id/edit_details_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FullWidthEditText"
+        android:hint="@string/edit_details_title_hint"/>
+
+    <view style="@style/ViewSeparatorVertical"/>
+
+    <EditText
+        android:id="@+id/edit_details_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top"
+        style="@style/FullWidthEditText"
+        android:hint="@string/edit_details_content_hint"/>
+
+    <view style="@style/ViewSeparatorVertical"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+        <TextView
+            android:id="@+id/text_date_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/FullWidthTextView"/>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/white"
+            android:text="@string/details_btn_save"
+            android:layout_gravity="end"/>
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_marginLeft="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:text="@string/details_btn_delete"
+            android:layout_gravity="end"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FragmentListNotesU3W4L2</string>
+    <string name="fragment_btn_add_note">Add Note</string>
+    <string name="note_details_title">This note is new and don\'t have an identifier</string>
+    <string name="edit_details_title_hint">Title</string>
+    <string name="edit_details_content_hint">Note content</string>
+    <string name="details_btn_save">Save</string>
+    <string name="details_btn_delete">Delete</string>
+</resources>
