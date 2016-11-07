@@ -22,6 +22,9 @@ import com.example.sergioalejandro.fragmentlistnotesu3w4l2.service.NoteService;
 public class ListNotesFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private ListView listView;
+
+    private Button buttonAdd;
+
     private Context context;
     private ICommunication.INoteList iNoteList;
 
@@ -46,6 +49,13 @@ public class ListNotesFragment extends Fragment implements AdapterView.OnItemCli
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         listView = (ListView) view.findViewById(R.id.list_view_notes);
+        buttonAdd = (Button) view.findViewById(R.id.btn_add_note);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iNoteList.onClickAdd();
+            }
+        });
         updateAdapter();
         listView.setOnItemClickListener(this);
     }
@@ -59,6 +69,6 @@ public class ListNotesFragment extends Fragment implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        iNoteList.noteSelected(i);
+        iNoteList.noteSelected((int)l);
     }
 }

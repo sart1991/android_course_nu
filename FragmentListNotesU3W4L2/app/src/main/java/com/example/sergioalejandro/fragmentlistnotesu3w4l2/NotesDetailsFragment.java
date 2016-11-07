@@ -35,11 +35,11 @@ public class NotesDetailsFragment extends Fragment implements View.OnClickListen
 
     private Note note;
 
-    public static NotesDetailsFragment getInstance(int position) {
+    public static NotesDetailsFragment getInstance(int identifier) {
         NotesDetailsFragment notesDetailsFragment = new NotesDetailsFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_IDENTIFIER, position);
+        bundle.putInt(KEY_IDENTIFIER, identifier);
         notesDetailsFragment.setArguments(bundle);
         return notesDetailsFragment;
     }
@@ -93,17 +93,30 @@ public class NotesDetailsFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_save:
+            case R.id.btn_delete:
                 if (note != null) {
                     NoteService.getInstance().deleteNote(note);
+                    getActivity().onBackPressed();
                 }
                 break;
-            case R.id.btn_delete:
+            case R.id.btn_save:
+                NoteService noteService = NoteService.getInstance();
+                String title = editTitle.getText().toString();
+                String content = editContent.getText().toString();
+                if (note == null) {
+                    note = new Note(title, content);
+                } else {
+                    note.setTitle(title);
+                    note.setContent(content);
+                }
+                noteService.putNote(note);
+
+                getActivity().onBackPressed();
                 break;
         }
     }
 
-    private void updateView(int identifier) {
+    public void updateView(int identifier) {
         if(identifier > -1) {
             note = NoteService.getInstance().getNote(identifier);
             editTitle.setText(note.getTitle());

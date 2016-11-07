@@ -10,6 +10,7 @@ public interface ICommunication {
 
     interface INoteList {
         void noteSelected(int position);
+        void onClickAdd();
     }
 
     interface INoteDetails {

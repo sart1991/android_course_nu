@@ -10,7 +10,7 @@
         style="@style/FullWidthTextView"
         android:text="@string/note_details_title"/>
 
-    <view style="@style/ViewSeparatorVertical"/>
+    <View style="@style/ViewSeparatorVertical"/>
 
     <EditText
         android:id="@+id/edit_details_title"
@@ -19,7 +19,7 @@
         style="@style/FullWidthEditText"
         android:hint="@string/edit_details_title_hint"/>
 
-    <view style="@style/ViewSeparatorVertical"/>
+    <!--<View style="@style/ViewSeparatorVertical"/>-->
 
     <EditText
         android:id="@+id/edit_details_content"
@@ -30,7 +30,7 @@
         style="@style/FullWidthEditText"
         android:hint="@string/edit_details_content_hint"/>
 
-    <view style="@style/ViewSeparatorVertical"/>
+    <!--<View style="@style/ViewSeparatorVertical"/>-->
 
     <LinearLayout
         android:layout_width="match_parent"

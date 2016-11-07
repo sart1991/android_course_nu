@@ -16,7 +16,8 @@ public class Note {
     private Calendar modificationDate;
 
     public Note(String title, String content) {
-        this.identifier = idCount + 1;
+        idCount++;
+        this.identifier = idCount;
         this.title = title;
         this.content = content;
         this.modificationDate = Calendar.getInstance();

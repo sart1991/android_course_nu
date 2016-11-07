@@ -9,9 +9,6 @@ import com.example.sergioalejandro.fragmentlistnotesu3w4l2.interfacecommunicatio
 
 public class MainActivity extends AppCompatActivity implements ICommunication.INoteList {
 
-    private EditText fragmentEditTitle;
-    private EditText fragmentEditContent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +20,24 @@ public class MainActivity extends AppCompatActivity implements ICommunication.IN
     }
 
     @Override
-    public void noteSelected(int position) {
-        Toast.makeText(this, "Note: " + position, Toast.LENGTH_LONG).show();
+    public void noteSelected(int identifier) {
+        //Toast.makeText(this, "Note: " + position, Toast.LENGTH_LONG).show();
+        NotesDetailsFragment notesDetailsFragment =
+                (NotesDetailsFragment) getFragmentManager().findFragmentById(R.id.view_fragment_notes_details);
+        if (notesDetailsFragment != null) {
+            notesDetailsFragment.updateView(identifier);
+        } else {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container_for_fragments, NotesDetailsFragment.getInstance(identifier))
+                    .addToBackStack(null).commit();
+        }
+
+    }
+
+    @Override
+    public void onClickAdd() {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container_for_fragments, new NotesDetailsFragment())
+                .addToBackStack(null).commit();
     }
 }
