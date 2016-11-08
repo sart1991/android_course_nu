@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Evaluacion Final 3</string>
+    <string-array name="instruments">
+        <item>Cuerda</item>
+        <item>Percusion</item>
+        <item>Viento</item>
+        <item>Eléctricos</item>
+    </string-array>
+</resources>
