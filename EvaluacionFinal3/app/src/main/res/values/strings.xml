@@ -8,4 +8,12 @@
         <item>Viento</item>
         <item>Eléctricos</item>
     </string-array>
+    <string name="string_guitar_name">Guitarra acustica</string>
+    <string name="string_violin_name">Violin</string>
+    <string name="percussion_panderet_name">Pandereta</string>
+    <string name="percussion_cajon_name">Cajon</string>
+    <string name="wind_saxo_name">Saxofon</string>
+    <string name="wind_trumpet_name">Trompeta</string>
+    <string name="electric_guitar_name">Guitarra Electrica</string>
+    <string name="electric_bass_name">Bajo Electrico</string>
 </resources>

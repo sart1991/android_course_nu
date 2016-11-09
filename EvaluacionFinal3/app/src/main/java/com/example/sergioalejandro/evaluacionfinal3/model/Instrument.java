@@ -1,5 +1,7 @@
 package com.example.sergioalejandro.evaluacionfinal3.model;
 
+import com.example.sergioalejandro.evaluacionfinal3.R;
+
 /**
  * Created by Admin on 11/8/2016.
  */
@@ -8,14 +10,13 @@ public class Instrument {
 
     private String name;
     private InstrumentsClasification clasification;
-    private String sound;
     private boolean favorite;
     private Integer imageSrc;
 
-    public Instrument(String name, InstrumentsClasification clasification, String sound) {
+    public Instrument(String name, InstrumentsClasification clasification, Integer imageSource) {
         this.name = name;
         this.clasification = clasification;
-        this.sound = sound;
+        this.imageSrc = imageSource;
     }
 
     public String getName() {
@@ -32,14 +33,6 @@ public class Instrument {
 
     public void setClasification(InstrumentsClasification clasification) {
         this.clasification = clasification;
-    }
-
-    public String getSound() {
-        return sound;
-    }
-
-    public void setSound(String sound) {
-        this.sound = sound;
     }
 
     public boolean isFavorite() {
