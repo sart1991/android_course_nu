@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Evaluacion Final 3</string>
+    <string name="details_name">Facultad de artes</string>
+    <string name="details_url">www.fedearte.com</string>
     <string-array name="instruments">
         <item>Cuerda</item>
         <item>Percusion</item>

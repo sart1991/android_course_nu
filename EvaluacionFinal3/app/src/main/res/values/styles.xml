@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ButtonDetailsFavorite" parent="Base.Widget.AppCompat.ImageButton">
+        <item name="android:layout_marginTop">@dimen/button_details_margin</item>
+        <item name="android:layout_marginEnd">@dimen/button_details_margin</item>
+        <item name="android:layout_marginBottom">@dimen/button_details_margin</item>
+        <item name="android:layout_marginStart">@dimen/button_details_favorite_margin_start</item>
+    </style>
+    <style name="ButtonDetailsPlay" parent="Base.Widget.AppCompat.ImageButton">
+        <item name="android:layout_marginTop">@dimen/button_details_margin</item>
+        <item name="android:layout_marginEnd">@dimen/button_details_play_margin_end</item>
+        <item name="android:layout_marginBottom">@dimen/button_details_margin</item>
+        <item name="android:layout_marginStart">@dimen/button_details_margin</item>
+    </style>
+    <style name="ImageInstruments">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:minHeight">300dp</item>
+    </style>
 </resources>
