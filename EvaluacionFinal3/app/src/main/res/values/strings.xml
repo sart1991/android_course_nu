@@ -16,4 +16,14 @@
     <string name="wind_trumpet_name">Trompeta</string>
     <string name="electric_guitar_name">Guitarra Electrica</string>
     <string name="electric_bass_name">Bajo Electrico</string>
+
+    <string name="activity_name_string">Instrumentos de cuerda</string>
+    <string name="activity_name_percussion">Instrumentos de percusion</string>
+    <string name="activity_name_wind">Instrumentos de viento</string>
+    <string name="activity_name_electric">Instrumentos electricos</string>
+
+    <string name="string_content">Integer sit amet convallis lectus. Integer eleifend quam non urna ullamcorper, id volutpat eros fringilla. Nunc ut velit eu metus maximus ullamcorper ut a leo. Nullam rutrum venenatis tincidunt. Fusce eu volutpat enim. Nulla ligula tellus, fringilla in ultricies quis, scelerisque sed libero. Donec lobortis nibh nec purus imperdiet, id auctor purus feugiat. Mauris nec ullamcorper quam. Maecenas non interdum dui.</string>
+    <string name="percusion_content">Integer sit amet convallis lectus. Integer eleifend quam non urna ullamcorper, id volutpat eros fringilla. Nunc ut velit eu metus maximus ullamcorper ut a leo. Nullam rutrum venenatis tincidunt. Fusce eu volutpat enim. Nulla ligula tellus, fringilla in ultricies quis, scelerisque sed libero. Donec lobortis nibh nec purus imperdiet, id auctor purus feugiat. Mauris nec ullamcorper quam. Maecenas non interdum dui.</string>
+    <string name="wind_content">Integer sit amet convallis lectus. Integer eleifend quam non urna ullamcorper, id volutpat eros fringilla. Nunc ut velit eu metus maximus ullamcorper ut a leo. Nullam rutrum venenatis tincidunt. Fusce eu volutpat enim. Nulla ligula tellus, fringilla in ultricies quis, scelerisque sed libero. Donec lobortis nibh nec purus imperdiet, id auctor purus feugiat. Mauris nec ullamcorper quam. Maecenas non interdum dui.</string>
+    <string name="electric_content">Integer sit amet convallis lectus. Integer eleifend quam non urna ullamcorper, id volutpat eros fringilla. Nunc ut velit eu metus maximus ullamcorper ut a leo. Nullam rutrum venenatis tincidunt. Fusce eu volutpat enim. Nulla ligula tellus, fringilla in ultricies quis, scelerisque sed libero. Donec lobortis nibh nec purus imperdiet, id auctor purus feugiat. Mauris nec ullamcorper quam. Maecenas non interdum dui.</string>
 </resources>

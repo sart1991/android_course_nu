@@ -24,8 +24,9 @@ public class SourceOfInstruments {
     private static Instrument electricGuitar;
     private static Instrument electricBass;
 
-    public static void setContext(Context context) {
+    private SourceOfInstruments(){}
 
+    public static void setContext(Context context) {
         gContext = context;
         stringGuitar = new Instrument(getStringFromResource(R.string.string_guitar_name), Instrument.InstrumentsClasification.STRING, R.drawable.string_guitar);
         stringViolin = new Instrument(getStringFromResource(R.string.string_violin_name), Instrument.InstrumentsClasification.STRING, R.drawable.string_violin);
@@ -37,7 +38,7 @@ public class SourceOfInstruments {
         electricBass = new Instrument(getStringFromResource(R.string.electric_bass_name), Instrument.InstrumentsClasification.ELECTRIC, R.drawable.electric_bass);
     }
 
-    public static List<Instrument> getInstrumentByClassification(Instrument.InstrumentsClasification clasification) {
+    public static List<Instrument> getInstrumentsByClassification(Instrument.InstrumentsClasification clasification) {
         List<Instrument> list = new ArrayList<>();
         if (gContext != null) {
             for (Instrument instrument : allInstruments()) {

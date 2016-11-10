@@ -18,12 +18,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/details_image_view_content_1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/holder_image"
                 style="@style/ImageInstruments"/>
             <ImageView
+                android:id="@+id/details_image_view_content_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -35,24 +37,28 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageButton
+                android:id="@+id/image_btn_favorite_1"
                 style="@style/ButtonDetailsFavorite"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/ic_star_black_24dp"/>
             <ImageButton
+                android:id="@+id/image_btn_play_1"
                 style="@style/ButtonDetailsPlay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/ic_play_arrow_black_24dp"/>
             <ImageButton
+                android:id="@+id/image_btn_favorite_2"
                 style="@style/ButtonDetailsFavorite"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/ic_star_black_24dp"/>
             <ImageButton
+                android:id="@+id/image_btn_play_2"
                 style="@style/ButtonDetailsPlay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
