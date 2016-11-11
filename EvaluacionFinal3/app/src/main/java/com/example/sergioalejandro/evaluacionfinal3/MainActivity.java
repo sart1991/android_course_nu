@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements ICommunication.II
     public void onInstrumentSelected(int position) {
         this.position = position;
         this.setTitle(InstrumentsService.getClasificationTitle(position));
+        if(findViewById(R.id.fragment_container) != null) {
+            DetailsClasificationFragment fragment = new DetailsClasificationFragment();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        }
     }
 
 
