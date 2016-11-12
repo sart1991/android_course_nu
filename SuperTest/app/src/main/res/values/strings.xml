@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">The Super Test</string>
+
+    <!-- Strings related to request -->
+    <string name="application_id">UioTROrtK4RxrhKB7n2k2hOXEfTyScQNto9I0zTV</string>
+    <string name="application_master_key">zbwra5jvYg8HI7OhqK9G0wqXTLonqB8GHr6fj3eo</string>
+
+    <!-- Strings related to login -->
+    <string name="log_in_btn">Log In</string>
+    <string name="edit_txt_hint_password">Password</string>
+    <string name="edit_txt_hint_user_name">User Name</string>
+
+    <!-- Strings related with login validation-->
+    <string name="error_empty_field">Field required</string>
+    <string name="error_info_field">Wrong info</string>
+    <string name="empty_user_name_field">Fill the user name field</string>
+    <string name="empty_password_field">Fill the password field</string>
+
+    <string name="title_activity_products">ProductsActivity</string>
+    <string name="action_sign_in_short">Sign in</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_product">ProductActivity</string>
+    <string name="add_button_cardview">Add</string>
+    <string name="login_title">Login</string>
+    <string name="log_out_menu_item">Log out</string>
+</resources>

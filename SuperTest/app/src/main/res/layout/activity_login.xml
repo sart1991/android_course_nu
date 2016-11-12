@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.super_test.thesupertest.LoginActivity"
+    android:orientation="vertical"
+    android:backgroundTint="@color/colorPrimaryLight">
+
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Test"
+        android:id="@+id/textTest" />-->
+
+    <ImageView
+        android:layout_marginTop="16dp"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical" >
+
+
+        <EditText
+            android:hint="@string/edit_txt_hint_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtUserName"
+            android:layout_gravity="center"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <EditText
+            android:hint="@string/edit_txt_hint_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:id="@+id/txtPassword"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/log_in_btn"
+            android:id="@+id/logInBtn"
+            android:onClick="logInClicked"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorPrimaryLight"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
