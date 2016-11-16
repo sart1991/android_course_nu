@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:baselineAligned="false">
 
+    <fragment
+        android:id="@+id/fragment_list_instruments"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:name="com.example.sergioalejandro.evaluacionfinal3.ListInstrumentsFragment"
+        tools:layout="@layout/fragment_list_instruments"/>
+
+    <fragment
+        android:id="@+id/fragment_details_instruments"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:name="com.example.sergioalejandro.evaluacionfinal3.DetailsClasificationFragment"
+        tools:layout="@layout/fragment_details_clasification"/>
 </LinearLayout>

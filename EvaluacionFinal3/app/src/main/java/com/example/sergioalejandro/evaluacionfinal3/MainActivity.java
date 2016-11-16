@@ -32,7 +32,10 @@ public class MainActivity extends AppCompatActivity implements ICommunication.II
         this.setTitle(InstrumentsService.getClasificationTitle(position));
         if(findViewById(R.id.fragment_container) != null) {
             DetailsClasificationFragment fragment = new DetailsClasificationFragment();
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null).commit();
         }
     }
 
@@ -50,5 +53,11 @@ public class MainActivity extends AppCompatActivity implements ICommunication.II
         if (instrument2.isFavorite()){
             ((ImageButton)v.findViewById(R.id.image_btn_favorite_2)).setImageResource(R.drawable.ic_star_accent_24dp);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.setTitle(R.string.app_name);
+        super.onBackPressed();
     }
 }

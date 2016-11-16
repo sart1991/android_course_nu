@@ -16,9 +16,12 @@ public class InstrumentsService {
 
     private static Context gContext;
 
-    private InstrumentsService(){SourceOfInstruments.setContext(gContext);}
+    private InstrumentsService(){}
 
-    public static void setContext(Context context){gContext = context;}
+    public static void setContext(Context context){
+        gContext = context;
+        SourceOfInstruments.setContext(gContext);
+    }
 
     public static String getClasificationTitle(int position) {
         switch (position) {
