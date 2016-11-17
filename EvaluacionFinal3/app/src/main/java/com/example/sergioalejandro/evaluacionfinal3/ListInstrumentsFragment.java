@@ -1,5 +1,6 @@
 package com.example.sergioalejandro.evaluacionfinal3;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -28,6 +29,16 @@ public class ListInstrumentsFragment extends Fragment implements AdapterView.OnI
             instrumentsListCommunication = (ICommunication.IInstrumentsList)context;
         } catch (ClassCastException castException) {
             throw new ClassCastException(context.getClass() + " should implement IIInstrumentsList");
+        }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            instrumentsListCommunication = (ICommunication.IInstrumentsList)activity;
+        } catch (ClassCastException castException) {
+            throw new ClassCastException(activity.getClass() + " should implement IIInstrumentsList");
         }
     }
 

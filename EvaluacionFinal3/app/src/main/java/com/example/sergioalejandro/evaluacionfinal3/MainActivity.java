@@ -14,6 +14,7 @@ import com.example.sergioalejandro.evaluacionfinal3.service.InstrumentsService;
 public class MainActivity extends AppCompatActivity implements ICommunication.IInstrumentsList, ICommunication.IInstrumentsDetails{
 
     private int position = 0;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +31,22 @@ public class MainActivity extends AppCompatActivity implements ICommunication.II
     public void onInstrumentSelected(int position) {
         this.position = position;
         this.setTitle(InstrumentsService.getClasificationTitle(position));
+        DetailsClasificationFragment fragment = new DetailsClasificationFragment();
         if(findViewById(R.id.fragment_container) != null) {
-            DetailsClasificationFragment fragment = new DetailsClasificationFragment();
             getFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .addToBackStack(null).commit();
+        } else {
+            onDetailsFragmentViewCreated(view);
         }
     }
 
 
     @Override
     public void onDetailsFragmentViewCreated(View v) {
+        view = v;
+        InstrumentsService.setContext(this);
         ((TextView)v.findViewById(R.id.text_clasification_description)).setText(InstrumentsService.getClasificationContent(position));
         Instrument instrument1 = InstrumentsService.getClasificationInstruments(position).get(0);
         Instrument instrument2 = InstrumentsService.getClasificationInstruments(position).get(1);

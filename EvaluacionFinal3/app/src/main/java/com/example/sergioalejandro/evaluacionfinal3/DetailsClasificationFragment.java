@@ -1,5 +1,6 @@
 package com.example.sergioalejandro.evaluacionfinal3;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -25,6 +26,16 @@ public class DetailsClasificationFragment extends Fragment {
             instrumentsDetails = (ICommunication.IInstrumentsDetails)context;
         } catch (ClassCastException castException) {
             throw new ClassCastException(context.getClass() + " should implement IINstrumnetsDetails");
+        }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            instrumentsDetails = (ICommunication.IInstrumentsDetails)activity;
+        } catch (ClassCastException castException) {
+            throw new ClassCastException(activity.getClass() + " should implement IINstrumnetsDetails");
         }
     }
 

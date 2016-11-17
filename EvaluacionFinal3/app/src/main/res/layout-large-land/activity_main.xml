@@ -17,7 +17,7 @@
         android:id="@+id/fragment_details_instruments"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:name="com.example.sergioalejandro.evaluacionfinal3.DetailsClasificationFragment"
         tools:layout="@layout/fragment_details_clasification"/>
 </LinearLayout>
