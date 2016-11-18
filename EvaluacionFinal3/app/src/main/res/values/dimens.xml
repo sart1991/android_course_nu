@@ -10,5 +10,5 @@
     <dimen name="button_details_play_margin_end">32dp</dimen>
     <dimen name="button_details_margin">16dp</dimen>
     <dimen name="padding_text_details_content">8dp</dimen>
-    <dimen name="image_view_details_height">300dp</dimen>
+    <dimen name="image_view_details_height">200dp</dimen>
 </resources>
