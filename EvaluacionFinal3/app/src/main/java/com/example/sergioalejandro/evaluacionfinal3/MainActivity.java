@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity implements ICommunication.II
     private View view;
     private Instrument instrument1;
     private Instrument instrument2;
+    private String favoritePressed;
+    private ImageButton btnFavorite1;
+    private ImageButton btnFavorite2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +58,13 @@ public class MainActivity extends AppCompatActivity implements ICommunication.II
         instrument2 = InstrumentsService.getClasificationInstruments(position).get(1);
         ((ImageView)v.findViewById(R.id.details_image_view_content_1)).setImageResource(instrument1.getImageSrc());
         ((ImageView)v.findViewById(R.id.details_image_view_content_2)).setImageResource(instrument2.getImageSrc());
-        ImageButton btnFavorite1 = (ImageButton) v.findViewById(R.id.image_btn_favorite_1);
-        ImageButton btnFavorite2 = (ImageButton) v.findViewById(R.id.image_btn_favorite_2);
+        btnFavorite1 = (ImageButton) v.findViewById(R.id.image_btn_favorite_1);
+        btnFavorite2 = (ImageButton) v.findViewById(R.id.image_btn_favorite_2);
         if (instrument1.isFavorite()){
-            modifyIcon(btnFavorite1);
+            modifyFavoriteIcon(btnFavorite1, R.drawable.ic_star_accent_24dp);
         }
         if (instrument2.isFavorite()){
-            modifyIcon(btnFavorite2);
+            modifyFavoriteIcon(btnFavorite2, R.drawable.ic_star_black_24dp);
         }
         btnFavorite1.setOnClickListener(this);
         btnFavorite2.setOnClickListener(this);
@@ -73,17 +76,18 @@ public class MainActivity extends AppCompatActivity implements ICommunication.II
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image_btn_favorite_1:
-                togleFavorite(instrument1);
-                modifyIcon((ImageButton)view);
-                generatePersonalizedToast("Instrumento: " + instrument1.getName() + " es ahora favorito.");
+                togleFavorite((ImageButton)view, instrument1);
+                generatePersonalizedToast("Instrumento: " + instrument1.getName() + favoritePressed);
                 break;
             case R.id.image_btn_play_1:
+                generatePersonalizedToast("Instrumento: " + instrument1.getName() + " reproduciendo.");
                 break;
             case R.id.image_btn_favorite_2:
-                togleFavorite(instrument2);
-                modifyIcon((ImageButton)view);
+                togleFavorite((ImageButton)view, instrument2);
+                generatePersonalizedToast("Instrumento: " + instrument2.getName() + favoritePressed);
                 break;
             case R.id.image_btn_play_2:
+                generatePersonalizedToast("Instrumento: " + instrument2.getName() + " reproduciendo.");
                 break;
         }
     }
@@ -94,15 +98,31 @@ public class MainActivity extends AppCompatActivity implements ICommunication.II
         super.onBackPressed();
     }
 
-    private void modifyIcon(ImageButton imageButton) {
-        imageButton.setImageResource(R.drawable.ic_star_accent_24dp);
+    private void modifyFavoriteIcon(ImageButton imageButton, int resource) {
+        imageButton.setImageResource(resource);
     }
 
-    private void togleFavorite(Instrument instrument) {
-        instrument.setFavorite(!instrument.isFavorite());
+    private void togleFavorite(ImageButton btnFavorite, Instrument instrument) {
+        if (instrument.isFavorite()) {
+            instrument.setFavorite(false);
+            modifyFavoriteIcon(btnFavorite, R.drawable.ic_star_black_24dp);
+            favoritePressed = " ya no es favorito.";
+        } else {
+            instrument.setFavorite(true);
+            modifyFavoriteIcon(btnFavorite, R.drawable.ic_star_accent_24dp);
+            favoritePressed = " es ahora favorito.";
+        }
     }
 
     private void generatePersonalizedToast(String string) {
         Toast.makeText(this, string, Toast.LENGTH_LONG).show();
+    }
+
+    private String getFavoriteString(boolean favorite) {
+        if (favorite) {
+            return " es ahora favorito.";
+        } else {
+            return " ya no es favorito.";
+        }
     }
 }
