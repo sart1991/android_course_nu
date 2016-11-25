@@ -10,8 +10,57 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.exercise.nextu.stylesexercises.MainActivity">
 
+
     <TextView
+        style="@style/style_1"
+        android:text="Ingresa número"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_marginTop="106dp"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        style="@style/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:id="@+id/editText" />
+
+    <SeekBar
+        android:id="@+id/color_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/editText"/>
+    <View
+        android:id="@+id/color_target_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#000000"
+        android:layout_marginTop="32dp"
+        android:layout_below="@id/color_seek_bar"/>
+
+    <Button
+        android:text="Tema 1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/buttonTema1"
+        android:onClick="onClickBtnTema1"/>
+
+    <Button
+        android:text="Tema 2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/buttonTema2"
+        android:onClick="onClickBtnTema2"/>
 </RelativeLayout>
