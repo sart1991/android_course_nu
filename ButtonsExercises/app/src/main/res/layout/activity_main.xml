@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sergioalejandro.buttonsexercises.MainActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/relativeBanner"
+        android:background="@color/colorPrimary">
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/circleImageButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignEnd="@+id/relativeBanner"
+        android:background="@drawable/circle"
+        android:src="@drawable/ic_add_24px"
+        android:elevation="16dp"
+        android:onClick="onClickImageButton"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_action_big_btn"
+        android:src="@drawable/ic_add_24px"
+        app:fabSize="normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:onClick="onClickBigFloatingButton"/>
+    <android.support.design.widget.FloatingActionButton
+        android:src="@drawable/ic_add_24px"
+        app:fabSize="mini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/floating_action_big_btn"
+        android:layout_marginTop="135dp"/>
+</RelativeLayout>

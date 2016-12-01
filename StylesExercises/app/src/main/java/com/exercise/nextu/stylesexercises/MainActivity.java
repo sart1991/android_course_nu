@@ -1,7 +1,9 @@
 package com.exercise.nextu.stylesexercises;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,11 +11,13 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private SeekBar seekBar;
     private TextView textView;
     private View viewColor;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private TextView txtSwipe;
     private static int i = 0;
 
     @Override
@@ -25,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
         viewColor = findViewById(R.id.color_target_view);
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_layout);
+        swipeRefreshLayout.setOnRefreshListener(refresh);
+        swipeRefreshLayout.setColorSchemeColors(
+                getResources().getColor(R.color.colorAccent),
+                getResources().getColor(R.color.colorAccent2),
+                getResources().getColor(R.color.colorPrimary2)
+        );
+        txtSwipe = (TextView) findViewById(R.id.txt_swipe);
         Log.i("MainActivity.class", "Theme: " + i);
     }
 
@@ -35,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText("Color: " + color);
             viewColor.setBackgroundColor(color);
             getWindow().setStatusBarColor(color);
+            swipeRefreshLayout.setRefreshing(false);
         }
 
         @Override
@@ -45,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
 
+        }
+    };
+
+    private SwipeRefreshLayout.OnRefreshListener refresh = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            txtSwipe.setText("Swiped");
         }
     };
 
