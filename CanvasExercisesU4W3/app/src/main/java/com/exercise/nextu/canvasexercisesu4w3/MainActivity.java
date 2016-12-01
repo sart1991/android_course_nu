@@ -32,11 +32,16 @@ class Paper extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        int canvasWidth = canvas.getWidth();
+        int canvasHeight = canvas.getHeight();
+
         Paint paint = new Paint();
         paint.setColor(Color.BLUE);
         canvas.drawPaint(paint);
 
+        paint.setColor(Color.WHITE);
 
+        canvas.drawOval(0, 0, canvasWidth, canvasHeight, paint);
 
         Toast.makeText(context, "Canvas", Toast.LENGTH_LONG).show();
 
