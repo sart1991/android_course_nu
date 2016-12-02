@@ -36,7 +36,15 @@ class Paper extends View {
         paint.setColor(Color.BLUE);
         canvas.drawPaint(paint);
 
+        int ancho = canvas.getWidth();
+        int alto = canvas.getHeight();
 
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(100);
+        paint.setAntiAlias(true);
+
+        canvas.drawText("Este es un text escrito en canvas", 50f, 150f, paint);
+        canvas.drawLine(0,0, 640,640, paint);
 
         Toast.makeText(context, "Canvas", Toast.LENGTH_LONG).show();
 
