@@ -3,7 +3,9 @@ package com.exercise.nextu.canvasexercisesu4w3;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,5 +47,20 @@ class Paper extends View {
 
         Toast.makeText(context, "Canvas", Toast.LENGTH_LONG).show();
 
+        paint.setColor(Color.GRAY);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(8);
+
+        Path path = new Path();
+        path.moveTo(10, 10);
+        path.lineTo(canvasWidth, 1);
+
+        float[] patron = {10, 10};
+        DashPathEffect dashPathEffect = new DashPathEffect(patron, 0);
+
+        paint.setPathEffect(dashPathEffect);
+        path.offset(0, 40);
+
+        canvas.drawPath(path, paint);
     }
 }
