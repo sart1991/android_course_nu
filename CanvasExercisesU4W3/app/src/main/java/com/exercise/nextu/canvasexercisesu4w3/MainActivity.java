@@ -55,13 +55,24 @@ class Paper extends View {
 
         canvas.drawOval(0, 0, canvasWidth, canvasHeight, paint);
 
-        Toast.makeText(context, "Canvas", Toast.LENGTH_LONG).show();
+        paint.setColor(Color.GRAY);
+        Path path = new Path();
+        paint.setTextSize(50);
+        Path.Direction direction = Path.Direction.CW;
+        path.addCircle(x, y, 200, direction);
+        paint.setAntiAlias(true);
+        canvas.drawPath(path, paint);
+
+        paint.setColor(Color.BLACK);
+        canvas.drawTextOnPath("Posicion X: " + x, path, 0, -20, paint);
+        canvas.drawTextOnPath("Posicion Y: " + y, path, 0, 50, paint);
+
+        //Toast.makeText(context, "Canvas", Toast.LENGTH_LONG).show();
 
         paint.setColor(Color.GRAY);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(8);
 
-        Path path = new Path();
         path.moveTo(10, 10);
         path.lineTo(canvasWidth, 1);
 
