@@ -32,6 +32,7 @@ public class Figure extends View {
         paint.setAntiAlias(true);
         x2 = 100;
         y2 = 100;
+        xy = (x2 + y2) / 2;
         form = Form.CIRCLE;
     }
 
@@ -52,7 +53,6 @@ public class Figure extends View {
                 canvas.drawRect(x1, y1, x2, y2, paint);
                 break;
         }
-
     }
 
     @Override
