@@ -3,9 +3,9 @@ package com.example.sergioalejandro.evaluacionfinal4.views.custom;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.example.sergioalejandro.evaluacionfinal4.R;
 
 /**
@@ -23,20 +23,21 @@ public class Figure extends View {
     private float xy;
     private float radius;
 
-    public Figure(Context context, Form form) {
-        super(context);
-        this.form = form;
+    public Figure(Context context, AttributeSet attrs) {
+        super(context, attrs);
         paint = new Paint();
         paint.setColor(getResources().getColor(R.color.colorAccent));
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(4);
         paint.setAntiAlias(true);
+        x2 = 100;
+        y2 = 100;
+        form = Form.CIRCLE;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         switch (form) {
             case CIRCLE:
                 canvas.drawCircle(x1, y1, xy, paint);
@@ -69,6 +70,10 @@ public class Figure extends View {
         }
         invalidate();
         return true;
+    }
+
+    public void setForm(Form form) {
+        this.form = form;
     }
 
     public enum Form {
