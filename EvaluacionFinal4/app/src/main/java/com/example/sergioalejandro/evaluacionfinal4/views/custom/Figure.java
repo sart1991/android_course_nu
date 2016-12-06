@@ -3,7 +3,9 @@ package com.example.sergioalejandro.evaluacionfinal4.views.custom;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ public class Figure extends View {
 
     private Form form;
     private Paint paint;
+    private Path path;
     private float x1;
     private float y1;
     private float x2;
@@ -32,9 +35,8 @@ public class Figure extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(4);
         paint.setAntiAlias(true);
-        x2 = 100;
-        y2 = 100;
-        form = Form.RECTANGLE;
+        path = new Path();
+        form = Form.SQUARE;
         firstRun = true;
     }
 
@@ -48,8 +50,11 @@ public class Figure extends View {
                 break;
             case SQUARE:
                 canvas.drawRect(x1,y1, xy, xy, paint);
+//                Log.i("Figure.class", "XY: " + xy);
                 break;
             case OVAL:
+                canvas.drawOval(x1, y1, x2, y2, paint);
+                break;
             case RECTANGLE:
                 canvas.drawRect(x1, y1, x2, y2, paint);
                 break;
@@ -66,6 +71,7 @@ public class Figure extends View {
             case MotionEvent.ACTION_MOVE:
                 x2 = event.getX();
                 y2 = event.getY();
+                xy = (x2 + y2) / 3;
                 break;
         }
         invalidate();
@@ -90,6 +96,7 @@ public class Figure extends View {
                 x1 = canvasWidth / 3;
                 y1 = canvasHeight / 3;
                 xy = x1 * 2;
+//                Log.i("Figure.class", "XY: " + xy);
                 break;
             case OVAL:
             case RECTANGLE:

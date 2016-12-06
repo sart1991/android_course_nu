@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">EvaluacionFinal4</string>
+    <string name="app_name">Evaluación Final 4</string>
+    <string name="circle_title">Dibujar Circulo</string>
+    <string name="circle_subtitle">Acá podras dibujar un circulo en diferentes tamaños</string>
+    <string name="square_title">Dibujar Cuadrado</string>
+    <string name="square_subtitle">Acá podras dibujar un cuadrado en diferentes tamaños</string>
+    <string name="oval_title">Dibujar Ovalo</string>
+    <string name="oval_subtitle">Acá podras dibujar un ovalo en diferentes tamaños</string>
+    <string name="rectangle_title">Dibujar Rectangulo</string>
+    <string name="rectangle_subtitle">Acá podras dibujar un rectangulo en diferentes tamaños</string>
 </resources>

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.sergioalejandro.evaluacionfinal4.R;
+import com.example.sergioalejandro.evaluacionfinal4.model.DrawCard;
+import com.example.sergioalejandro.evaluacionfinal4.services.ManageDrawCards;
 import com.example.sergioalejandro.evaluacionfinal4.views.custom.Figure;
 
 /**
@@ -15,6 +17,11 @@ import com.example.sergioalejandro.evaluacionfinal4.views.custom.Figure;
 
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder> {
 
+    private static ManageDrawCards manageDrawCards;
+
+    public MyRecyclerAdapter(ManageDrawCards manageDrawCards) {
+        this.manageDrawCards = manageDrawCards;
+    };
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -25,12 +32,15 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
+        DrawCard drawCard = manageDrawCards.getDrawCard(position);
+        holder.setForm(drawCard.getForm());
+        holder.setTitle(drawCard.getTitle());
+        holder.setSubtitle(drawCard.getSubtitle());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return manageDrawCards.getCount();
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
