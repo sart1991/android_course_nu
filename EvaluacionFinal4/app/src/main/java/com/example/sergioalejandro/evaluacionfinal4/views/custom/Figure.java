@@ -100,9 +100,9 @@ public class Figure extends View {
                 break;
             case OVAL:
             case RECTANGLE:
-                x1 = canvasWidth / 3;
+                x1 = canvasWidth / 4;
                 y1 = canvasHeight /3;
-                x2 = x1 * 2;
+                x2 = x1 * 3;
                 y2 = y1 * 2;
                 break;
         }
