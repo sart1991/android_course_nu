@@ -84,6 +84,10 @@ public class Figure extends View {
         this.firstRun = firstRun;
     }
 
+    public Form getForm() {
+        return this.form;
+    }
+
     private void drawThumbnail(Canvas canvas) {
         float canvasWidth = canvas.getWidth();
         float canvasHeight = canvas.getHeight();
