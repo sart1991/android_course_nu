@@ -8,4 +8,6 @@
     <string name="oval_subtitle">Acá podras dibujar un ovalo en diferentes tamaños</string>
     <string name="rectangle_title">Dibujar Rectangulo</string>
     <string name="rectangle_subtitle">Acá podras dibujar un rectangulo en diferentes tamaños</string>
+    <string name="free_title">Dibujo Libre</string>
+    <string name="free_subtitle">Acá podras dibujar cualquier figura.</string>
 </resources>

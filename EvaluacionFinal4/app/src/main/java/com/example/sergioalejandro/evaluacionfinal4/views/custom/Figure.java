@@ -36,8 +36,8 @@ public class Figure extends View {
         paint.setStrokeWidth(4);
         paint.setAntiAlias(true);
         path = new Path();
-        form = Form.SQUARE;
-        firstRun = true;
+//        form = Form.SQUARE;
+//        firstRun = true;
     }
 
     @Override
@@ -57,6 +57,9 @@ public class Figure extends View {
                 break;
             case RECTANGLE:
                 canvas.drawRect(x1, y1, x2, y2, paint);
+                break;
+            case FREE:
+                canvas.drawPath(path, paint);
                 break;
         }
     }
@@ -90,7 +93,7 @@ public class Figure extends View {
             case CIRCLE:
                 x1 = canvasWidth / 2;
                 y1 = canvasHeight / 2;
-                xy = canvasWidth / 3;
+                xy = canvasWidth / 4;
                 break;
             case SQUARE:
                 x1 = canvasWidth / 3;
@@ -101,14 +104,20 @@ public class Figure extends View {
             case OVAL:
             case RECTANGLE:
                 x1 = canvasWidth / 4;
-                y1 = canvasHeight /3;
+                y1 = canvasHeight / 3;
                 x2 = x1 * 3;
                 y2 = y1 * 2;
+                break;
+            case FREE:
+                path.moveTo(canvasWidth / 2, canvasHeight / 4);
+                path.lineTo(canvasWidth * 3 / 4, canvasHeight * 2 / 3);
+                path.lineTo(canvasWidth / 6, canvasHeight / 2);
+                path.lineTo(canvasWidth / 2, canvasHeight / 4);
                 break;
         }
     }
 
     public enum Form {
-        CIRCLE, OVAL, SQUARE, RECTANGLE
+        CIRCLE, OVAL, SQUARE, RECTANGLE, FREE
     }
 }

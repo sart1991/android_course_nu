@@ -12,7 +12,7 @@ import com.example.sergioalejandro.evaluacionfinal4.views.custom.Figure;
 
 public class ManageDrawCards {
 
-    private DrawCard[] drawCards = new DrawCard[4];
+    private DrawCard[] drawCards = new DrawCard[5];
 
     public ManageDrawCards(Context context) {
         drawCards[0] = new DrawCard(Figure.Form.CIRCLE,
@@ -27,6 +27,9 @@ public class ManageDrawCards {
         drawCards[3] = new DrawCard(Figure.Form.RECTANGLE,
                                     context.getResources().getString(R.string.rectangle_title),
                                     context.getResources().getString(R.string.rectangle_subtitle));
+        drawCards[4] = new DrawCard(Figure.Form.FREE,
+                                    context.getString(R.string.free_title),
+                                    context.getString(R.string.free_subtitle));
     }
 
     public DrawCard getDrawCard(int position) {
