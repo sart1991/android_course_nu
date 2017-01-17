@@ -9,6 +9,7 @@ import com.example.sergioalejandro.evaluacionfinal4.views.custom.Figure;
  */
 
 public interface InterCommunication {
+    //Comment for test the InterCommunication interface
     interface MainCommunication {
         void onCardViewFigureClick(Figure figure);
     }
