@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Final Evaluation 4</string>
+    <string name="circle_title">Draw Circle</string>
+    <string name="circle_subtitle">Here you will be able to draw circles in different sizes</string>
+    <string name="square_title">Draw Square</string>
+    <string name="square_subtitle">Here you will be able to draw squares in different sizes</string>
+    <string name="oval_title">Draw Oval</string>
+    <string name="oval_subtitle">Here you will be able to draw ovals in different sizes</string>
+    <string name="rectangle_title">Draw Rectangle</string>
+    <string name="rectangle_subtitle">Here you will be able to draw rectangles in different sizes</string>
+    <string name="free_title">Free Drawing</string>
+    <string name="free_subtitle">Here you will be able to draw any form</string>
+</resources>
