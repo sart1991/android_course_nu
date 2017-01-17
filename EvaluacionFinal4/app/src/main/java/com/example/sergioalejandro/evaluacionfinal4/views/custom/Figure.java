@@ -36,8 +36,6 @@ public class Figure extends View {
         paint.setStrokeWidth(4);
         paint.setAntiAlias(true);
         path = new Path();
-//        form = Form.SQUARE;
-//        firstRun = true;
     }
 
     @Override
