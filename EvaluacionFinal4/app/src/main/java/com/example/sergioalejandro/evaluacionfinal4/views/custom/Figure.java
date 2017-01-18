@@ -12,53 +12,63 @@ import android.view.ViewGroup;
 
 import com.example.sergioalejandro.evaluacionfinal4.R;
 
+import java.io.Serializable;
+
 /**
  * Created by SergioAlejandro on 4/12/2016.
  */
 
-public class Figure extends View {
+public class Figure extends View implements Serializable{
 
     private Form form;
     private Paint paint;
     private Path path;
+    private Path pathShapes;
     private float x1;
     private float y1;
     private float x2;
     private float y2;
-    private float xy;
+    private float x3;
+    private float y3;
+    private float xs;
+    private float ys;
+    private float xy1;
     private boolean firstRun;
 
     public Figure(Context context, AttributeSet attrs) {
         super(context, attrs);
         paint = new Paint();
         paint.setColor(getResources().getColor(R.color.colorAccent));
-        paint.setStyle(Paint.Style.STROKE);
+        paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(4);
         paint.setAntiAlias(true);
         path = new Path();
+        pathShapes = new Path();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (firstRun) {drawThumbnail(canvas);}
+        if (firstRun) {drawThumbnail(canvas);paint.setStyle(Paint.Style.STROKE);}
         switch (form) {
             case CIRCLE:
-                canvas.drawCircle(x1, y1, xy, paint);
+                pathShapes.addCircle(x1, y1, xy1, Path.Direction.CCW);
                 break;
             case SQUARE:
-                canvas.drawRect(x1,y1, xy, xy, paint);
-//                Log.i("Figure.class", "XY: " + xy);
+                pathShapes.addRect(x1, y1, xs, ys, Path.Direction.CCW);
                 break;
             case OVAL:
-                canvas.drawOval(x1, y1, x2, y2, paint);
+                pathShapes.addOval(x1, y1, x2, y2, Path.Direction.CCW);
                 break;
             case RECTANGLE:
-                canvas.drawRect(x1, y1, x2, y2, paint);
+                pathShapes.addRect(x1, y1, x2, y2, Path.Direction.CCW);
                 break;
-            case FREE:
-                canvas.drawPath(path, paint);
-                break;
+        }
+        if (form == Form.FREE) {
+            paint.setStyle(Paint.Style.STROKE);
+            canvas.drawPath(path, paint);
+        } else {
+            canvas.drawPath(pathShapes, paint);
         }
     }
 
@@ -68,11 +78,17 @@ public class Figure extends View {
             case MotionEvent.ACTION_DOWN:
                 x1 = event.getX();
                 y1 = event.getY();
+                xy1 = 100;
+                xs = x1 + 200;
+                ys = y1 + 200;
+                x2 = x1 + 200;
+                y2 = y1 + 120;
+                path.moveTo(x1, y1);
                 break;
             case MotionEvent.ACTION_MOVE:
-                x2 = event.getX();
-                y2 = event.getY();
-                xy = (x2 + y2) / 3;
+                x3 = event.getX();
+                y3 = event.getY();
+                path.lineTo(x3, y3);
                 break;
         }
         invalidate();
@@ -95,13 +111,13 @@ public class Figure extends View {
             case CIRCLE:
                 x1 = canvasWidth / 2;
                 y1 = canvasHeight / 2;
-                xy = canvasWidth / 4;
+                xy1 = canvasWidth / 4;
                 break;
             case SQUARE:
                 x1 = canvasWidth / 3;
                 y1 = canvasHeight / 3;
-                xy = x1 * 2;
-//                Log.i("Figure.class", "XY: " + xy);
+                xs = x1 * 2;
+                ys = x1 * 2;
                 break;
             case OVAL:
             case RECTANGLE:
@@ -119,7 +135,7 @@ public class Figure extends View {
         }
     }
 
-    public enum Form {
+    public enum Form implements Serializable{
         CIRCLE, OVAL, SQUARE, RECTANGLE, FREE
     }
 }
