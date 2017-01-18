@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements InterCommunicatio
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private Intent intent;
+    public static final String FIGURE_ACTIVITY_KEY = "FIGURE_ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements InterCommunicatio
 
     @Override
     public void onCardViewFigureClick(Figure figure) {
-//        Snackbar.make(figure, "Figure: " + figure.getForm(), Snackbar.LENGTH_LONG).show();
+        intent.putExtra(FIGURE_ACTIVITY_KEY, figure.getForm());
         startActivity(intent);
     }
 }
