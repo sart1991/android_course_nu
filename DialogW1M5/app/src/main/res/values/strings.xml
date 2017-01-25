@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DialogW1M5</string>
+    <string name="string_btn_main">Generate alerts</string>
 </resources>
