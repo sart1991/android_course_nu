@@ -16,22 +16,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onClickGenerateAlert(View view) {
-        dialogAlert(view).show();
+    public void onClickDialogoAlerta(View view) {
+        Dialogo.dialogAlert(this, view).show();
     }
 
-    public Dialog dialogAlert(final View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.ThemeDialogAlert);
+    public void onClickDialogoConfirmacion(View view) {
+        Dialogo.dialogConfirmacion(this, view).show();
+    }
 
-        builder.setTitle("Informacion:");
-        builder.setMessage("Datos guardados correctamente");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-                Snackbar.make(view, "OK", Snackbar.LENGTH_LONG).show();
-            }
-        });
-        return builder.create();
+    public void onClickDialogoFragmento(View view) {
+        DialogoFragmento dialogoFragmento = new DialogoFragmento();
+        dialogoFragmento.show(getSupportFragmentManager(), "¿Desea Guardar?");
+    }
+
+    public void onClickDialogoLista(View view) {
+        Dialogo.dialogList(this, view).show();
     }
 }

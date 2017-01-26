@@ -12,12 +12,21 @@
     android:stretchColumns="*"
     android:shrinkColumns="*">
 
-
-    <TableRow
-        android:layout_width="match_parent">
+    <TableRow>
         <Button
-            android:text="@string/string_btn_main"
-            android:onClick="onClickGenerateAlert"/>
+            android:text="@string/dialogo_alerta"
+            android:onClick="onClickDialogoAlerta"/>
+        <Button
+            android:text="@string/dialogo_confirmacion"
+            android:onClick="onClickDialogoConfirmacion"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:text="@string/dialogo_fragmento"
+            android:onClick="onClickDialogoFragmento"/>
+        <Button
+            android:text="@string/dialogo_lista"
+            android:onClick="onClickDialogoLista"/>
     </TableRow>
 
 </TableLayout>

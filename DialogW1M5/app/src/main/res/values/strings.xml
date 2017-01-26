@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">DialogW1M5</string>
     <string name="string_btn_main">Generate alerts</string>
+    <string name="dialogo_alerta">Diálogo Alerta</string>
+    <string name="dialogo_confirmacion">Diálogo Confirmación</string>
+    <string name="dialogo_fragmento">Diálogo Fragmento</string>
+    <string name="dialogo_lista">Dialogo Lista</string>
 </resources>
