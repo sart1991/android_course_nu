@@ -32,4 +32,8 @@ public class MainActivity extends AppCompatActivity {
     public void onClickDialogoLista(View view) {
         Dialogo.dialogList(this, view).show();
     }
+
+    public void onClickDialogChecklist(View view) {
+        Dialogo.dialogCheckList(this, view).show();
+    }
 }

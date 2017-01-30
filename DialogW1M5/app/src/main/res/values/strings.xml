@@ -5,4 +5,5 @@
     <string name="dialogo_confirmacion">Diálogo Confirmación</string>
     <string name="dialogo_fragmento">Diálogo Fragmento</string>
     <string name="dialogo_lista">Dialogo Lista</string>
+    <string name="dialogo_checklist">Dialogo Checklist</string>
 </resources>

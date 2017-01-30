@@ -82,4 +82,30 @@ public class Dialogo {
 
         return builder.create();
     }
+
+    public static Dialog dialogCheckList(Activity activity, final View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        final String[] items = {"Uno", "Dos", "Tres"};
+        final boolean[] boolItems = {false, false, false};
+        builder.setMultiChoiceItems(items, boolItems, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                if(b) {
+//                    Snackbar.make(view, "Selecciono: " + items[i], Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String seleccion = " ";
+                for (int j = 0; j <items.length; j++) {
+                    if (boolItems[j])
+                        seleccion += " " + items[j];
+                        Snackbar.make(view, "Selecciono: " + seleccion, Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
+        return builder.create();
+    }
 }

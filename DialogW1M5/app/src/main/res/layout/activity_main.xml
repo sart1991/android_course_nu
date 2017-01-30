@@ -28,5 +28,10 @@
             android:text="@string/dialogo_lista"
             android:onClick="onClickDialogoLista"/>
     </TableRow>
+    <TableRow>
+        <Button
+            android:text="@string/dialogo_checklist"
+            android:onClick="onClickDialogChecklist"/>
+    </TableRow>
 
 </TableLayout>
