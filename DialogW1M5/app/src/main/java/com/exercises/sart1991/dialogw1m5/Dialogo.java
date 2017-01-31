@@ -3,6 +3,7 @@ package com.exercises.sart1991.dialogw1m5;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.view.View;
 public class Dialogo {
 
     private static Snackbar snackbar;
+    public static int themeID = R.style.AppTheme;
 
     public static Dialog dialogAlert(Activity activity, final View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity, R.style.ThemeDialogAlert);
@@ -59,13 +61,27 @@ public class Dialogo {
         return builder.create();
     }
 
-    public static Dialog dialogList(Activity activity, final View view) {
+    public static Dialog dialogList(final Activity activity, final View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Seleccione un pais");
-        builder.setSingleChoiceItems(new String[]{"Cero", "Uno", "Dos"}, 0, new DialogInterface.OnClickListener() {
+        builder.setItems(new String[]{"Cero", "Uno", "Dos"}, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Dialogo.snackbar = Snackbar.make(view, "Seleccionó " + which, Snackbar.LENGTH_LONG);
+                //activity.setTheme(R.style.SecondAppTheme);
+                switch (which) {
+                    case 0:
+                        themeID = R.style.AppTheme;
+                        break;
+                    case 1:
+                        themeID = R.style.SecondAppTheme;
+                        break;
+                    case 2:
+                        themeID = R.style.ThirdAppTheme;
+                        break;
+                }
+                activity.finish();
+                activity.startActivity(new Intent(activity, activity.getClass()));
             }
         });
 

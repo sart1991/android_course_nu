@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorDialogText">#FFFFFF</color>
+    <color name="colorPrimary2">#2196F3</color>
+    <color name="colorPrimaryDark2">#1976D2</color>
+    <color name="colorAccent2">#A1887F</color>
+    <color name="colorPrimary3">#607D8B</color>
+    <color name="colorPrimaryDark3">#455A64</color>
+    <color name="colorAccent3">#DCE775</color>
 </resources>
