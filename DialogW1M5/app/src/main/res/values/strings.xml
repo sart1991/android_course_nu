@@ -6,4 +6,8 @@
     <string name="dialogo_fragmento">Diálogo Fragmento</string>
     <string name="dialogo_lista">Dialogo Lista</string>
     <string name="dialogo_checklist">Dialogo Checklist</string>
+    <string name="dialog_custom_title">Ingrese su nombre</string>
+    <string name="dialog_custom_edit_text">Nombre</string>
+    <string name="dialog_fragment_button_positive">Enviar</string>
+    <string name="button_dialogo_fragmento_custom">Dialogo Fragmento Custom</string>
 </resources>

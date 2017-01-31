@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_custom_title"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorDialogText"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dialog_custom_edit_text"
+            android:id="@+id/edit_text_nombre"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_fragment_button_positive"
+            android:layout_gravity="end"
+            android:id="@+id/dialog_fragment_button_postive"/>
+    </LinearLayout>
+
+</LinearLayout>

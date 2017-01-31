@@ -32,6 +32,10 @@
         <Button
             android:text="@string/dialogo_checklist"
             android:onClick="onClickDialogChecklist"/>
+        <Button
+            android:text="@string/button_dialogo_fragmento_custom"
+            android:onClick="onClickDialogCustom"
+            android:id="@+id/custom_btn_main"/>
     </TableRow>
 
 </TableLayout>
