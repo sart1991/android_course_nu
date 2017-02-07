@@ -38,4 +38,15 @@
             android:id="@+id/custom_btn_main"/>
     </TableRow>
 
+    <TableRow>
+        <Button
+            android:text="@string/dialog_color_picker"
+            android:onClick="onClickDialogColorPicker"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/color_picker_view"
+            android:layout_gravity="end"/>
+    </TableRow>
+
 </TableLayout>

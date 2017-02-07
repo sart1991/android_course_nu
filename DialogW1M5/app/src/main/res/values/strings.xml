@@ -10,4 +10,6 @@
     <string name="dialog_custom_edit_text">Nombre</string>
     <string name="dialog_fragment_button_positive">Enviar</string>
     <string name="button_dialogo_fragmento_custom">Dialogo Fragmento Custom</string>
+    <string name="dialog_color_picker">Dialogo Color Picker</string>
+    <string name="dialog_color_picker_title">Seleccione un color:</string>
 </resources>

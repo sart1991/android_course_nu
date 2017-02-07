@@ -10,4 +10,10 @@
     <color name="colorPrimary3">#607D8B</color>
     <color name="colorPrimaryDark3">#455A64</color>
     <color name="colorAccent3">#DCE775</color>
+
+    <array name="picker_colors">
+        <item>@color/colorAccent</item>
+        <item>@color/colorAccent2</item>
+        <item>@color/colorAccent3</item>
+    </array>
 </resources>
