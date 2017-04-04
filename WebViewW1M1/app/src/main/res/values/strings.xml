@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WebViewW1M1</string>
+    <string name="string_btn_navigate">Navigate</string>
 </resources>
