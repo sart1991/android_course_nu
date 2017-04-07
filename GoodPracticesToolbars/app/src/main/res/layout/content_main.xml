@@ -47,4 +47,13 @@
         android:text="@string/btn_default"
         android:layout_gravity="center_horizontal"/>
     
+    <Button
+        android:id="@+id/btn_go_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_second"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="48dp"/>
+    
+    
 </LinearLayout>

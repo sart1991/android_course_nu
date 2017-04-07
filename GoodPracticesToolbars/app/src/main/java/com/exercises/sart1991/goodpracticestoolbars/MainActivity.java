@@ -1,6 +1,7 @@
 package com.exercises.sart1991.goodpracticestoolbars;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -44,10 +45,14 @@ public class MainActivity extends AppCompatActivity {
         Button btnBlue = (Button) findViewById(R.id.btn_blue);
         Button btnDefault = (Button) findViewById(R.id.btn_default);
 
+        Button btnGoSecond = (Button) findViewById(R.id.btn_go_second);
+
         btnTeal.setOnClickListener(clickListener);
         btnLime.setOnClickListener(clickListener);
         btnBlue.setOnClickListener(clickListener);
         btnDefault.setOnClickListener(clickListener);
+
+        btnGoSecond.setOnClickListener(clickGoSecond);
     }
 
     private View.OnClickListener clickListener = new View.OnClickListener() {
@@ -71,6 +76,14 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             modifyThemeColor(color, colorDark);
+        }
+    };
+
+    private View.OnClickListener clickGoSecond = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
         }
     };
 
