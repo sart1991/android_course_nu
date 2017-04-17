@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">Ex Biografia de Jugadores</string>
+  <string name="hint_full_name">Nombre completo</string>
+  <string name="hint_country">País de origen</string>
+  <string name="hint_club">Club actual</string>
+  <string name="hint_age">Edad</string>
+  <string name="btn_submit">Enviar informacion</string>
+</resources>
