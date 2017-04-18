@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <group
+        android:id="@+id/first_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_section1"
+            android:icon="@drawable/ic_label"
+            android:title="Sección 1" />
+        
+        <item
+            android:id="@+id/nav_section2"
+            android:icon="@drawable/ic_label"
+            android:title="Sección 2" />
+        
+        <item
+            android:id="@+id/nav_section3"
+            android:title="Sección 3">
+            <menu>
+                <item
+                    android:id="@+id/nav_option1"
+                    android:icon="@drawable/ic_label"
+                    android:title="Opción 1" />
+                <item
+                    android:id="@+id/nav_option2"
+                    android:icon="@drawable/ic_label"
+                    android:title="Opción 2" />
+                <item
+                    android:id="@+id/nav_option3"
+                    android:icon="@drawable/ic_label"
+                    android:title="Opción 3" />
+            </menu>
+        </item>
+    </group>
+    
+    <group android:id="@+id/second_group" android:checkableBehavior="single">
+        <item android:id="@+id/nav_seccion4" android:title="Sección 4" android:icon="@drawable/ic_label"/>
+        <item android:id="@+id/nav_seccion5" android:title="Sección 5" android:icon="@drawable/ic_label"/>
+        <item android:id="@+id/nav_seccion6" android:title="Sección 6" android:icon="@drawable/ic_label"/>
+        <item android:id="@+id/nav_seccion7" android:title="Sección 7" android:icon="@drawable/ic_label"/>
+    </group>
+</menu>
