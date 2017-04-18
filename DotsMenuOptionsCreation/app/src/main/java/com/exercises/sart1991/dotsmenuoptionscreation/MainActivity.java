@@ -1,13 +1,16 @@
 package com.exercises.sart1991.dotsmenuoptionscreation;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+        SubMenu subMenu = menu.addSubMenu("Submenu test");
+        subMenu.add("Test 1").setIcon(R.drawable.ic_blur_on).setIntent(intent);
+        subMenu.add("Test 2").setIcon(R.drawable.ic_timeline);
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -71,10 +78,22 @@ public class MainActivity extends AppCompatActivity {
             case R.id.settings_op2:
                 Snackbar.make(toolbar, "option2", Snackbar.LENGTH_LONG).show();
             break;
+            case R.id.settings_op2_sub1:
+                Snackbar.make(toolbar, "option 2 sub 1", Snackbar.LENGTH_LONG).show();
+                break;
+            case R.id.settings_op2_sub2:
+                Snackbar.make(toolbar, "option 2 sub 2", Snackbar.LENGTH_LONG).show();
+                break;
             case R.id.settings_op3:
                 Snackbar.make(toolbar, "option3", Snackbar.LENGTH_LONG).show();
             break;
         }
         return super.onContextItemSelected(item);
+    }
+
+    public void onHelloClicked(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
+        popupMenu.show();
     }
 }

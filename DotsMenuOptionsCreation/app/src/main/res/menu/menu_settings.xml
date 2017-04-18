@@ -6,7 +6,16 @@
         android:title="@string/settings_op1" />
     <item
         android:id="@+id/settings_op2"
-        android:title="@string/settings_op2" />
+        android:title="@string/settings_op2" >
+        <menu>
+            <item
+                android:id="@+id/settings_op2_sub1"
+                android:title="@string/settings_op1"/>
+            <item
+                android:id="@+id/settings_op2_sub2"
+                android:title="@string/settings_op2"/>
+        </menu>
+    </item>
     <item
         android:id="@+id/settings_op3"
         android:title="@string/settings_op3" />

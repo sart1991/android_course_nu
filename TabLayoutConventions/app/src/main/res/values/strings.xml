@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TabLayout Conventions</string>
+    <string name="title_activity_test">TestActivity</string>
+    
+    <!-- Fragments Text-->
+    <string name="hello_books_fragment">Hello books fragment</string>
+    <string name="hello_games_fragment">Hello games fragment</string>
+    <string name="hello_movies_fragment">Hello movies fragment</string>
+    <string name="hello_music_fragment">Hello music fragment</string>
+    
+    <!--Tab Titles-->
+    <string name="title_books">Books</string>
+    <string name="title_games">Games</string>
+    <string name="title_movies">Movies</string>
+    <string name="title_music">Music</string>
+    
+</resources>
