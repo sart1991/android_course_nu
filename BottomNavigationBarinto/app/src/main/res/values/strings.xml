@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bottom Navigation Bar into</string>
+    
+    <!--Tab Names-->
+    <string name="book_tab">Líbros</string>
+    <string name="game_tab">Juegos</string>
+    <string name="movie_tab">Películas</string>
+    <string name="music_tab">Música</string>
+</resources>
