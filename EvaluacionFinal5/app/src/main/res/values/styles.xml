@@ -15,7 +15,6 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryF</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkF</item>
-        <item name="colorAccent">@color/colorSecondaryF</item>
     </style>
     
     <!-- Instagram theme -->
@@ -23,7 +22,6 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryI</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkI</item>
-        <item name="colorAccent">@color/colorSecondaryI</item>
     </style>
     
     <!-- G+ theme -->
@@ -39,11 +37,18 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryT</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkT</item>
-        <item name="colorAccent">@color/colorSecondaryT</item>
     </style>
     
     <style name="NavViewTheme" parent="AppTheme">
-        <item name="colorPrimary">@color/colorSecondaryI</item>
+        <item name="colorPrimary">@color/colorSecondary</item>
+    </style>
+    
+    <style name="TabLayoutTheme" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/TabTextAppearance</item>
+    </style>
+    
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="AppTheme.ActionBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>

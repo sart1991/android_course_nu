@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Evaluacion Final 5</string>
+    <string name="app_name">Mis Redes Sociales</string>
     <string name="_facebook">Facebook</string>
     <string name="_home">Inicio</string>
     <string name="_instagram">Instagram</string>
@@ -9,6 +9,16 @@
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
     
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Content for each fragment -->
+    <string name="content_apps">Publicaciones</string>
+    <string name="content_bell">Notificaciones</string>
+    <string name="content_camera">Publicar</string>
+    <string name="content_communities">Comunidades</string>
+    <string name="content_earth">Notificaciones</string>
+    <string name="content_heart">Me gusta</string>
+    <string name="content_home">Inicio</string>
+    <string name="content_message">Twittear</string>
+    <string name="content_news">Noticias</string>
+    <string name="content_people">Solicitudes</string>
+    <string name="content_search">Buscar</string>
 </resources>
