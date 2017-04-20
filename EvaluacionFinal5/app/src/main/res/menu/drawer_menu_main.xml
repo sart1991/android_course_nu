@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_home"
+            android:icon="@drawable/home"
+            android:title="@string/_home" />
+        <item
+            android:id="@+id/drawer_facebook"
+            android:icon="@drawable/facebook"
+            android:title="@string/_facebook" />
+        <item
+            android:id="@+id/drawer_instagram"
+            android:icon="@drawable/instagram"
+            android:title="@string/_instagram" />
+        <item
+            android:id="@+id/drawer_gplus"
+            android:icon="@drawable/gplus"
+            android:title="@string/_gplus" />
+        <item
+            android:id="@+id/drawer_twitter"
+            android:icon="@drawable/twitter"
+            android:title="@string/_twitter" />
+    </group>
+</menu>

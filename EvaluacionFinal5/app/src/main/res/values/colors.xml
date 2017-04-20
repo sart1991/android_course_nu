@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    
+    <!--Colors for text-->
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#424242</color>
+    
+    <!--Colors For Default Theme-->
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryLight">#52c7b8</color>
+    <color name="colorPrimaryDark">#00675b</color>
+    <color name="colorSecondary">#455a64</color>
+    <color name="colorSecondaryLight">#718792</color>
+    <color name="colorSecondaryDark">#1c313a</color>
+    
+    <!--Colors For Facebook Theme-->
+    <color name="colorPrimaryF">#3b5998</color>
+    <color name="colorPrimaryLightF">#6d85c9</color>
+    <color name="colorPrimaryDarkF">#003069</color>
+    <color name="colorSecondaryF">#ff4081</color>
+    <color name="colorSecondaryLightF">#ff79b0</color>
+    <color name="colorSecondaryDarkF">#c60055</color>
+    
+    <!--Colors For Instagram Theme-->
+    <color name="colorPrimaryI">#125688</color>
+    <color name="colorPrimaryLightI">#4f82b8</color>
+    <color name="colorPrimaryDarkI">#002e5b</color>
+    <color name="colorSecondaryI">#fb3958</color>
+    <color name="colorSecondaryLightI">#ff7385</color>
+    <color name="colorSecondaryDarkI">#c1002f</color>
+    
+    <!--Colors For G+ Theme-->
+    <color name="colorPrimaryG">#f44336</color>
+    <color name="colorPrimaryLightG">#ff7961</color>
+    <color name="colorPrimaryDarkG">#ba000d</color>
+    <color name="colorSecondaryG">#ffab40</color>
+    <color name="colorSecondaryLightG">#ffdd71</color>
+    <color name="colorSecondaryDarkG">#c77c02</color>
+    
+    <!--Colors For Twitter Theme-->
+    <color name="colorPrimaryT">#326ada</color>
+    <color name="colorPrimaryLightT">#7297ff</color>
+    <color name="colorPrimaryDarkT">#0040a8</color>
+    <color name="colorSecondaryT">#433e90</color>
+    <color name="colorSecondaryLightT">#7469c1</color>
+    <color name="colorSecondaryDarkT">#091762</color>
 </resources>
