@@ -1,52 +1,53 @@
 <resources>
     
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Default theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorSecondary</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
     
-    <!-- Base application theme. -->
-    <style name="AppTheme.Facebook" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Facebook theme -->
+    <style name="AppTheme.Facebook" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryF</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkF</item>
         <item name="colorAccent">@color/colorSecondaryF</item>
     </style>
     
-    <!-- Base application theme. -->
-    <style name="AppTheme.Instagram" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Instagram theme -->
+    <style name="AppTheme.Instagram" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryI</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkI</item>
         <item name="colorAccent">@color/colorSecondaryI</item>
     </style>
     
-    <!-- Base application theme. -->
-    <style name="AppTheme.Gplus" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- G+ theme -->
+    <style name="AppTheme.Gplus" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryG</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkG</item>
         <item name="colorAccent">@color/colorSecondaryG</item>
     </style>
     
-    <!-- Base application theme. -->
-    <style name="AppTheme.Twitter" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Twitter theme -->
+    <style name="AppTheme.Twitter" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryT</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkT</item>
         <item name="colorAccent">@color/colorSecondaryT</item>
     </style>
+    
+    <style name="NavViewTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/colorSecondaryI</item>
+    </style>
 
     <style name="AppTheme.ActionBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-    
-    <style name="AppTheme.NoActionBar">
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-    </style>
     
 </resources>

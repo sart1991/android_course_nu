@@ -30,7 +30,6 @@ public class CustomTheme {
     {
         switch (sTheme)
         {
-            default:
             case THEME_DEFAULT:
                 activity.setTheme(R.style.AppTheme);
                 break;
@@ -47,5 +46,9 @@ public class CustomTheme {
                 activity.setTheme(R.style.AppTheme_Twitter);
                 break;
         }
+    }
+
+    public static int getTheme() {
+        return sTheme;
     }
 }
