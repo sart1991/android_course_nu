@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.exercises.sart1991.evaluacionfinal5.adapter.PagerAdapter;
 import com.exercises.sart1991.evaluacionfinal5.usable.CustomTheme;
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_main);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(CustomTheme.getTheme()).setChecked(true);
+        View headerNav = navigationView.getHeaderView(0);
+        LinearLayout linearLayout = (LinearLayout) headerNav.findViewById(R.id.nav_header_container);
+        linearLayout.setBackgroundResource(CustomTheme.getPrimaryColor());
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));

@@ -14,6 +14,7 @@ import com.exercises.sart1991.evaluacionfinal5.R;
 public class CustomTheme {
     private static int sTheme;
     private static String sSubtitle;
+    private static int sPrimaryColor;
     public final static int THEME_DEFAULT = 0;
     public final static int THEME_FACEBOOK = 1;
     public final static int THEME_INSTAGRAM = 2;
@@ -35,22 +36,27 @@ public class CustomTheme {
         {
             case THEME_DEFAULT:
                 sSubtitle = activity.getResources().getString(R.string._home);
+                sPrimaryColor = R.color.colorPrimary;
                 activity.setTheme(R.style.AppTheme);
                 break;
             case THEME_FACEBOOK:
                 sSubtitle = activity.getResources().getString(R.string._facebook);
+                sPrimaryColor = R.color.colorPrimaryF;
                 activity.setTheme(R.style.AppTheme_Facebook);
                 break;
             case THEME_INSTAGRAM:
                 sSubtitle = activity.getResources().getString(R.string._instagram);
+                sPrimaryColor = R.color.colorPrimaryI;
                 activity.setTheme(R.style.AppTheme_Instagram);
                 break;
             case THEME_GPLUS:
                 sSubtitle = activity.getResources().getString(R.string._gplus);
+                sPrimaryColor = R.color.colorPrimaryG;
                 activity.setTheme(R.style.AppTheme_Gplus);
                 break;
             case THEME_TWITTER:
                 sSubtitle = activity.getResources().getString(R.string._twitter);
+                sPrimaryColor = R.color.colorPrimaryT;
                 activity.setTheme(R.style.AppTheme_Twitter);
                 break;
         }
@@ -62,6 +68,9 @@ public class CustomTheme {
 
     public static String getSubtitle() {
         return sSubtitle;
+    }
+    public static int getPrimaryColor() {
+        return sPrimaryColor;
     }
 
     public  static int[][] getArrayOfIconTabs() {

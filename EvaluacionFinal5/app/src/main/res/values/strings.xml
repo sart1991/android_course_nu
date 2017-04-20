@@ -21,4 +21,8 @@
     <string name="content_news">Noticias</string>
     <string name="content_people">Solicitudes</string>
     <string name="content_search">Buscar</string>
+    
+    <!--Nav drawer info-->
+    <string name="user_name">Nombre Usuario</string>
+    <string name="user_mail">usuario@example.com</string>
 </resources>
