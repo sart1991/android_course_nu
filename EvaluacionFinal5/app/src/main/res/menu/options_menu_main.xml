@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/option_web_version" android:title="@string/option_web_version">
+        <menu>
+            <item android:id="@+id/option_facebook" android:title="@string/_facebook" android:icon="@drawable/facebook"/>
+            <item android:id="@+id/option_instagram" android:title="@string/_instagram" android:icon="@drawable/instagram"/>
+            <item android:id="@+id/option_gplus" android:title="@string/_gplus" android:icon="@drawable/gplus"/>
+            <item android:id="@+id/option_twitter" android:title="@string/_twitter" android:icon="@drawable/twitter"/>
+        </menu>
+    </item>
+    <item android:id="@+id/option_share" android:title="@string/option_share"/>
+    <item android:id="@+id/option_settings" android:title="@string/option_settings"/>
+</menu>

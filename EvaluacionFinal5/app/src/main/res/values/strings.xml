@@ -5,6 +5,9 @@
     <string name="_instagram">Instagram</string>
     <string name="_gplus">Google +</string>
     <string name="_twitter">Twitter</string>
+    <string name="_whatsapp">WhatsApp</string>
+    <string name="_messenger">Messenger</string>
+    <string name="_sms">SMS</string>
     
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
@@ -25,4 +28,40 @@
     <!--Nav drawer info-->
     <string name="user_name">Nombre Usuario</string>
     <string name="user_mail">usuario@example.com</string>
+    
+    <!-- Optiones Menu -->
+    <string name="option_web_version">Version Web</string>
+    <string name="option_share">Compartir</string>
+    <string name="option_settings">Configuración</string>
+    
+    <!-- URL's -->
+    <string name="url_facebook">https://www.facebook.com</string>
+    <string name="url_instagram">https://www.instagram.com</string>
+    <string name="url_gplus">https://plus.google.com/</string>
+    <string name="url_twitter">https://www.twitter.com</string>
+    
+    <!-- Options for DialogAlert checklist -->
+    <string-array name="share_checklist">
+        <item>@string/_facebook</item>
+        <item>@string/_instagram</item>
+        <item>@string/_gplus</item>
+        <item>@string/_twitter</item>
+        <item>@string/_whatsapp</item>
+        <item>@string/_messenger</item>
+        <item>@string/_sms</item>
+    </string-array>
+    
+    <!-- Alert texts -->
+    <string name="checklist_title">Selecciona en dónde quieres compartir esta aplicación:</string>
+    <string name="_cancel">Cancelar</string>
+    <string name="_share">Compratir</string>
+    <string name="confirmation_title">Confirmación</string>
+    <string name="confirmation_content">¿Compartir esta aplicación a través de los medios seleccionados?</string>
+    <string name="_no">no</string>
+    <string name="_yes">yes</string>
+    <string name="toast_alert_start">Usted compartió en: \n</string>
+    <string name="_none">No seleccionó ninguna opción.</string>
+    
+    <!-- Settings texts -->
+    <string name="_settings">Configuración</string>
 </resources>
