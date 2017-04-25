@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Componentes de verdadero o falso">
+        
+        <CheckBoxPreference
+            android:key="option1"
+            android:summary="Este componenete solo acepta valores booleanos"
+            android:title="CheckBoxPreference" />
+        
+        <SwitchPreference
+            android:key="option2"
+            android:summary="Este componente solo acepta valores booleanos"
+            android:title="SwitchPreference" />
+    
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Componentes de texto">
+        
+        <EditTextPreference
+            android:key="option3"
+            android:summary="Este componente solo acepta entradas de texto"
+            android:title="EditTextPreference" />
+    
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Componentes de lista">
+        
+        <ListPreference
+            android:entries="@array/list_preferences"
+            android:entryValues="@array/id_list_preferences"
+            android:key="option4"
+            android:summary="Este componente solo permite seleccionar una opción de la lista"
+            android:title="ListPreference" />
+        
+        <MultiSelectListPreference
+            android:entries="@array/list_preferences"
+            android:entryValues="@array/id_list_preferences"
+            android:key="option5"
+            android:summary="Este componente permite seleccionar diferentes elementos de la lista"
+            android:title="MultiSelectListPreference" />
+    
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Componentes de tonos">
+        
+        <RingtonePreference
+            android:key="option6"
+            android:summary="Este componenete permite seleccionar un ringtone de una lista predeterminada"
+            android:title="RingtonePreference" />
+    
+    </PreferenceCategory>
+</PreferenceScreen>

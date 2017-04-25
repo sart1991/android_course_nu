@@ -3,4 +3,16 @@
     <string name="_submit">Submit</string>
     <string name="_lastname">Apellido</string>
     <string name="_name">Nombre</string>
+    
+    <string-array name="list_preferences">
+        <item>Opcion 1</item>
+        <item>Opcion 2</item>
+        <item>Opcion 3</item>
+    </string-array>
+    
+    <string-array name="id_list_preferences">
+        <item>op1</item>
+        <item>op2</item>
+        <item>op3</item>
+    </string-array>
 </resources>
