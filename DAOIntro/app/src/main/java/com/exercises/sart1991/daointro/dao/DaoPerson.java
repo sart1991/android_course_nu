@@ -10,5 +10,5 @@ public interface DaoPerson {
     void insert(Person person) throws Exception;
     void modify(Person person) throws Exception;
     void delete(Person person) throws Exception;
-    void getAll() throws Exception;
+    Person getPerson() throws Exception;
 }

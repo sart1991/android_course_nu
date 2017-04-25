@@ -14,10 +14,12 @@ import com.exercises.sart1991.daointro.models.Person;
 
 public class MainActivity extends AppCompatActivity implements DaoPerson{
 
-    private static final String TAG = MainActivity.class.getName();
+    public static final String TAG = MainActivity.class.getName();
     private EditText editName;
-    private EditText editLastname;
+    private EditText editLastName;
     private SharedPreferences preferenceWithManager;
+    private final String KEY_NAME = "NAME";
+    private final String KEY_LASTNAME = "LASTNAME";
 //    private SharedPreferences preferenceWithName;
 
     @Override
@@ -25,17 +27,21 @@ public class MainActivity extends AppCompatActivity implements DaoPerson{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         editName = (EditText) findViewById(R.id.edit_name);
-        editLastname = (EditText) findViewById(R.id.edit_lastname);
+        editLastName = (EditText) findViewById(R.id.edit_lastname);
         preferenceWithManager = PreferenceManager.getDefaultSharedPreferences(this);
 //        preferenceWithName = getSharedPreferences("MyPreference", MODE_PRIVATE);
     }
 
     public void onClickSubmit(View view) {
         String name = String.valueOf(editName.getText());
-        String lastname = String.valueOf(editLastname.getText());
+        String lastname = String.valueOf(editLastName.getText());
         try {
             insert(new Person(name, lastname));
-            Toast.makeText(this, "Se ha enviado la informacion", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,
+                    "Se han guardado los datos: \n" +
+                            "- Nombre: " + getPerson().getName()
+                            + "\n- Last name: " + getPerson().getLastname(),
+                    Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
             Toast.makeText(this, "Envio fallido", Toast.LENGTH_LONG).show();
@@ -44,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements DaoPerson{
 
     @Override
     public void insert(Person person) throws Exception {
-        preferenceWithManager.edit().putString("NAME", person.getName())
-                .putString("LASTNAME", person.getLastname())
+        preferenceWithManager.edit().putString(KEY_NAME, person.getName())
+                .putString(KEY_LASTNAME, person.getLastname())
                 .apply();
     }
 
@@ -60,7 +66,9 @@ public class MainActivity extends AppCompatActivity implements DaoPerson{
     }
 
     @Override
-    public void getAll() throws Exception {
-
+    public Person getPerson() throws Exception {
+        String name = preferenceWithManager.getString(KEY_NAME, "fuck");
+        String lastName = preferenceWithManager.getString(KEY_LASTNAME, "you");
+        return new Person(name, lastName);
     }
 }
