@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <PreferenceCategory android:title="Seleccione Notificaciones">
+        <CheckBoxPreference
+            android:key="option1"
+            android:summary="Seleccione si quiere"
+            android:title="Opcion 1" />
+        
+        <CheckBoxPreference
+            android:key="option2"
+            android:summary="Seleccione si quiere"
+            android:title="Opcion 2" />
+        
+        <CheckBoxPreference
+            android:key="option3"
+            android:summary="Seleccione si quiere"
+            android:title="Opcion 3" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

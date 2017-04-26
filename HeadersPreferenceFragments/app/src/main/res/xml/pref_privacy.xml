@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Cambiar privacidad">
+        
+        <SwitchPreference
+            android:key="option1"
+            android:summary="Cambiar para ver"
+            android:title="Opcion 1" />
+        
+        <SwitchPreference
+            android:key="option2"
+            android:summary="Cambiar porque si"
+            android:title="Opcion 2"/>
+        
+    </PreferenceCategory>
+</PreferenceScreen>

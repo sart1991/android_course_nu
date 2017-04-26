@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <header
+        android:fragment="com.exercises.sart1991.headerspreferencefragments.GeneralPreferenceFragment"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="General Fragment Header Title" />
+    
+    <header
+        android:fragment="com.exercises.sart1991.headerspreferencefragments.NotificationPreferenceFragment"
+        android:icon="@drawable/ic_error_outline_black_24dp"
+        android:title="Notification Fragment Header Title" />
+    
+    <header
+        android:fragment="com.exercises.sart1991.headerspreferencefragments.PrivacyPreferenceFragment"
+        android:icon="@drawable/ic_do_not_disturb_alt_black_24dp"
+        android:title="Privacy Fragment Header Title" />
+
+</preference-headers>
