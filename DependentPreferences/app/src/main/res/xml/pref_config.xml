@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Configuration preference">
+        
+        <SwitchPreference
+            android:key="option1"
+            android:summary="Switch this to turn on the other preferences"
+            android:title="On this depend" />
+        
+        <EditTextPreference
+            android:dependency="option1"
+            android:key="option2"
+            android:summary="This depend on the switch above"
+            android:title="Edit Text Dependent" />
+        
+        <RingtonePreference
+            android:dependency="option1"
+            android:key="option3"
+            android:summary="Click to view ringtones"
+            android:title="Ringtone Preference" />
+    
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Intents">
+        <Preference android:title="Intent a cuentas configuradas">
+            <intent android:action="android.settings.SYNC_SETTINGS" />
+        </Preference>
+        <Preference android:title="Intent a pagina web">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.google.com" />
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>
