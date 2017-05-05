@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/drawer_group" android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_parking"
+            android:icon="@drawable/ic_local_parking"
+            android:title="@string/_parking" />
+    
+        <item
+            android:id="@+id/drawer_account"
+            android:icon="@drawable/ic_person"
+            android:title="@string/_my_account" />
+    </group>
+</menu>

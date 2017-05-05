@@ -11,6 +11,8 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
     
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -19,11 +21,13 @@
     
     <!--Main Activity-->
     <style name="TextAppearance.AppCompat.TitleContent">
-        <item name="android:textSize">@dimen/title_content_size</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textStyle">bold</item>
     </style>
     
-    
+    <style name="AppTheme.DrawerLayout" parent="AppTheme">
+        <item name="colorPrimary">@color/colorAccent</item>
+    </style>
     
 </resources>

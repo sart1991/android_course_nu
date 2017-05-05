@@ -7,4 +7,11 @@
     <string name="_password">Contraseña</string>
     <string name="_remember">Recordarme</string>
     <string name="_login">Inicir Sesión</string>
+    <string name="_parking">Parqueos</string>
+    <string name="_my_account">Mi Cuenta</string>
+    <string name="_user">User</string>
+    <string name="user_email_example">user@example.com</string>
+    <string name="open_drawer">open</string>
+    <string name="close_drawer">close</string>
+    <string name="error_empty_field">Debe llenar este campo</string>
 </resources>

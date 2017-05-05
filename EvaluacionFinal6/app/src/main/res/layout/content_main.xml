@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:fitsSystemWindows="true">
     
     <TextView
         android:id="@+id/txt_title_content"
@@ -73,7 +74,7 @@
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
     
-    <android.support.v7.widget.AppCompatCheckBox
+    <CheckBox
         android:id="@+id/check_remember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,6 +94,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:backgroundTint="@color/colorAccent"
         android:textColor="@android:color/white"
-        app:layout_constraintVertical_bias="0.2"/>
+        app:layout_constraintVertical_bias="0.2"
+        android:onClick="onClickButtonLogin"/>
 
 </android.support.constraint.ConstraintLayout>
