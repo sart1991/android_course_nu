@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Parking Control</string>
+    <string name="subtitle_activity_user">Parqueadero</string>
+    <string name="welcome_app_title">Beinvenidos a Parking Control</string>
+    <string name="welcome_app_subtitle">Inicia sesion para empezar</string>
+    <string name="_user_name">Nombre de usuario</string>
+    <string name="_password">Contraseña</string>
+    <string name="_remember">Recordarme</string>
+    <string name="_login">Inicir Sesión</string>
+</resources>
