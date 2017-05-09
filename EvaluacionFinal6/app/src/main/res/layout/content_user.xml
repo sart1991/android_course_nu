@@ -9,12 +9,10 @@
     tools:context=".UserActivity"
     tools:showIn="@layout/app_bar_user">
     
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_card_cars"
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorBackgroundUser"
-        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
