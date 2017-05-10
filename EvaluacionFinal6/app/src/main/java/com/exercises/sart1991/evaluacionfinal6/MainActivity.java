@@ -2,6 +2,7 @@ package com.exercises.sart1991.evaluacionfinal6;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,12 +31,15 @@ public class MainActivity extends AppCompatActivity {
         if (sessionSharedPreferences
                 .getBoolean(MyPreferences.SessionKeys.REMEMBER_KEY.getKeyValue(), false)) {
             startActivity(new Intent(this, UserActivity.class));
+            return;
         }
         tilUserLogin = (TextInputLayout) findViewById(R.id.til_username);
         editUserLogin = tilUserLogin.getEditText();
         tilPasswordLogin = (TextInputLayout) findViewById(R.id.til_password);
         editPasswordLogin = tilPasswordLogin.getEditText();
         checkRemember = (CheckBox) findViewById(R.id.check_remember);
+
+        PreferenceManager.getDefaultSharedPreferences(this).edit().clear().apply();
     }
 
     public void onClickButtonLogin(View view) {

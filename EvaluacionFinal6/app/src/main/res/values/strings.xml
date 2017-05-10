@@ -28,4 +28,17 @@
     <string name="register_incompelte">Registro incompleto</string>
     <string name="register_complete">Vehiculo registrado</string>
     <string name="_logout">Cerrar sesión</string>
+    <string name="key_new_username">new_username</string>
+    <string name="option_title_export">Exportar registros</string>
+    <string name="radio_text_delete">Sin conservar los registros localmente</string>
+    <string name="radio_text_save">Conservando los registros localmente</string>
+    
+    <string name="alert_title_export">Exportar registros</string>
+    <string name="cancel_export">Registros no exportados</string>
+    <string name="deleted_export">Registros movidos</string>
+    <string name="saved_export">Registros copiados</string>
+    
+    <string name="_registrar">Registrar</string>
+    <string name="_aceptar">Aceptar</string>
+    <string name="_cancelar">Cancelar</string>
 </resources>

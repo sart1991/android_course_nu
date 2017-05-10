@@ -1,13 +1,17 @@
 package com.exercises.sart1991.evaluacionfinal6;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,29 +22,41 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.exercises.sart1991.evaluacionfinal6.Adapter.CardRecyclerAdapter;
 import com.exercises.sart1991.evaluacionfinal6.model.Vehicle;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserActivity extends AppCompatActivity implements ParkingFragment.OnFragmentInteractionListener{
+public class UserActivity extends AppCompatActivity implements ParkingFragment.OnFragmentInteractionListener, AccountPreference.OnFragmentInteractionListener {
 
     private static final String TAG = UserActivity.class.getName();
+    private static final int REQUEST_CODE = 1;
+    private static final String[] PERMISSIONS = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
+    private NavigationView navView;
     private SharedPreferences sessionSharedPreferences;
     private String userName;
     private boolean remember;
     private ParkingFragment parkingFragment;
     private AccountPreference accountPreference;
     private AlertDialog alertForRegister;
+    private AlertDialog alertForExport;
     private List<Vehicle> mVehicleList;
     private CardRecyclerAdapter recyclerAdapter;
     private String mRegistrationNumber;
@@ -55,6 +71,11 @@ public class UserActivity extends AppCompatActivity implements ParkingFragment.O
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initializeComponents();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     private NavigationView.OnNavigationItemSelectedListener onNavItemSelectedListener =
@@ -91,7 +112,7 @@ public class UserActivity extends AppCompatActivity implements ParkingFragment.O
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        NavigationView navView = (NavigationView) findViewById(R.id.navigation_view);
+        navView = (NavigationView) findViewById(R.id.navigation_view);
         navView.setNavigationItemSelectedListener(onNavItemSelectedListener);
         navView.setCheckedItem(R.id.drawer_parking);
 
@@ -108,13 +129,7 @@ public class UserActivity extends AppCompatActivity implements ParkingFragment.O
                 false
         );
 
-        String userMail = userName + getResources().getString(R.string._email_example);
-
-        View view = navView.getHeaderView(0);
-        // Set user name
-        ((TextView)view.findViewById(R.id.txt_nav_user)).setText(userName);
-        // Set user email
-        ((TextView)view.findViewById(R.id.txt_nav_email)).setText(userMail);
+        updateNavigationHeaderView();
 
         if (!remember) {
             showSnackbar(R.string.remeber_disabled);
@@ -126,6 +141,18 @@ public class UserActivity extends AppCompatActivity implements ParkingFragment.O
         changeFragment(parkingFragment);
 
         alertForRegister = makeAlertToRegister();
+        alertForExport = makeAlertToExport();
+    }
+
+    private void updateNavigationHeaderView() {
+        String userMail = userName + getResources().getString(R.string._email_example);
+        Log.i(TAG, "updateNavigationHeaderView: " + userName);
+
+        View view = navView.getHeaderView(0);
+        // Set user name
+        ((TextView) view.findViewById(R.id.txt_nav_user)).setText(userName);
+        // Set user email
+        ((TextView) view.findViewById(R.id.txt_nav_email)).setText(userMail);
     }
 
     private void changeFragment(android.app.Fragment fragment) {
@@ -151,12 +178,18 @@ public class UserActivity extends AppCompatActivity implements ParkingFragment.O
                 showSnackbar(R.string.register_incompelte);
             }
         });
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string._cancelar, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.setPositiveButton(R.string._registrar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mRegistrationNumber = tilRegistration.getEditText().getText().toString();
                 mClientId = tilClientId.getEditText().getText().toString();
-                if (mRegistrationNumber.equals("")){
+                if (mRegistrationNumber.equals("")) {
                     tilRegistration.setError(getResources().getString(R.string.error_empty_field));
                     dialog.cancel();
                 } else if (mClientId.equals("")) {
@@ -178,7 +211,7 @@ public class UserActivity extends AppCompatActivity implements ParkingFragment.O
     private void saveVehicleList() {
         try {
             ObjectOutputStream objOutput = new ObjectOutputStream(openFileOutput(fileName, MODE_PRIVATE));
-            objOutput.writeObject(((ArrayList)mVehicleList));
+            objOutput.writeObject(((ArrayList) mVehicleList));
             objOutput.close();
         } catch (IOException ioe) {
             Log.e(TAG, "saveVehicleList: " + ioe.getMessage(), ioe);
@@ -189,9 +222,9 @@ public class UserActivity extends AppCompatActivity implements ParkingFragment.O
         List<Vehicle> vehicleList = new ArrayList<>();
         try {
             ObjectInputStream objInput = new ObjectInputStream(openFileInput(fileName));
-            vehicleList = (ArrayList)objInput.readObject();
+            vehicleList = (ArrayList) objInput.readObject();
             objInput.close();
-        } catch(IOException | ClassNotFoundException ioe) {
+        } catch (IOException | ClassNotFoundException ioe) {
             Log.e(TAG, "loadVehicleList: ", ioe);
         }
         return vehicleList;
@@ -212,7 +245,88 @@ public class UserActivity extends AppCompatActivity implements ParkingFragment.O
                     false
             ).apply();
             startActivity(new Intent(this, MainActivity.class));
+        } else if (itemId == R.id.option_export) {
+            int writePermission = ActivityCompat.checkSelfPermission(
+                    this, Manifest.permission.WRITE_EXTERNAL_STORAGE
+            );
+            if (writePermission != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_CODE);
+            } else {
+                alertForExport.show();
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onUsernamePreferenceChanged(String userName) {
+        this.userName = userName;
+        updateNavigationHeaderView();
+        sessionSharedPreferences.edit().putString(
+                MyPreferences.SessionKeys.USERNAME_KEY.getKeyValue(),
+                userName
+        ).apply();
+    }
+
+    /**
+     * Export registers
+     * all the methods to export the file with the vehicles information
+     *
+     * @return
+     */
+
+    private AlertDialog makeAlertToExport() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.alert_export_file, null);
+        final RadioButton radioDelete = (RadioButton) view.findViewById(R.id.radio_delete);
+        final RadioButton radioSave = (RadioButton) view.findViewById(R.id.radio_save);
+        builder.setTitle(R.string.alert_title_export);
+        builder.setView(view);
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                showSnackbar(R.string.cancel_export);
+            }
+        });
+        builder.setNegativeButton(R.string._cancelar, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.setPositiveButton(R.string._aceptar, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                exportFile(radioDelete.isChecked());
+            }
+        });
+        return builder.create();
+    }
+
+    private boolean exportFile(boolean delete) {
+        try {
+            File internalFile = new File(getFilesDir(), fileName);
+            File externalFile = new File(getExternalFilesDir(null), fileName);
+            FileChannel input = new FileInputStream(internalFile).getChannel();
+            FileChannel output = new FileOutputStream(externalFile).getChannel();
+            input.transferTo(0, input.size(), output);
+            input.close();
+            output.close();
+            if (delete) {
+                if (internalFile.delete()) {
+                    mVehicleList.clear();
+                    recyclerAdapter.notifyDataSetChanged();
+                    showSnackbar(R.string.deleted_export);
+                }
+            } else {
+                showSnackbar(R.string.saved_export);
+            }
+        } catch (IOException ioe) {
+            Log.e(TAG, "exportFile: ", ioe);
+        } catch (Exception e) {
+            Log.e(TAG, "exportFile: ", e);
+        }
+        return true;
     }
 }

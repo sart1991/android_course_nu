@@ -33,7 +33,6 @@ public class ParkingFragment extends Fragment {
     private static final String ARG_LIST = "VEHICLE_LIST";
     private static final String TAG = ParkingFragment.class.getSimpleName();
 
-    // TODO: Rename and change types of parameters
     private List<Vehicle> mVehicleList;
     private CardRecyclerAdapter recyclerAdapter;
     private OnFragmentInteractionListener mListener;
@@ -49,7 +48,6 @@ public class ParkingFragment extends Fragment {
      * @param vehicleList Parameter 1.
      * @return A new instance of fragment ParkingFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static ParkingFragment newInstance(List<Vehicle> vehicleList) {
         ParkingFragment fragment = new ParkingFragment();
         Bundle args = new Bundle();

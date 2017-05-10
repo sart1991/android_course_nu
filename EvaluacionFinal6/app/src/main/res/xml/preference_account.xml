@@ -2,17 +2,20 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
         android:id="@+id/edit_new_username"
+        android:key="username"
         android:summary="@string/pref_new_username"
         android:title="@string/pref_title_new_username" />
     
     <EditTextPreference
         android:id="@+id/edit_new_password"
+        android:key="new_password"
         android:inputType="textPassword"
         android:summary="@string/pref_new_password"
         android:title="@string/_password" />
     
     <SwitchPreference
         android:id="@+id/switch_notify"
+        android:key="email_notify"
         android:summary="@string/pref_email_notify"
         android:title="@string/pref_title_email_notify" />
 
