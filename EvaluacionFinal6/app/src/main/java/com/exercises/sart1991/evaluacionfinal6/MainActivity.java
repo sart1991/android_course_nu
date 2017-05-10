@@ -23,15 +23,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        sessionSharedPreferences = getSharedPreferences(
+                MyPreferences.PREFERENCE_SESSION.getKeyValue(),
+                MODE_PRIVATE
+        );
+        if (sessionSharedPreferences
+                .getBoolean(MyPreferences.SessionKeys.REMEMBER_KEY.getKeyValue(), false)) {
+            startActivity(new Intent(this, UserActivity.class));
+        }
         tilUserLogin = (TextInputLayout) findViewById(R.id.til_username);
         editUserLogin = tilUserLogin.getEditText();
         tilPasswordLogin = (TextInputLayout) findViewById(R.id.til_password);
         editPasswordLogin = tilPasswordLogin.getEditText();
         checkRemember = (CheckBox) findViewById(R.id.check_remember);
-        sessionSharedPreferences = getSharedPreferences(
-                MyPreferences.PREFERENCE_SESSION.getKeyValue(),
-                MODE_PRIVATE
-        );
     }
 
     public void onClickButtonLogin(View view) {

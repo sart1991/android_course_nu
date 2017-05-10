@@ -21,4 +21,11 @@
     <string name="pref_new_password">Cambiar clave para ingresar en la app</string>
     <string name="pref_email_notify">Recibir notificación en su correo electrónico</string>
     <string name="pref_title_email_notify">Notificacion por correo electrónico</string>
+    <string name="alert_parking_title">Registrar Parqueo</string>
+    <string name="hint_registration_number">Matrícula</string>
+    <string name="hint_cliend_id">ID del Cliente</string>
+    
+    <string name="register_incompelte">Registro incompleto</string>
+    <string name="register_complete">Vehiculo registrado</string>
+    <string name="_logout">Cerrar sesión</string>
 </resources>
