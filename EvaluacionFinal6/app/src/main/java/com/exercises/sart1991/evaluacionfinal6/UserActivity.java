@@ -96,7 +96,12 @@ public class UserActivity extends AppCompatActivity implements ParkingFragment.O
     @Override
     public void onBackPressed() {
         if (!remember) super.onBackPressed();
-        else startActivity(new Intent(Intent.ACTION_MAIN));
+        else {
+            Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+            homeIntent.addCategory( Intent.CATEGORY_HOME );
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(homeIntent);
+        }
     }
 
     private void showSnackbar(int resourceId) {
