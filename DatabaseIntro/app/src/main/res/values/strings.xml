@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Database Intro</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="options_unplug">Desconectar</string>
+    <string name="_database">Database</string>
+    <string name="main_subtitle">Creacion DB con SQLite</string>
+    <string name="main_buttonCreate">Crear DB</string>
+    <string name="main_buttonDelete">Elminar Tabla</string>
+    <string name="dialogInsert_editTextHint">Escriba nombre del estudiante</string>
+    <string name="main_buttonInsertTable">Crear Tabla</string>
+    <string name="main_buttonInsertColumn">Insertar columna</string>
+    <string name="dialogInsertColumn_editHint">Nombre de la columna</string>
+    
+    <string-array name="dialogInsertColumn_types">
+        <item>INT</item>
+        <item>TEXT</item>
+        <item>REAL</item>
+    </string-array>
+</resources>
