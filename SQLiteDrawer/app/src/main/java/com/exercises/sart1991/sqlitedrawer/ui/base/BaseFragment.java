@@ -61,7 +61,7 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         return mActivity;
     }
 
-    protected abstract void intializeComponenets(View view);
+    protected abstract void initializeComponents(View view);
 
     public interface Callback {
         void onFragmentAttached();

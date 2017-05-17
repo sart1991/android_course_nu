@@ -8,4 +8,13 @@ import com.exercises.sart1991.sqlitedrawer.ui.base.MvpView;
 
 public interface InsertMvpView extends MvpView {
 
+    String getBrandText();
+    int getQuantityValue();
+    boolean checkBrandFieldIsEmpty();
+    boolean checkQuantityFieldIsEmpty();
+    void showErrorBrandField(String error);
+    void showErrorQuantityField(String error);
+    void disableFieldsError();
+    void addTableRow(String content);
+    void clearTableContentData();
 }

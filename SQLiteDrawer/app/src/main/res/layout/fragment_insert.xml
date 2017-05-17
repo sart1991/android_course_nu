@@ -44,7 +44,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/_quantity" />
+            android:hint="@string/_quantity"
+            android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
     
     <Button

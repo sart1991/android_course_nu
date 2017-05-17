@@ -12,13 +12,13 @@ public class DbOpenHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String SENTENCE_CREATE_TABLE =
-            DbInfo.DDL.CREATE_TABLE.get() + DbInfo.Info.VEHICLE + " (" +
+            DbInfo.DDL.CREATE_TABLE.get() + " " + DbInfo.Info.VEHICLE + " (" +
                     DbInfo.Info.ID + " " +
                     DbInfo.DDL.INTEGER.get() + " " +
                     DbInfo.DDL.PRIMARY_KEY.get() + " " +
                     DbInfo.DDL.AUTOINCREMENT.get() + ", " +
                     DbInfo.Info.BRAND + " " +
-                    DbInfo.DDL.TEXT.get() + " " +
+                    DbInfo.DDL.TEXT.get() + ", " +
                     DbInfo.Info.QUANTITY + " " +
                     DbInfo.DDL.INT.get() +
             ");";

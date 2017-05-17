@@ -16,6 +16,11 @@ public class Vehicle {
         this.quantity = quantity;
     }
 
+    public Vehicle(String brand, int quantity) {
+        this.brand = brand;
+        this.quantity = quantity;
+    }
+
     public int getId() {
         return id;
     }
