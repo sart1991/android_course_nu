@@ -24,53 +24,21 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="cbeeccb7-9172-4543-b768-5d6bfd17dad8">
+      <connection connection-id="51d9a8b3-4700-412f-ae35-b7d92b8cd64b">
         <schema name="main" object-types="column, table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="cbeeccb7-9172-4543-b768-5d6bfd17dad8">
-      <console name="Connection" type="STANDARD"><![CDATA[create table vegetable (
-    id integer primary key autoincrement,
-    name text not null,
-    color text not null,
-    size text
-);
-
-insert into fruit values (6, "blackberry", "purple", "small");
-insert into fruit(name, color) values ("lime", "yellow/green");
-
-delete from fruit where id = 7;
-delete from fruit where id = 6 if exists;
-
-update fruit set name = "1a" where id = 12;
-
-select f.name, f.color from fruit f where id = 1;
-
-select * from fruit order by name desc;
-select * from fruit where name like "%a%";
+    <connection id="51d9a8b3-4700-412f-ae35-b7d92b8cd64b">
+      <console name="Connection" type="STANDARD"><![CDATA[create table if not exists fruit(id integer primary key autoincrement, name text not null, color text);
 select * from fruit;
-
-
-insert into vegetables(name, color, size) values("x", "black", "tiny")
-
-select f.name fruit, v.name vegetable from fruit f join vegetable v on v.id = 1
-select f.name fruit, v.name vegetable from fruit f left outer join vegetable v on f.name like "a%"
-select * from sqlite_sequence
-
-update sqlite_sequence set name="vegetable" where name like "veg%"]]></console>
+insert into fruit(name, color) values("pineapple", "yellow");
+drop table fruit;]]></console>
     </connection>
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-list connection-id="cbeeccb7-9172-4543-b768-5d6bfd17dad8" dataset="main.fruit" active-filter-id="" />
-    <filter-list connection-id="cbeeccb7-9172-4543-b768-5d6bfd17dad8" dataset="main.employee" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
-  </component>
-  <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://D:/Connection.sql" connection-id="cbeeccb7-9172-4543-b768-5d6bfd17dad8" current-schema="main" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -92,7 +60,7 @@ update sqlite_sequence set name="vegetable" where name like "veg%"]]></console>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="cbeeccb7-9172-4543-b768-5d6bfd17dad8" active="true">
+      <connection id="51d9a8b3-4700-412f-ae35-b7d92b8cd64b" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
