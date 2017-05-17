@@ -1,18 +1,85 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.insert.InsertFragment">
     
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView_insert_contentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
+        android:text="@string/insert_contentTitle"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+    
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_insert_brandField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_insert_contentTitle">
+        
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/_brand" />
+    </android.support.design.widget.TextInputLayout>
+    
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_insert_quantityField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/til_insert_brandField"
+        app:layout_constraintRight_toRightOf="@id/til_insert_brandField"
+        app:layout_constraintTop_toBottomOf="@id/til_insert_brandField">
+        
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/_quantity" />
+    </android.support.design.widget.TextInputLayout>
+    
+    <Button
+        android:id="@+id/button_insert_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_save"
+        app:layout_constraintLeft_toLeftOf="@id/til_insert_quantityField"
+        app:layout_constraintTop_toBottomOf="@id/til_insert_quantityField"
+        app:layout_constraintRight_toLeftOf="@+id/button_insert_showAll"/>
+    
+    <Button
+        android:id="@+id/button_insert_showAll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/insert_buttonShowAll"
+        app:layout_constraintRight_toRightOf="@id/til_insert_quantityField"
+        app:layout_constraintTop_toBottomOf="@id/til_insert_quantityField"
+        app:layout_constraintLeft_toRightOf="@id/button_insert_save"/>
+    
+    <ScrollView
+        android:id="@+id/scrollView_insert_tableContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@id/button_insert_save"
+        app:layout_constraintRight_toRightOf="@id/button_insert_showAll"
+        app:layout_constraintTop_toBottomOf="@id/button_insert_showAll"
+        app:layout_constraintBottom_toBottomOf="parent">
+        
+        <LinearLayout
+            android:id="@+id/linearLayout_insert_tableContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

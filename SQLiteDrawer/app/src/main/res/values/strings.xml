@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">SQLite Drawer</string>
     
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    
+    <string name="insert_contentTitle">Insertar Vehículo</string>
+    <!--<string name="title_activity_main">Main2Activity</string>-->
+    <string name="_brand">Marca</string>
+    <string name="_quantity">Cantidad</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     
     <string name="action_settings">Settings</string>
+    <string name="_save">Guardar</string>
+    <string name="insert_buttonShowAll">Ver Todo</string>
 </resources>
