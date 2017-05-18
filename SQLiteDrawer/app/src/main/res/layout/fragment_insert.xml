@@ -45,42 +45,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/_quantity"
-            android:inputType="number"/>
+            android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
     
     <Button
         android:id="@+id/button_insert_save"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/_save"
         app:layout_constraintLeft_toLeftOf="@id/til_insert_quantityField"
-        app:layout_constraintTop_toBottomOf="@id/til_insert_quantityField"
-        app:layout_constraintRight_toLeftOf="@+id/button_insert_showAll"/>
-    
-    <Button
-        android:id="@+id/button_insert_showAll"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/insert_buttonShowAll"
-        app:layout_constraintRight_toRightOf="@id/til_insert_quantityField"
-        app:layout_constraintTop_toBottomOf="@id/til_insert_quantityField"
-        app:layout_constraintLeft_toRightOf="@id/button_insert_save"/>
+        app:layout_constraintRight_toRightOf="@+id/til_insert_quantityField"
+        app:layout_constraintTop_toBottomOf="@id/til_insert_quantityField" />
     
     <ScrollView
         android:id="@+id/scrollView_insert_tableContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintLeft_toLeftOf="@id/button_insert_save"
-        app:layout_constraintRight_toRightOf="@id/button_insert_showAll"
-        app:layout_constraintTop_toBottomOf="@id/button_insert_showAll"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/til_insert_quantityField"
+        app:layout_constraintRight_toRightOf="@id/til_insert_quantityField"
+        app:layout_constraintTop_toBottomOf="@id/button_insert_save">
         
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/linearLayout_insert_tableContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:layout_height="wrap_content" />
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

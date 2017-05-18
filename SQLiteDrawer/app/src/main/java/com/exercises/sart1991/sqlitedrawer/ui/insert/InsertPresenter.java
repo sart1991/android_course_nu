@@ -4,7 +4,6 @@ import com.exercises.sart1991.sqlitedrawer.data.db.model.Vehicle;
 import com.exercises.sart1991.sqlitedrawer.ui.base.BasePresenter;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by sart1 on 5/16/2017.
@@ -25,19 +24,12 @@ public class InsertPresenter<V extends InsertMvpView> extends BasePresenter<V> i
                     new Vehicle(getMvpView().getBrandText(), getMvpView().getQuantityValue())
             );
         }
-
     }
 
     @Override
-    public void onShowAllButtonClick() {
-        getMvpView().clearTableContentData();
+    public void bindTableContent() {
         List<Vehicle> vehicleList = getDataManager().getAllVehicles();
-        for (Vehicle vehicle : vehicleList) {
-            String rowContent = String.format(
-                    Locale.getDefault(),
-                    "%d -> Brand: %s | Quantity: %d", vehicle.getId(), vehicle.getBrand(), vehicle.getQuantity());
-            getMvpView().addTableRow(rowContent);
-        }
+        getMvpView().populateTableContent(vehicleList);
     }
 
     @Override

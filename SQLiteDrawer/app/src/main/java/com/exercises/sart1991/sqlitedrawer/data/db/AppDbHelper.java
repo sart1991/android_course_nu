@@ -35,6 +35,7 @@ public class AppDbHelper implements DbHelper {
                 vehicleList.add(new Vehicle(id, brand, quantity));
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return vehicleList;
     }
 

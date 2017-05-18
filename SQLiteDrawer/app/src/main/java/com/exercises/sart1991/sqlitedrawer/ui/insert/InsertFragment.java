@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,20 +14,25 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.exercises.sart1991.sqlitedrawer.R;
+import com.exercises.sart1991.sqlitedrawer.data.db.model.Vehicle;
+import com.exercises.sart1991.sqlitedrawer.ui.adapters.TableRecyclerAdapter;
 import com.exercises.sart1991.sqlitedrawer.ui.base.BaseFragment;
+
+import java.util.List;
 
 public class InsertFragment extends BaseFragment implements InsertMvpView{
 
     private static final String TAG = InsertFragment.class.getSimpleName();
     private static final InsertMvpPresenter<InsertMvpView> PRESENTER = new InsertPresenter<>();
 
+    private TableRecyclerAdapter tableRecyclerAdapter;
+
     private TextInputLayout tilBrand, tilQuantity;
     private EditText editBrand, editQuantity;
-    private Button btnInsert, btnShowAll;
-    private LinearLayout layoutTableContent;
+    private Button btnInsert;
+    private RecyclerView recyclerTableContent;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,14 +62,15 @@ public class InsertFragment extends BaseFragment implements InsertMvpView{
         editBrand = tilBrand.getEditText();
         editQuantity = tilQuantity.getEditText();
         btnInsert = (Button) view.findViewById(R.id.button_insert_save);
-        btnShowAll = (Button) view.findViewById(R.id.button_insert_showAll);
-        layoutTableContent = (LinearLayout) view.findViewById(R.id.linearLayout_insert_tableContent);
+        recyclerTableContent = (RecyclerView) view.findViewById(R.id.linearLayout_insert_tableContent);
 
-        //bundle with listeners
+        //bind with listeners
         btnInsert.setOnClickListener(onClickInsert);
-        btnShowAll.setOnClickListener(onClickShowAll);
         editBrand.addTextChangedListener(listenTextChanges);
         editQuantity.addTextChangedListener(listenTextChanges);
+
+        //visualize content
+        PRESENTER.bindTableContent();
     }
 
     @Override
@@ -71,28 +79,25 @@ public class InsertFragment extends BaseFragment implements InsertMvpView{
     }
 
     @Override
-    public void addTableRow(String rowContent) {
-        TextView textView = new TextView(getBaseActivity());
-        textView.setText(rowContent);
-        layoutTableContent.addView(textView);
+    public void populateTableContent(List<Vehicle> vehicleList) {
+        tableRecyclerAdapter = new TableRecyclerAdapter(getBaseActivity(), vehicleList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(
+                getBaseActivity(), LinearLayoutManager.VERTICAL, false
+        );
+        recyclerTableContent.setLayoutManager(layoutManager);
+        recyclerTableContent.setAdapter(tableRecyclerAdapter);
     }
 
     @Override
-    public void clearTableContentData() {
-        layoutTableContent.removeAllViews();
+    public void updateTableVisualizer() {
+        //TODO: need to find a method to update the content on the list binded on the adapter
+//        tableRecyclerAdapter.notifyItemInserted(tableRecyclerAdapter.getItemCount() + 1);
     }
 
     private View.OnClickListener onClickInsert = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             PRESENTER.onInsertButtonClick();
-        }
-    };
-
-    private View.OnClickListener onClickShowAll = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            PRESENTER.onShowAllButtonClick();
         }
     };
 

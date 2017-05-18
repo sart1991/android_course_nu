@@ -40,4 +40,13 @@ public class Vehicle {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

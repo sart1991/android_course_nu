@@ -8,6 +8,6 @@ import com.exercises.sart1991.sqlitedrawer.ui.base.MvpPresenter;
 
 public interface InsertMvpPresenter<V extends InsertMvpView> extends MvpPresenter<V> {
     void onInsertButtonClick();
-    void onShowAllButtonClick();
     void onFieldsTextChanged();
+    void bindTableContent();
 }
