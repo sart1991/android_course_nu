@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:paddingTop="8dp">
+    
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <EditText
+            android:id="@+id/editText_loginDialog_userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dialogSignup_editHintUserName" />
+    
+    </android.support.design.widget.TextInputLayout>
+    
+    
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <EditText
+            android:id="@+id/editText_loginDialog_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dialogSignup_editHintPassword"
+            android:inputType="textPassword" />
+    
+    </android.support.design.widget.TextInputLayout>
+    
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <EditText
+            android:id="@+id/editText_loginDialog_confPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dialogSignup_editHintConfPassword"
+            android:inputType="textPassword" />
+    
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

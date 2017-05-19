@@ -1,0 +1,36 @@
+<resources>
+    <!--All the plain words-->
+    <string name="_userName">Nombre de usuario</string>
+    <string name="_password">Contraseña</string>
+    
+    
+    <string name="app_name">Banco de Sangre</string>
+    <string name="main_toolbarTitle">Control de Donantes</string>
+    <string name="main_editHint">Identificacion del donante</string>
+    <string name="login_toolbarTitle">Inicio de sesión</string>
+    <string name="login_contentTitle">Bienvenido al Control de Donantes</string>
+    <string name="login_contentSubtitle">Inicie sesión para empezar</string>
+    <string name="login_editHintUserName">@string/_userName</string>
+    <string name="login_editHintPassword">@string/_password</string>
+    <string name="login_buttonLogin">Iniciar sesión</string>
+    <string name="login_buttonNewUsername">Nuevo usuario</string>
+    <string name="login_imageViewDescription">Gota de sangre</string>
+    <string name="dialogSignup_editHintUserName">@string/_userName</string>
+    <string name="dialogSignup_editHintPassword">@string/_password</string>
+    <string name="dialogSignup_editHintConfPassword">Confirmar Contraseña</string>
+    <string name="dialogDonor_editHintAge">Edad</string>
+    <string name="dialogDonor_editHintLasName">Apellido</string>
+    <string name="dialogDonor_editHintName">Nombre</string>
+    <string name="dialogDonor_editHintId">No. Identificación</string>
+    <string name="dialogDonor_editHintWeight">Peso (Kg)</string>
+    <string name="dialogDonor_editHintHeight">Estatura (cm)</string>
+    <string name="cardView_imageButton_dotsDescription">Menu de tres puntos</string>
+    <string name="_test">Test</string>
+    <string name="_id_">ID:</string>
+    <string name="_age_">EDAD:</string>
+    <string name="_blood_type_">SANGRE TIPO:</string>
+    <string name="_weight_">PESO:</string>
+    <string name="_rh_">RH:</string>
+    <string name="_height_">ESTATURA:</string>
+
+</resources>
