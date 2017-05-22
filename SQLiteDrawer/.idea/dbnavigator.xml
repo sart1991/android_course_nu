@@ -34,7 +34,13 @@
       <console name="Connection" type="STANDARD"><![CDATA[create table if not exists fruit(id integer primary key autoincrement, name text not null, color text);
 select * from fruit;
 insert into fruit(name, color) values("pineapple", "yellow");
-drop table fruit;]]></console>
+drop table fruit;
+
+create table test(id int primary key, name varchar(20), rh nvarchar(2), fName text, foreign key(fName) references fruit(name));
+insert into test values(1110234, "sadsadjbncv", "abcdsacsac", "pineapple")
+drop table if exists test;
+select * from test where id=110234;
+select t.* from test t, fruit f where t.fName = f.name;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">

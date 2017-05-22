@@ -61,7 +61,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/login_editHintUserName" />
+            android:hint="@string/login_editHintUserName"
+            android:maxLength="15"/>
     
     </android.support.design.widget.TextInputLayout>
     
@@ -78,7 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login_editHintPassword"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLength="20"/>
     
     </android.support.design.widget.TextInputLayout>
     
@@ -94,7 +96,8 @@
         app:layout_constraintVertical_bias="0.1"
         android:backgroundTint="@color/accent"
         android:textColor="@color/icons"
-        android:layout_marginStart="32dp"/>
+        android:layout_marginStart="32dp"
+        android:onClick="onClickLogin"/>
     
     <Button
         android:id="@+id/button_login_newUser"
@@ -108,6 +111,7 @@
         app:layout_constraintTop_toBottomOf="@id/til_login_password"
         app:layout_constraintVertical_bias="0.1"
         android:backgroundTint="@color/primary_light"
-        android:layout_marginEnd="32dp"/>
+        android:layout_marginEnd="32dp"
+        android:onClick="onClickSignUp"/>
 
 </android.support.constraint.ConstraintLayout>

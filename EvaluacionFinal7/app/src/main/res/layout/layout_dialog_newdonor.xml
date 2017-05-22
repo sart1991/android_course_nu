@@ -9,71 +9,79 @@
     
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_dialogDonor_idDonor"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/til_dialogDonor_name"
+        app:layout_constraintBottom_toTopOf="@+id/til_dialogDonor_name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_chainStyle="packed">
         
         <EditText
             android:id="@+id/editText_dialogDonor_idDonor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dialogDonor_editHintId" />
+            android:hint="@string/dialogDonor_editHintId"
+            android:inputType="number"
+            android:maxLength="15" />
     
     </android.support.design.widget.TextInputLayout>
     
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_dialogDonor_name"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/til_dialogDonor_lastName"
+        app:layout_constraintBottom_toTopOf="@+id/til_dialogDonor_lastName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_dialogDonor_idDonor">
+        app:layout_constraintTop_toBottomOf="@+id/til_dialogDonor_idDonor">
         
         <EditText
             android:id="@+id/editText_dialogDonor_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dialogDonor_editHintName" />
+            android:hint="@string/dialogDonor_editHintName"
+            android:inputType="textPersonName"
+            android:maxLength="15" />
     
     </android.support.design.widget.TextInputLayout>
     
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_dialogDonor_lastName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/til_dialogDonor_age"
+        app:layout_constraintBottom_toTopOf="@+id/til_dialogDonor_age"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_dialogDonor_name">
+        app:layout_constraintTop_toBottomOf="@+id/til_dialogDonor_name">
         
         <EditText
             android:id="@+id/editText_dialogDonor_lastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dialogDonor_editHintLasName" />
+            android:hint="@string/dialogDonor_editHintLasName"
+            android:inputType="textPersonName"
+            android:maxLength="15" />
     
     </android.support.design.widget.TextInputLayout>
     
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_dialogDonor_age"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_dialogDonor_lastName">
+        app:layout_constraintTop_toBottomOf="@+id/til_dialogDonor_lastName">
         
         <EditText
             android:id="@+id/editText_dialogDonor_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dialogDonor_editHintAge" />
+            android:hint="@string/dialogDonor_editHintAge"
+            android:inputType="number"
+            android:maxLength="3" />
     
     </android.support.design.widget.TextInputLayout>
     
@@ -82,16 +90,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/spinner_dialogDonor_rh"
-        app:layout_constraintTop_toBottomOf="@id/til_dialogDonor_age" />
+        app:layout_constraintRight_toLeftOf="@+id/spinner_dialogDonor_rh"
+        app:layout_constraintTop_toBottomOf="@+id/til_dialogDonor_age"
+        android:entries="@array/blood_type"/>
     
     <Spinner
         android:id="@+id/spinner_dialogDonor_rh"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/spinner_dialogDonor_bloodType"
+        app:layout_constraintLeft_toRightOf="@+id/spinner_dialogDonor_bloodType"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_dialogDonor_age" />
+        app:layout_constraintTop_toBottomOf="@+id/til_dialogDonor_age"
+        android:entries="@array/rh_type"/>
     
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_dialogDonor_weight"
@@ -99,14 +109,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/til_dialogDonor_height"
-        app:layout_constraintTop_toBottomOf="@id/spinner_dialogDonor_bloodType">
+        app:layout_constraintTop_toBottomOf="@+id/spinner_dialogDonor_bloodType">
         
         <EditText
             android:id="@+id/editText_dialogDonor_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogDonor_editHintWeight"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="3" />
     
     </android.support.design.widget.TextInputLayout>
     
@@ -114,17 +125,18 @@
         android:id="@+id/til_dialogDonor_height"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/til_dialogDonor_weight"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/til_dialogDonor_weight"
-        app:layout_constraintTop_toBottomOf="@id/spinner_dialogDonor_rh">
+        app:layout_constraintTop_toBottomOf="@+id/spinner_dialogDonor_rh">
         
         <EditText
             android:id="@+id/editText_dialogDonor_height"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogDonor_editHintHeight"
-            android:inputType="number" />
-        
+            android:inputType="number"
+            android:maxLength="3" />
+    
     </android.support.design.widget.TextInputLayout>
 
 </android.support.constraint.ConstraintLayout>

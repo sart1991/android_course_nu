@@ -18,7 +18,7 @@
     <string name="dialogSignup_editHintUserName">@string/_userName</string>
     <string name="dialogSignup_editHintPassword">@string/_password</string>
     <string name="dialogSignup_editHintConfPassword">Confirmar Contraseña</string>
-    <string name="dialogDonor_editHintAge">Edad</string>
+    <string name="dialogDonor_editHintAge">Edad (años)</string>
     <string name="dialogDonor_editHintLasName">Apellido</string>
     <string name="dialogDonor_editHintName">Nombre</string>
     <string name="dialogDonor_editHintId">No. Identificación</string>
@@ -32,5 +32,6 @@
     <string name="_weight_">PESO:</string>
     <string name="_rh_">RH:</string>
     <string name="_height_">ESTATURA:</string>
+    <string name="_dot">Dot</string>
 
 </resources>

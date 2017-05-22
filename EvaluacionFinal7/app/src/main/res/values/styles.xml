@@ -13,5 +13,19 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    
+    <style name="DotIndicator">
+        <item name="android:src">@drawable/ic_dot_24dp</item>
+        <item name="android:layout_width">12dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:tint">@color/primary_light</item>
+        <item name="android:contentDescription">@string/_dot</item>
+    </style>
+    
+    <style name="CarViewText">
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Medium</item>
+        <item name="android:text">@string/_test</item>
+        <item name="android:layout_marginLeft">6dp</item>
+    </style>
 
 </resources>

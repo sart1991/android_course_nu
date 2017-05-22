@@ -8,7 +8,7 @@
     
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="wrap_content"
         android:padding="16dp">
         
         <ImageButton
@@ -20,144 +20,209 @@
             android:background="@null"
             android:contentDescription="@string/cardView_imageButton_dotsDescription"
             android:src="@drawable/cardview_donor_dots_24dp"
-            app:layout_constraintBottom_toBottomOf="@id/textView_cardViewDonor_id"
-            app:layout_constraintLeft_toRightOf="@id/textView_cardViewDonor_name"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_cardViewDonor_id"
+            app:layout_constraintLeft_toRightOf="@+id/textView_cardViewDonor_name"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_cardViewDonor_name" />
+        
+        <ImageView
+            android:id="@+id/img_cardViewDonor_nameDot"
+            style="@style/DotIndicator"
+            android:tint="@color/accent"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_cardViewDonor_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_name"
             app:layout_constraintTop_toTopOf="@id/textView_cardViewDonor_name" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/_test"
+            style="@style/CarViewText"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             app:layout_constraintBottom_toTopOf="@+id/textView_cardViewDonor_id"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/img_cardViewDonor_nameDot"
             app:layout_constraintRight_toLeftOf="@id/imageButton_cardViewDonor_dotsMenu"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="packed" />
+        
+        <ImageView
+            android:id="@+id/img_cardViewDonor_idDot"
+            style="@style/DotIndicator"
+            android:tint="@color/accent_light"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_cardViewDonor_id"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_id"
+            app:layout_constraintTop_toTopOf="@+id/textView_cardViewDonor_id" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_id_"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            style="@style/CarViewText"
             android:textColor="@color/primary_text"
             app:layout_constraintBottom_toTopOf="@+id/textView_cardViewDonor_age"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/img_cardViewDonor_idDot"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_idContainer"
             app:layout_constraintTop_toBottomOf="@id/textView_cardViewDonor_name" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_idContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/_test"
+            style="@style/CarViewText"
             app:layout_constraintLeft_toRightOf="@id/textView_cardViewDonor_id"
-            app:layout_constraintTop_toBottomOf="@id/textView_cardViewDonor_name"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            app:layout_constraintRight_toLeftOf="@id/imageButton_cardViewDonor_dotsMenu"/>
+            app:layout_constraintRight_toLeftOf="@id/imageButton_cardViewDonor_dotsMenu"
+            app:layout_constraintTop_toBottomOf="@id/textView_cardViewDonor_name" />
+        
+        <ImageView
+            android:id="@+id/img_cardViewDonor_ageDot"
+            style="@style/DotIndicator"
+            android:tint="@color/accent_light"
+            app:layout_constraintBottom_toBottomOf="@id/textView_cardViewDonor_age"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/textView_cardViewDonor_age"
+            app:layout_constraintTop_toTopOf="@id/textView_cardViewDonor_age" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_age_"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            style="@style/CarViewText"
             android:textColor="@color/primary_text"
-            app:layout_constraintBottom_toTopOf="@id/textView_carViewDonor_bloodType"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textView_carViewDonor_bloodType"
+            app:layout_constraintLeft_toRightOf="@id/img_cardViewDonor_ageDot"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_ageContainer"
             app:layout_constraintTop_toBottomOf="@id/textView_cardViewDonor_id" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_ageContainer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/_test"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            style="@style/CarViewText"
             app:layout_constraintLeft_toRightOf="@id/textView_cardViewDonor_age"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_cardViewDonor_id" />
+        
+        <ImageView
+            android:id="@+id/img_cardViewDonor_bloodTypeDot"
+            style="@style/DotIndicator"
+            app:layout_constraintBottom_toBottomOf="@id/textView_carViewDonor_bloodType"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/textView_carViewDonor_bloodType"
+            app:layout_constraintTop_toTopOf="@id/textView_carViewDonor_bloodType" />
         
         <TextView
             android:id="@+id/textView_carViewDonor_bloodType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_blood_type_"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            style="@style/CarViewText"
             android:textColor="@color/primary_text"
-            app:layout_constraintBottom_toTopOf="@id/textView_cardViewDonor_weight"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textView_cardViewDonor_weight"
+            app:layout_constraintLeft_toRightOf="@id/img_cardViewDonor_bloodTypeDot"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_bloodTypeContainer"
             app:layout_constraintTop_toBottomOf="@id/textView_cardViewDonor_age" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_bloodTypeContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/CarViewText"
             app:layout_constraintLeft_toRightOf="@id/textView_carViewDonor_bloodType"
-            android:text="@string/_test"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            app:layout_constraintTop_toBottomOf="@id/textView_cardViewDonor_age"
-            android:layout_marginStart="4dp"/>
+            app:layout_constraintRight_toLeftOf="@+id/img_cardViewDonor_rhDot"
+            app:layout_constraintTop_toBottomOf="@id/textView_cardViewDonor_age" />
+        
+        <ImageView
+            android:id="@+id/img_cardViewDonor_rhDot"
+            style="@style/DotIndicator"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_cardViewDonor_rh"
+            app:layout_constraintLeft_toRightOf="@id/textView_cardViewDonor_bloodTypeContainer"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_rh"
+            app:layout_constraintTop_toTopOf="@+id/textView_cardViewDonor_rh" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_rh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/textView_cardViewDonor_bloodTypeContainer"
             android:text="@string/_rh_"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            style="@style/CarViewText"
             android:textColor="@color/primary_text"
-            app:layout_constraintTop_toTopOf="@id/textView_carViewDonor_bloodType"
-            android:layout_marginStart="16dp"/>
+            app:layout_constraintLeft_toRightOf="@id/img_cardViewDonor_rhDot"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_rhContainer"
+            app:layout_constraintTop_toTopOf="@id/textView_carViewDonor_bloodType" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_rhContainer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            style="@style/CarViewText"
             app:layout_constraintLeft_toRightOf="@id/textView_cardViewDonor_rh"
-            android:text="@string/_test"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            app:layout_constraintTop_toTopOf="@id/textView_cardViewDonor_rh"
-            android:layout_marginLeft="4dp"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textView_cardViewDonor_rh" />
+        
+        <ImageView
+            android:id="@+id/img_cardViewDonor_weightDot"
+            style="@style/DotIndicator"
+            android:tint="@color/accent_light"
+            app:layout_constraintBottom_toBottomOf="@id/textView_cardViewDonor_weight"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/textView_cardViewDonor_weight"
+            app:layout_constraintTop_toTopOf="@id/textView_cardViewDonor_weight" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_weight_"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            style="@style/CarViewText"
             android:textColor="@color/primary_text"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/img_cardViewDonor_weightDot"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_weightContainer"
             app:layout_constraintTop_toBottomOf="@id/textView_carViewDonor_bloodType" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_weightContainer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            style="@style/CarViewText"
             app:layout_constraintLeft_toRightOf="@id/textView_cardViewDonor_weight"
-            android:text="@string/_test"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            app:layout_constraintTop_toBottomOf="@id/textView_carViewDonor_bloodType"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_carViewDonor_bloodType" />
+        
+        <ImageView
+            android:id="@+id/img_cardViewDonor_heightDot"
+            style="@style/DotIndicator"
+            android:tint="@color/accent_light"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_cardViewDonor_height"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_height"
+            app:layout_constraintTop_toTopOf="@+id/textView_cardViewDonor_height" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_height"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_height_"
+            style="@style/CarViewText"
             android:textColor="@color/primary_text"
-            app:layout_constraintLeft_toLeftOf="@id/textView_cardViewDonor_rh"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            app:layout_constraintTop_toTopOf="@id/textView_cardViewDonor_weight"/>
+            app:layout_constraintLeft_toRightOf="@id/img_cardViewDonor_heightDot"
+            app:layout_constraintRight_toLeftOf="@+id/textView_cardViewDonor_heightContainer"
+            app:layout_constraintTop_toBottomOf="@id/textView_cardViewDonor_weight" />
         
         <TextView
             android:id="@+id/textView_cardViewDonor_heightContainer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            style="@style/CarViewText"
             app:layout_constraintLeft_toRightOf="@id/textView_cardViewDonor_height"
-            android:text="@string/_test"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            app:layout_constraintTop_toTopOf="@id/textView_cardViewDonor_height"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textView_cardViewDonor_height" />
     
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
