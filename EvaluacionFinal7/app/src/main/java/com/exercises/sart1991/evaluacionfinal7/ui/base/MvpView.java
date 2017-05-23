@@ -12,6 +12,8 @@ public interface MvpView {
     void onError(String message);
     void onNotify(@StringRes int resId);
     void onNotify(String message);
+    void onSuccess(@StringRes int resId);
+    void onSuccess(String message);
     void hideKeyBoard();
     Context getViewContext();
 }

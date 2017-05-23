@@ -53,6 +53,16 @@ abstract public class BaseActivity extends AppCompatActivity implements MvpView 
         showSnackBar(message, R.color.cardview_dark_background);
     }
 
+    @Override
+    public void onSuccess(@StringRes int resId) {
+        onSuccess(getString(resId));
+    }
+
+    @Override
+    public void onSuccess(String message) {
+        showSnackBar(message, R.color.accent);
+    }
+
     private void showSnackBar(String message, int resColor) {
         Snackbar snackbar = Snackbar.make(
                 findViewById(android.R.id.content),

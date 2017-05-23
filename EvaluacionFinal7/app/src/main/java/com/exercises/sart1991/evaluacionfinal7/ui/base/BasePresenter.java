@@ -43,6 +43,6 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     }
 
     public boolean isSessionActive() {
-        return  false; //TODO: replace with preference
+        return  getDataManager().getLoginState();
     }
 }

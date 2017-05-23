@@ -8,4 +8,11 @@ import com.exercises.sart1991.evaluacionfinal7.ui.base.MvpView;
 
 public interface LoginMvpView extends MvpView {
 
+    void onUserNameFieldError(int resId);
+    void onPasswordFieldError(int resId);
+    void onConfPasswordFieldError(int resId);
+    void showDialogForNewUser();
+    void makeNewDialogForNewUser();
+    void gotoMainActivity();
+
 }

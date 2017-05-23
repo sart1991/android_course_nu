@@ -8,6 +8,9 @@ import com.exercises.sart1991.evaluacionfinal7.ui.base.MvpPresenter;
 
 public interface LoginMvpPresenter<V extends LoginMvpView> extends MvpPresenter<V> {
 
-    void validateUserName(String userName);
-    void validatePassword(String password);
+    void onLoginClick(String userName, String password);
+    void onNewUserClick();
+    void onCancelDialogNewUser();
+    void onConfPasswordChanged(String password, String confPassword);
+    void onCreateNewUser(String userName, String password, String confPassword);
 }

@@ -8,42 +8,45 @@
     android:paddingTop="8dp">
     
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dialogNewUser_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         
         <EditText
-            android:id="@+id/editText_loginDialog_userName"
+            android:id="@+id/editText_dialogNewUser_userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dialogSignup_editHintUserName"
+            android:hint="@string/dialogNewUser_editHintUserName"
             android:maxLength="15"/>
     
     </android.support.design.widget.TextInputLayout>
     
     
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dialogNewUser_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         
         <EditText
-            android:id="@+id/editText_loginDialog_password"
+            android:id="@+id/editText_dialogNewUser_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dialogSignup_editHintPassword"
+            android:hint="@string/dialogNewUser_editHintPassword"
             android:inputType="textPassword"
             android:maxLength="20"/>
     
     </android.support.design.widget.TextInputLayout>
     
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dialogNewUser_confPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         
         <EditText
-            android:id="@+id/editText_loginDialog_confPassword"
+            android:id="@+id/editText_dialogNewUser_confPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dialogSignup_editHintConfPassword"
+            android:hint="@string/dialogNewUser_editHintConfPassword"
             android:inputType="textPassword"
             android:maxLength="20"/>
     

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.exercises.sart1991.evaluacionfinal7.data.db.model.Donor;
 import com.exercises.sart1991.evaluacionfinal7.data.db.model.User;
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class AppDbHelper implements DbHelper {
 
+    private static final String TAG = AppDbHelper.class.getSimpleName();
     private DbOpenHelper dbOpenHelper;
 
     public AppDbHelper(Context context) {
@@ -27,10 +29,15 @@ public class AppDbHelper implements DbHelper {
     public User getUser(String userName) {
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery(
-                sentenceSelect(DbInfo.TablesInfo.USER_TABLE.toString(), "user_name"),
+                sentenceSelect(DbInfo.TablesInfo.USER_TABLE.getTableName(), "user_name"),
                 new String[]{userName}
         );
-        return readCursorUser(cursor).get(0);
+        try {
+            return readCursorUser(cursor).get(0);
+        } catch (IndexOutOfBoundsException iooe) {
+            Log.e(TAG, "getUser: ", iooe);
+            return null;
+        }
     }
 
     @Override
@@ -54,7 +61,7 @@ public class AppDbHelper implements DbHelper {
     public void deleteUser(String userName) {
         SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
         database.delete(
-                DbInfo.TablesInfo.USER_TABLE.toString(),
+                DbInfo.TablesInfo.USER_TABLE.getTableName(),
                 "user_name = ?", new String[]{userName});
     }
 
@@ -73,7 +80,7 @@ public class AppDbHelper implements DbHelper {
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery(
                 sentenceSelect(
-                        DbInfo.TablesInfo.DONOR_TABLE.toString(),
+                        DbInfo.TablesInfo.DONOR_TABLE.getTableName(),
                         DbInfo.DonorInfo.ID.toString()
                         ),
                 new String[] {String.valueOf(donorId)}
@@ -160,7 +167,7 @@ public class AppDbHelper implements DbHelper {
     }
 
     private List<User> readCursorUser(Cursor c) {
-        List<User> usersList = new ArrayList<>();
+        List<User> usersList = new ArrayList<>(1);
         if (c.moveToFirst()) {
             do {
                 String userName = c.getString(c.getColumnIndex(""+DbInfo.UserInfo.USER_NAME));

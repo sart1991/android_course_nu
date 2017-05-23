@@ -13,11 +13,14 @@
     <string name="login_editHintUserName">@string/_userName</string>
     <string name="login_editHintPassword">@string/_password</string>
     <string name="login_buttonLogin">Iniciar sesión</string>
-    <string name="login_buttonNewUsername">Nuevo usuario</string>
+    <string name="login_buttonNewUsername">@string/_newUser</string>
     <string name="login_imageViewDescription">Gota de sangre</string>
-    <string name="dialogSignup_editHintUserName">@string/_userName</string>
-    <string name="dialogSignup_editHintPassword">@string/_password</string>
-    <string name="dialogSignup_editHintConfPassword">Confirmar Contraseña</string>
+    <string name="dialogNewUser_editHintUserName">@string/_userName</string>
+    <string name="dialogNewUser_editHintPassword">@string/_password</string>
+    <string name="dialogNewUser_editHintConfPassword">Confirmar Contraseña</string>
+    <string name="dialogNewUser_title">@string/_newUser</string>
+    <string name="dialogNewUser_negativeButton">Cancelar</string>
+    <string name="dialogNewUser_positiveButton">Crear</string>
     <string name="dialogDonor_editHintAge">Edad (años)</string>
     <string name="dialogDonor_editHintLasName">Apellido</string>
     <string name="dialogDonor_editHintName">Nombre</string>
@@ -33,5 +36,19 @@
     <string name="_rh_">RH:</string>
     <string name="_height_">ESTATURA:</string>
     <string name="_dot">Dot</string>
+    <string name="_newUser">Nuevo usuario</string>
+    
+    <!--Login Messages-->
+    <string name="login_errorUserDoesNotExists">El usuario no exíste</string>
+    <string name="login_tryAnotherUser">Intente otro nombre de usuario</string>
+    <string name="login_errorWrongPassword">Contraseña incorrecta</string>
+    <string name="login_errorEmptyField">Llene los campos indicados</string>
+    <string name="login_emptyField">Campo vacio</string>
+    <string name="login_notifyUserCreated">Usuario creado</string>
+    <string name="login_notifyUserCanceled">Creación de usuario cancelada</string>
+    <string name="login_errorUserCreationError">Error al crear el usuario</string>
+    <string name="login_errorPasswordDontMatch">El password no coincide</string>
+    <string name="login_errorUserAlreadyExists">El usuario ya existe</string>
+    <string name="login_successUserCreated">El usuario fue creado</string>
 
 </resources>
