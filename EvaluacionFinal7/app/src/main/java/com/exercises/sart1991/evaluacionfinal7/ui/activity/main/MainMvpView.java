@@ -8,6 +8,6 @@ import com.exercises.sart1991.evaluacionfinal7.ui.base.MvpView;
 
 interface MainMvpView extends MvpView {
 
-    void goToLogin();
+    void gotoLogin();
 
 }

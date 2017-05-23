@@ -14,6 +14,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
     @Override
     public void onLoginClick(String userName, String password) {
         if (validateUser(userName, password)) {
+            getDataManager().setLoginState(true);
             getMvpView().gotoMainActivity();
         }
     }

@@ -7,6 +7,7 @@
     <string name="app_name">Banco de Sangre</string>
     <string name="main_toolbarTitle">Control de Donantes</string>
     <string name="main_editHint">Identificacion del donante</string>
+    <string name="mainOptions_logout">Cerrar sesión</string>
     <string name="login_toolbarTitle">Inicio de sesión</string>
     <string name="login_contentTitle">Bienvenido al Control de Donantes</string>
     <string name="login_contentSubtitle">Inicie sesión para empezar</string>
@@ -50,5 +51,7 @@
     <string name="login_errorPasswordDontMatch">El password no coincide</string>
     <string name="login_errorUserAlreadyExists">El usuario ya existe</string>
     <string name="login_successUserCreated">El usuario fue creado</string>
-
+    
+    <!--Main Messages-->
+    
 </resources>

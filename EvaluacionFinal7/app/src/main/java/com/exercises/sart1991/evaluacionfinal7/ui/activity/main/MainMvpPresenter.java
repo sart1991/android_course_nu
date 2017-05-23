@@ -7,5 +7,8 @@ import com.exercises.sart1991.evaluacionfinal7.ui.base.MvpPresenter;
  */
 
 interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
+
     void validateSession();
+    void onWelcome();
+    void onOptionItemClick(int itemId);
 }
