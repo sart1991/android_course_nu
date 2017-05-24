@@ -82,4 +82,7 @@
     <string name="cardDonorMenu_edit">Editar</string>
     <string name="cardDonorMenu_delete">Eliminar</string>
     <string name="main_successDonorUpdated">El usuario ha sido actualizado</string>
+    <string name="main_notifyDonorDeleted">El donante fué eliminado</string>
+    <string name="main_notifyDeleteDonorCanceled">No se eliminó ningún donante</string>
+    <string name="main_notifyEditDonorCanceled">No se editó ningún donante</string>
 </resources>

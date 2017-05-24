@@ -97,6 +97,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     @Override
     public void onCancelEditDonor() {
         getMvpView().cleanDialogNewDonorData();
+        getMvpView().onNotify(R.string.main_notifyEditDonorCanceled, view);
     }
 
     private void onConfirmEditDonor(Donor donor) {
@@ -113,12 +114,13 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void onCancelDeleteDonor() {
-
+        getMvpView().onNotify(R.string.main_notifyDeleteDonorCanceled, view);
     }
 
     @Override
     public void onConfirmDeleteDonor(String id) {
-
+        getDataManager().deleteDonor(id);
+        getMvpView().onNotify(R.string.main_notifyDonorDeleted, view);
     }
 
     @Override
@@ -211,6 +213,14 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onDonorIdFilterTyping(String id) {
+        if (!"".equals(id)) {
+            getMvpView().setDonorList(getDataManager().getAllDonors(Long.valueOf(id)));
+            getMvpView().onDonorListChanged();
+        }
     }
 
     private DataManager.DataManagerListener dataManagerListener = new DataManager.DataManagerListener() {

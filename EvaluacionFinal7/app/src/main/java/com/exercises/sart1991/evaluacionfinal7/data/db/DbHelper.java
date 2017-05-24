@@ -22,6 +22,6 @@ public interface DbHelper {
     void deleteDonor(String donorId);
     boolean checkDonorExists(String id);
     List<Donor> getAllDonors();
-    List<Donor> getAllDonors(int donorId);
+    List<Donor> getAllDonors(long donorId);
     List<Donor> getAllDonors(String userName);
 }

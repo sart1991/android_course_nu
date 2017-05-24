@@ -69,7 +69,23 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         tilSearchDonor = (TextInputLayout) findViewById(R.id.til_main_searchDonor);
         editSearchDonor = tilSearchDonor.getEditText();
         recyclerDonors = (RecyclerView) findViewById(R.id.recycler_main_donorInfoContainer);
+
+        //bind listeners
+        editSearchDonor.addTextChangedListener(textWatcherForSearchListener);
     }
+
+    private TextWatcher textWatcherForSearchListener = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            PRESENTER.onDonorIdFilterTyping(s.toString());
+        }
+    };
 
     public void gotoLogin() {
         startActivity(new Intent(this, LoginActivity.class));
@@ -260,9 +276,9 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         };
         return makeDialogForConfirmation(
                 R.string.dialogDeleteDonor_title,
-                getString(R.string.dialogDeleteDonor_startMessage) +
-                        donor.getName() + " " + donor.getLastName() +
-                        getString(R.string.dialogDeleteDonor_endMessage) +
+                getString(R.string.dialogDeleteDonor_startMessage) + " " +
+                        donor.getName() + " " + donor.getLastName() + " " +
+                        getString(R.string.dialogDeleteDonor_endMessage) + " " +
                         donor.getId(),
                 R.string.dialogDeleteDonor_positiveButton,
                 listenerForDeleteDonor

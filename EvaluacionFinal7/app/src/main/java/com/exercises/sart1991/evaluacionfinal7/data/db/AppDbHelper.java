@@ -146,13 +146,13 @@ public class AppDbHelper implements DbHelper {
     }
 
     @Override
-    public List<Donor> getAllDonors(int donorId) {
+    public List<Donor> getAllDonors(long donorId) {
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery(
                 "SELECT * FROM " +
                         DbInfo.TablesInfo.DONOR_TABLE.getTableName() +
-                " WHERE id = ?",
-                new String[] {String.valueOf(donorId)}
+                " WHERE id LIKE ?",
+                new String[] {"%" + donorId + "%"}
         );
         return readCursorDonor(cursor);
     }
