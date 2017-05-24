@@ -81,4 +81,5 @@
     <string name="main_successDonorRegistered">El donante ha sido registrado</string>
     <string name="cardDonorMenu_edit">Editar</string>
     <string name="cardDonorMenu_delete">Eliminar</string>
+    <string name="main_successDonorUpdated">El usuario ha sido actualizado</string>
 </resources>

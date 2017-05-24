@@ -62,18 +62,13 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         getMvpView().onNotify(R.string.main_notifyDonorCanceled, view);
     }
 
-    @Override
-    public void onDialogNewDonorRegister(String id, String name, String lastName,
-                                         String age, String bloodType, String rh,
-                                         String weight, String height) {
+    private void onRegisterNewDonor(Donor donor) {
 
-        Donor donor = validateNewUser(id, name, lastName, age, bloodType, rh, weight, height);
         if (donor != null) {
             getDataManager().insertDonor(donor);
             getMvpView().onSuccess(R.string.main_successDonorRegistered, view);
             getMvpView().cleanDialogNewDonorData();
         }
-
     }
 
     @Override
@@ -82,8 +77,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         getDataManager().setDataManagerListener(dataManagerListener);
         getMvpView().setDonorList(getDataManager().getAllDonors(getDataManager().getUserName()));
     }
-
-
 
     @Override
     public void onDonorMenuClick(Donor donor, int itemId) {
@@ -101,21 +94,26 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         getMvpView().showDialogEditDonor(donor);
     }
 
+    @Override
+    public void onCancelEditDonor() {
+        getMvpView().cleanDialogNewDonorData();
+    }
+
+    private void onConfirmEditDonor(Donor donor) {
+        getMvpView().cleanDialogNewDonorData();
+        if (donor != null) {
+            getDataManager().updateDonor(donor);
+            getMvpView().onSuccess(R.string.main_successDonorUpdated, view);
+        }
+    }
+
     private void onDeleteDonorClick(Donor donor) {
         getMvpView().showDialogDeleteDonor(donor);
     }
 
     @Override
-    public void onConfirmEditDonor(
-            String id, String name, String lastName,
-            String age, String bloodType, String rh,
-            String weight, String height) {
-        getMvpView().cleanDialogNewDonorData();
-    }
+    public void onCancelDeleteDonor() {
 
-    @Override
-    public void onCancelEditDonor() {
-        getMvpView().cleanDialogNewDonorData();
     }
 
     @Override
@@ -124,21 +122,25 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     }
 
     @Override
-    public void onCancelDeleteDonor() {
-
+    public void onDialogDonorPositive(String id, String name, String lastName,
+                                      String age, String bloodType, String rh,
+                                      String weight, String height, String idExcept) {
+        Donor d = validateDonor(id, name, lastName, age, bloodType, rh, weight, height, idExcept);
+        if (idExcept == null) {
+            onRegisterNewDonor(d);
+        } else {
+            onConfirmEditDonor(d);
+        }
     }
 
-    private @Nullable Donor validateNewUser(String id, String name, String lastName,
-                                            String age, String bloodType, String rh,
-                                            String weight, String height) {
-        if ("".equals(id) || "".equals(name) || "".equals(lastName) ||
-            "".equals(age) || "".equals(bloodType) || "".equals(rh) ||
-            "".equals(weight) || "".equals(height)) {
-            getMvpView().onError(R.string.main_errorEmptyFieldsFound, view);
+    private @Nullable Donor validateDonor(String id, String name, String lastName,
+                                          String age, String bloodType, String rh,
+                                          String weight, String height, String idExcept) {
+        if (!validateFieldsNotEmpty(id, name, lastName, age, bloodType, rh, weight, height)) {
             return null;
         }
 
-        if (!validateDonorId(id, null, true)) {
+        if (!validateDonorId(id, idExcept, true)) {
             return null;
         }
         if(!validateDonorSpinnersContent(bloodType, rh)) {
@@ -153,6 +155,19 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                 Integer.valueOf(height),
                 getDataManager().getUserName()
         );
+    }
+
+    private boolean validateFieldsNotEmpty(String id, String name, String lastName,
+                                           String age, String bloodType, String rh,
+                                           String weight, String height) {
+
+        if ("".equals(id) || "".equals(name) || "".equals(lastName) ||
+                "".equals(age) || "".equals(bloodType) || "".equals(rh) ||
+                "".equals(weight) || "".equals(height)) {
+            getMvpView().onError(R.string.main_errorEmptyFieldsFound, view);
+            return false;
+        }
+        return true;
     }
 
     private boolean validateDonorId(String id, String idExcept, boolean showSnack) {

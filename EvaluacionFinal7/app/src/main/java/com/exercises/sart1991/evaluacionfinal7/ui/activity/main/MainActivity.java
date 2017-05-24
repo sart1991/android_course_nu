@@ -65,8 +65,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         dialogNewDonor = makeDialogForDonor(
                 R.string.dialogNewDonor_title,
                 R.string.dialogNewDonor_positiveButton,
-                listenerForCancelNewDonor,
-                listenerForNewDonor, null);
+                listenerForCancelNewDonor, null);
         tilSearchDonor = (TextInputLayout) findViewById(R.id.til_main_searchDonor);
         editSearchDonor = tilSearchDonor.getEditText();
         recyclerDonors = (RecyclerView) findViewById(R.id.recycler_main_donorInfoContainer);
@@ -93,8 +92,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     private Dialog makeDialogForDonor(
-            int resTitle, int resMessage, DialogInterface.OnCancelListener cancelListener,
-            DialogInterface.OnClickListener positiveListener, final String idExcept) {
+            int resTitle, int resMessage,
+            DialogInterface.OnCancelListener cancelListener, final String idExcept) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(resTitle);
@@ -132,7 +131,22 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 dialog.cancel();
             }
         });
-        builder.setPositiveButton(resMessage, positiveListener);
+        builder.setPositiveButton(resMessage, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                PRESENTER.onDialogDonorPositive(
+                        editDialogDonorId.getText().toString(),
+                        editDialogDonorName.getText().toString(),
+                        editDialogDonorLastName.getText().toString(),
+                        editDialogDonorAge.getText().toString(),
+                        spinnerDialogDonorBloodType.getSelectedItem().toString(),
+                        spinnerDialogDonorRh.getSelectedItem().toString(),
+                        editDialogDonorWeight.getText().toString(),
+                        editDialogDonorHeight.getText().toString(),
+                        idExcept
+                );
+            }
+        });
         return builder.create();
     }
 
@@ -151,8 +165,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         dialogNewDonor = makeDialogForDonor(
                 R.string.dialogNewDonor_title,
                 R.string.dialogNewDonor_positiveButton,
-                listenerForCancelNewDonor,
-                listenerForNewDonor, null);
+                listenerForCancelNewDonor, null);
+
         editDialogDonorId.setText("");
         editDialogDonorName.setText("");
         editDialogDonorLastName.setText("");
@@ -170,22 +184,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         }
     };
 
-    private DialogInterface.OnClickListener listenerForNewDonor = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            PRESENTER.onDialogNewDonorRegister(
-                    editDialogDonorId.getText().toString(),
-                    editDialogDonorName.getText().toString(),
-                    editDialogDonorLastName.getText().toString(),
-                    editDialogDonorAge.getText().toString(),
-                    spinnerDialogDonorBloodType.getSelectedItem().toString(),
-                    spinnerDialogDonorRh.getSelectedItem().toString(),
-                    editDialogDonorWeight.getText().toString(),
-                    editDialogDonorHeight.getText().toString()
-            );
-        }
-    };
-
     @Override
     public void initializeCards() {
         LinearLayoutManager layoutManager =
@@ -200,9 +198,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         Dialog holder = makeDialogForDonor(
                 R.string.dialogUpdateDonor_title,
                 R.string.dialogUpdateDonor_positiveButton,
-                listenerForCancelEditDonor,
-                listenerForEditDonor,
-                donor.getId()
+                listenerForCancelEditDonor, donor.getId()
         );
         editDialogDonorId.setText(donor.getId());
         editDialogDonorName.setText(donor.getName());
@@ -219,22 +215,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         @Override
         public void onCancel(DialogInterface dialog) {
             PRESENTER.onCancelEditDonor();
-        }
-    };
-
-    DialogInterface.OnClickListener listenerForEditDonor = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            PRESENTER.onConfirmEditDonor(
-                    editDialogDonorId.getText().toString(),
-                    editDialogDonorName.getText().toString(),
-                    editDialogDonorLastName.getText().toString(),
-                    editDialogDonorAge.getText().toString(),
-                    spinnerDialogDonorBloodType.getSelectedItem().toString(),
-                    spinnerDialogDonorRh.getSelectedItem().toString(),
-                    editDialogDonorWeight.getText().toString(),
-                    editDialogDonorHeight.getText().toString()
-            );
         }
     };
 

@@ -17,15 +17,11 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
     void onClickAddDonor();
     void onDialogDonorIdTyping(String id, String idExcept);
     void onCancelNewDonor();
-    void onDialogNewDonorRegister(
-            String id, String name, String lastName, String age, String bloodType,
-            String rh, String weight, String height
-    );
     void onFirstLoadDonorData();
     void onDonorMenuClick(Donor donor, int itemId);
-    void onConfirmEditDonor(
+    void onDialogDonorPositive(
             String id, String name, String lastName, String age, String bloodType,
-            String rh, String weight, String height
+            String rh, String weight, String height, String idExcept
     );
     void onCancelEditDonor();
     void onConfirmDeleteDonor(String id);
