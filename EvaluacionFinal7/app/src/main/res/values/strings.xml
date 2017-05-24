@@ -2,11 +2,23 @@
     <!--All the plain words-->
     <string name="_userName">Nombre de usuario</string>
     <string name="_password">Contraseña</string>
-    
+    <string name="_dot">Dot</string>
+    <string name="_newUser">Nuevo usuario</string>
+    <string name="_test">Test</string>
+    <string name="_cancel">Cancelar</string>
+    <string name="_create">Crear</string>
+    <string name="_register">Registrar</string>
+    <string name="_years">años</string>
+    <string name="_kg">Kg</string>
+    <string name="_cm">cm</string>
+    <string name="_blood_type">Tipo de sangre</string>
+    <string name="_rh">Rh</string>
+    <string name="_update">Actualizar</string>
+    <string name="_delete">Eliminar</string>
     
     <string name="app_name">Banco de Sangre</string>
     <string name="main_toolbarTitle">Control de Donantes</string>
-    <string name="main_editHint">Identificacion del donante</string>
+    <string name="main_editHint">Identificación del donante</string>
     <string name="mainOptions_logout">Cerrar sesión</string>
     <string name="login_toolbarTitle">Inicio de sesión</string>
     <string name="login_contentTitle">Bienvenido al Control de Donantes</string>
@@ -20,24 +32,30 @@
     <string name="dialogNewUser_editHintPassword">@string/_password</string>
     <string name="dialogNewUser_editHintConfPassword">Confirmar Contraseña</string>
     <string name="dialogNewUser_title">@string/_newUser</string>
-    <string name="dialogNewUser_negativeButton">Cancelar</string>
-    <string name="dialogNewUser_positiveButton">Crear</string>
+    <string name="dialogNewUser_negativeButton">@string/_cancel</string>
+    <string name="dialogNewUser_positiveButton">@string/_create</string>
+    <string name="dialogNewDonor_title">Nuevo donante</string>
+    <string name="dialogNewDonor_positiveButton">@string/_register</string>
+    <string name="dialogUpdateDonor_title">Actualizar donante</string>
+    <string name="dialogUpdateDonor_positiveButton">@string/_update</string>
+    <string name="dialogDeleteDonor_title">Eliminar donante</string>
+    <string name="dialogDeleteDonor_startMessage">Desea eliminar al donante </string>
+    <string name="dialogDeleteDonor_endMessage"> con ID </string>
+    <string name="dialogDeleteDonor_positiveButton">@string/_delete</string>
     <string name="dialogDonor_editHintAge">Edad (años)</string>
     <string name="dialogDonor_editHintLasName">Apellido</string>
     <string name="dialogDonor_editHintName">Nombre</string>
     <string name="dialogDonor_editHintId">No. Identificación</string>
     <string name="dialogDonor_editHintWeight">Peso (Kg)</string>
     <string name="dialogDonor_editHintHeight">Estatura (cm)</string>
+    <string name="dialogDonor_negativeButton">@string/_cancel</string>
     <string name="cardView_imageButton_dotsDescription">Menu de tres puntos</string>
-    <string name="_test">Test</string>
     <string name="_id_">ID:</string>
     <string name="_age_">EDAD:</string>
     <string name="_blood_type_">SANGRE TIPO:</string>
     <string name="_weight_">PESO:</string>
     <string name="_rh_">RH:</string>
     <string name="_height_">ESTATURA:</string>
-    <string name="_dot">Dot</string>
-    <string name="_newUser">Nuevo usuario</string>
     
     <!--Login Messages-->
     <string name="login_errorUserDoesNotExists">El usuario no exíste</string>
@@ -53,5 +71,14 @@
     <string name="login_successUserCreated">El usuario fue creado</string>
     
     <!--Main Messages-->
-    
+    <string name="main_notifyWelcome">Bienvenido</string>
+    <string name="main_notifyDonorCanceled">Creación de donante cancelada</string>
+    <string name="main_errorBloodTypeNotSelected">No seleccionó un tipo de sangre</string>
+    <string name="main_errorRhNotSelected">No seleccionó un tipo de Rh</string>
+    <string name="main_errorEmptyFieldsFound">Debe llenar todos los campos</string>
+    <string name="main_errorIdValueNotValid">Valor inválido</string>
+    <string name="main_errorDonorAlreadyExists">El donante ya existe</string>
+    <string name="main_successDonorRegistered">El donante ha sido registrado</string>
+    <string name="cardDonorMenu_edit">Editar</string>
+    <string name="cardDonorMenu_delete">Eliminar</string>
 </resources>

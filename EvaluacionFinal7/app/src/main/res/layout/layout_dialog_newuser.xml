@@ -14,6 +14,8 @@
         
         <EditText
             android:id="@+id/editText_dialogNewUser_userName"
+            android:inputType="text"
+            android:nextFocusDown="@+id/editText_dialogNewUser_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogNewUser_editHintUserName"
@@ -29,6 +31,7 @@
         
         <EditText
             android:id="@+id/editText_dialogNewUser_password"
+            android:nextFocusDown="@+id/editText_dialogNewUser_confPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogNewUser_editHintPassword"

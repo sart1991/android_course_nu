@@ -76,14 +76,14 @@ public class AppDbHelper implements DbHelper {
     }
 
     @Override
-    public Donor getDonor(int donorId) {
+    public Donor getDonor(String donorId) {
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery(
                 sentenceSelect(
                         DbInfo.TablesInfo.DONOR_TABLE.getTableName(),
                         DbInfo.DonorInfo.ID.toString()
                         ),
-                new String[] {String.valueOf(donorId)}
+                new String[] {donorId}
         );
         return readCursorDonor(cursor).get(0);
     }
@@ -101,6 +101,8 @@ public class AppDbHelper implements DbHelper {
 
     @Override
     public void insertDonor(Donor donor) {
+        Log.i(TAG, "insertDonor donor: " + donor);
+        Log.i(TAG, "insertDonor values: " + getDonorValues(donor));
         SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
         database.insert(
                 DbInfo.TablesInfo.DONOR_TABLE.getTableName(),
@@ -110,13 +112,27 @@ public class AppDbHelper implements DbHelper {
     }
 
     @Override
-    public void deleteDonor(int donorId) {
+    public void deleteDonor(String donorId) {
         SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
         database.delete(
                 DbInfo.TablesInfo.DONOR_TABLE.getTableName(),
                 "id = ?",
-                new String[] {String.valueOf(donorId)}
+                new String[] {donorId}
         );
+    }
+
+    @Override
+    public boolean checkDonorExists(String id) {
+        SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery(
+                "SELECT id FROM " +
+                        DbInfo.TablesInfo.DONOR_TABLE.getTableName() +
+                " WHERE id = ?",
+                new String[] {id}
+        );
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        return exists;
     }
 
     @Override
@@ -130,7 +146,19 @@ public class AppDbHelper implements DbHelper {
     }
 
     @Override
-    public List<Donor> getAllDonorsFromUser(String userName) {
+    public List<Donor> getAllDonors(int donorId) {
+        SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery(
+                "SELECT * FROM " +
+                        DbInfo.TablesInfo.DONOR_TABLE.getTableName() +
+                " WHERE id = ?",
+                new String[] {String.valueOf(donorId)}
+        );
+        return readCursorDonor(cursor);
+    }
+
+    @Override
+    public List<Donor> getAllDonors(String userName) {
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery(
                 "SELECT * FROM " +
@@ -157,11 +185,11 @@ public class AppDbHelper implements DbHelper {
         values.put(DbInfo.DonorInfo.ID.toString(), donor.getId());
         values.put(DbInfo.DonorInfo.NAME.toString(), donor.getName());
         values.put(DbInfo.DonorInfo.LAST_NAME.toString(), donor.getLastName());
-        values.put(DbInfo.DonorInfo.ID.toString(), donor.getAge());
-        values.put(DbInfo.DonorInfo.ID.toString(), donor.getBloodType());
-        values.put(DbInfo.DonorInfo.ID.toString(), donor.getRh());
-        values.put(DbInfo.DonorInfo.ID.toString(), donor.getWeight());
-        values.put(DbInfo.DonorInfo.ID.toString(), donor.getHeight());
+        values.put(DbInfo.DonorInfo.AGE.toString(), donor.getAge());
+        values.put(DbInfo.DonorInfo.BLOOD_TYPE.toString(), donor.getBloodType());
+        values.put(DbInfo.DonorInfo.RH.toString(), donor.getRh());
+        values.put(DbInfo.DonorInfo.WEIGHT.toString(), donor.getWeight());
+        values.put(DbInfo.DonorInfo.HEIGHT.toString(), donor.getHeight());
         values.put(DbInfo.DonorInfo.USER_NAME.toString(), donor.getForUserName());
         return values;
     }
@@ -183,7 +211,7 @@ public class AppDbHelper implements DbHelper {
         List<Donor> usersList = new ArrayList<>();
         if (c.moveToFirst()) {
             do {
-                int id = c.getInt(c.getColumnIndex(""+DbInfo.DonorInfo.ID.toString()));
+                String id = c.getString(c.getColumnIndex(""+DbInfo.DonorInfo.ID.toString()));
                 String name = c.getString(c.getColumnIndex(""+DbInfo.DonorInfo.NAME));
                 String lastName = c.getString(c.getColumnIndex(""+DbInfo.DonorInfo.LAST_NAME));
                 int age = c.getInt(c.getColumnIndex(""+DbInfo.DonorInfo.AGE.toString()));

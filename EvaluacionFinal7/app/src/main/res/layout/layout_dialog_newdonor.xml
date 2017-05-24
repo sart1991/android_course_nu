@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="8dp">
@@ -19,7 +19,8 @@
         app:layout_constraintVertical_chainStyle="packed">
         
         <EditText
-            android:id="@+id/editText_dialogDonor_idDonor"
+            android:id="@+id/editText_dialogDonor_id"
+            android:nextFocusDown="@+id/editText_dialogDonor_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogDonor_editHintId"
@@ -39,6 +40,7 @@
         
         <EditText
             android:id="@+id/editText_dialogDonor_name"
+            android:nextFocusDown="@+id/editText_dialogDonor_lastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogDonor_editHintName"
@@ -58,6 +60,7 @@
         
         <EditText
             android:id="@+id/editText_dialogDonor_lastName"
+            android:nextFocusDown="@+id/editText_dialogDonor_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogDonor_editHintLasName"
@@ -77,6 +80,7 @@
         
         <EditText
             android:id="@+id/editText_dialogDonor_age"
+            android:nextFocusDown="@+id/editText_dialogDonor_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogDonor_editHintAge"
@@ -113,6 +117,7 @@
         
         <EditText
             android:id="@+id/editText_dialogDonor_weight"
+            android:nextFocusForward="@+id/editText_dialogDonor_height"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogDonor_editHintWeight"
@@ -131,6 +136,7 @@
         
         <EditText
             android:id="@+id/editText_dialogDonor_height"
+            android:nextFocusForward="@+id/parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialogDonor_editHintHeight"

@@ -8,4 +8,10 @@ import com.exercises.sart1991.evaluacionfinal7.data.preferences.PreferencesHelpe
  */
 
 public interface DataManager extends DbHelper, PreferencesHelper {
+
+    void setDataManagerListener(DataManagerListener dataManagerListener);
+
+    interface DataManagerListener {
+        void onDonorDataChanged();
+    }
 }

@@ -9,7 +9,7 @@ import com.exercises.sart1991.evaluacionfinal7.data.db.DbInfo;
 
 public class Donor {
 
-    private int id;
+    private String id;
     private String name;
     private String lastName;
     private  int age;
@@ -19,7 +19,7 @@ public class Donor {
     private int height;
     private String forUserName;
 
-    public Donor(int id, String name, String lastName, int age, String bloodType, String rh,
+    public Donor(String id, String name, String lastName, int age, String bloodType, String rh,
                  int weight, int height, String forUserName) {
         this.id = id;
         this.name = name;
@@ -32,11 +32,11 @@ public class Donor {
         this.forUserName = forUserName;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -102,5 +102,20 @@ public class Donor {
 
     public void setForUserName(String forUserName) {
         this.forUserName = forUserName;
+    }
+
+    @Override
+    public String toString() {
+        return "Donor{" +
+                "donor_id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", bloodType='" + bloodType + '\'' +
+                ", rh='" + rh + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", forUserName='" + forUserName + '\'' +
+                '}';
     }
 }

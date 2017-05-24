@@ -19,6 +19,7 @@ public class AppDataManager implements DataManager {
 
     private DbHelper dbHelper;
     private PreferencesHelper prefHelper;
+    private static DataManagerListener dataManagerListener;
 
     public AppDataManager(Context context) {
         dbHelper = new AppDbHelper(context);
@@ -71,23 +72,37 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Donor getDonor(int donorId) {
+    public Donor getDonor(String donorId) {
         return dbHelper.getDonor(donorId);
     }
 
     @Override
     public void updateDonor(Donor donor) {
         dbHelper.updateDonor(donor);
+        if (dataManagerListener != null) {
+            dataManagerListener.onDonorDataChanged();
+        }
     }
 
     @Override
     public void insertDonor(Donor donor) {
         dbHelper.insertDonor(donor);
+        if (dataManagerListener != null) {
+            dataManagerListener.onDonorDataChanged();
+        }
     }
 
     @Override
-    public void deleteDonor(int donorId) {
+    public void deleteDonor(String donorId) {
         dbHelper.deleteDonor(donorId);
+        if (dataManagerListener != null) {
+            dataManagerListener.onDonorDataChanged();
+        }
+    }
+
+    @Override
+    public boolean checkDonorExists(String id) {
+        return dbHelper.checkDonorExists(id);
     }
 
     @Override
@@ -96,7 +111,17 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public List<Donor> getAllDonorsFromUser(String userName) {
-        return dbHelper.getAllDonorsFromUser(userName);
+    public List<Donor> getAllDonors(int donorId) {
+        return dbHelper.getAllDonors(donorId);
+    }
+
+    @Override
+    public List<Donor> getAllDonors(String userName) {
+        return dbHelper.getAllDonors(userName);
+    }
+
+    @Override
+    public void setDataManagerListener(DataManagerListener dataManagerListener) {
+        this.dataManagerListener = dataManagerListener;
     }
 }

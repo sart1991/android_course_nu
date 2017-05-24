@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -90,6 +91,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            Log.i(TAG, "onTextChanged: " + s + " start: " + start + " before: " + before + " count: " + count);
             tilUserName.setErrorEnabled(false);
             tilPassword.setErrorEnabled(false);
         }
@@ -160,7 +162,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     }
 
     @Override
-    public void makeNewDialogForNewUser() {
+    public void cleanDialogNewUserData() {
         dialogNewUser = makeDialogForNewUser();
     }
 

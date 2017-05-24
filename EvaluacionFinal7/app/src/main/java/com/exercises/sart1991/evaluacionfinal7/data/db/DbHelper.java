@@ -16,11 +16,12 @@ public interface DbHelper {
     void deleteUser(String userName);
     List<User> getAllUsers();
 
-    Donor getDonor(int donorId);
+    Donor getDonor(String donorId);
     void updateDonor(Donor donor);
     void insertDonor(Donor donor);
-    void deleteDonor(int donorId);
+    void deleteDonor(String donorId);
+    boolean checkDonorExists(String id);
     List<Donor> getAllDonors();
-
-    List<Donor> getAllDonorsFromUser(String userName);
+    List<Donor> getAllDonors(int donorId);
+    List<Donor> getAllDonors(String userName);
 }

@@ -12,7 +12,7 @@ public interface LoginMvpView extends MvpView {
     void onPasswordFieldError(int resId);
     void onConfPasswordFieldError(int resId);
     void showDialogForNewUser();
-    void makeNewDialogForNewUser();
+    void cleanDialogNewUserData();
     void gotoMainActivity();
 
 }

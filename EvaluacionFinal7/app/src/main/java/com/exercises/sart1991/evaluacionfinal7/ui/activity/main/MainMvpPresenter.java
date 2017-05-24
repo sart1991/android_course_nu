@@ -1,14 +1,33 @@
 package com.exercises.sart1991.evaluacionfinal7.ui.activity.main;
 
+import android.view.View;
+
+import com.exercises.sart1991.evaluacionfinal7.data.db.model.Donor;
 import com.exercises.sart1991.evaluacionfinal7.ui.base.MvpPresenter;
 
 /**
  * Created by sart1 on 5/19/2017.
  */
 
-interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
+public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
 
     void validateSession();
-    void onWelcome();
+    void onWelcome(View view);
     void onOptionItemClick(int itemId);
+    void onClickAddDonor();
+    void onDialogDonorIdTyping(String id, String idExcept);
+    void onCancelNewDonor();
+    void onDialogNewDonorRegister(
+            String id, String name, String lastName, String age, String bloodType,
+            String rh, String weight, String height
+    );
+    void onFirstLoadDonorData();
+    void onDonorMenuClick(Donor donor, int itemId);
+    void onConfirmEditDonor(
+            String id, String name, String lastName, String age, String bloodType,
+            String rh, String weight, String height
+    );
+    void onCancelEditDonor();
+    void onConfirmDeleteDonor(String id);
+    void onCancelDeleteDonor();
 }

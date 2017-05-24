@@ -3,6 +3,7 @@ package com.exercises.sart1991.evaluacionfinal7.data.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by sart1 on 5/22/2017.
@@ -61,6 +62,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             delim = ", ";
         }
         createTable.append(");");
+        Log.i(TAG, "sentenceCreateTable: " + createTable);
         return createTable.toString();
     }
 
