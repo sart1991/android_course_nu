@@ -2,12 +2,12 @@ package com.exercises.sart1991.evaluacionfinal7.ui.activity.main;
 
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.exercises.sart1991.evaluacionfinal7.R;
 import com.exercises.sart1991.evaluacionfinal7.data.DataManager;
 import com.exercises.sart1991.evaluacionfinal7.data.db.model.Donor;
+import com.exercises.sart1991.evaluacionfinal7.data.db.model.User;
 import com.exercises.sart1991.evaluacionfinal7.ui.base.BasePresenter;
 
 /**
@@ -42,6 +42,12 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     @Override
     public void onOptionItemClick(int itemId) {
         switch (itemId) {
+            case R.id.item_mainOptions_newPassword:
+                getMvpView().showDialogNewPassword();
+                break;
+            case R.id.item_mainOptions_deleteAccount:
+                getMvpView().showDialogDeleteAccount();
+                break;
             case R.id.item_mainOptions_logout:
                 getDataManager().setLoginState(false);
                 getMvpView().gotoLogin();
@@ -238,6 +244,65 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
             return getDataManager().getUserName();
         }
         return "";
+    }
+
+    @Override
+    public void onCancelNewPassword() {
+        getMvpView().onNotify(R.string.main_notifyNewPasswordCanceled, view);
+    }
+
+    @Override
+    public void onChangeNewPassword(String currentPassword,
+                                    String newPassword, String confPassword) {
+
+        if (!validateCurrentPassword(currentPassword)) {
+            getMvpView().onError(R.string.main_errorWrongCurrentPassword, view);
+            return;
+        }
+        if (!validateConfPassword(newPassword, confPassword)) {
+            getMvpView().onError(R.string.main_errorConfPassword, view);
+            return;
+        }
+        getDataManager().updateUser(new User(getDataManager().getUserName(), newPassword));
+        getMvpView().onSuccess(R.string.main_successPasswordChanged, view);
+    }
+
+    @Override
+    public void onTypingCurrentPassword(String currentPassword) {
+        if (!validateCurrentPassword(currentPassword)) {
+            getMvpView().onCurrentPasswordTypingError(R.string.main_errorTilWrongCurrentPassword);
+        }
+    }
+
+    @Override
+    public void onTypingConfPassword(String newPassword, String confPassword) {
+        if (!validateConfPassword(newPassword, confPassword)) {
+            getMvpView().onConfPasswordTypingError(R.string.main_errorTilConfirmationPassword);
+        }
+    }
+
+    private boolean validateCurrentPassword(String currentPassword) {
+        String dbPassword = getDataManager().getUser(getDataManager().getUserName()).getPassword();
+        return dbPassword.equals(currentPassword);
+    }
+
+    private boolean validateConfPassword(String newPassword, String confPassword) {
+        return newPassword.equals(confPassword);
+    }
+
+    @Override
+    public void onCancelDeleteAccount() {
+        getMvpView().onNotify(R.string.main_notifyDeleteAccountCanceled, view);
+    }
+
+    @Override
+    public void onDeleteAccount() {
+        for (Donor d: getDataManager().getAllDonors(null, getDataManager().getUserName())) {
+            getDataManager().deleteDonor(d.getId());
+        }
+        getDataManager().deleteUser(getDataManager().getUserName());
+        getDataManager().setLoginState(false);
+        getMvpView().gotoLogin();
     }
 
     private DataManager.DataManagerListener dataManagerListener = new DataManager.DataManagerListener() {

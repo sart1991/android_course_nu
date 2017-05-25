@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item
+        android:id="@+id/item_mainOptions_newPassword"
+        android:title="@string/mainOptions_newPassword" />
+    
+    <item
+        android:id="@+id/item_mainOptions_deleteAccount"
+        android:title="@string/mainOptions_deleteAccount" />
+    
     <item
         android:id="@+id/item_mainOptions_logout"
         android:title="@string/mainOptions_logout" />

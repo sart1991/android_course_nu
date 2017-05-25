@@ -15,6 +15,7 @@
     <string name="_rh">Rh</string>
     <string name="_update">Actualizar</string>
     <string name="_delete">Eliminar</string>
+    <string name="_change">Cambiar</string>
     
     <string name="app_name">Banco de Sangre</string>
     <string name="main_toolbarTitle">Control de Donantes</string>
@@ -49,6 +50,15 @@
     <string name="dialogDonor_editHintWeight">Peso (Kg)</string>
     <string name="dialogDonor_editHintHeight">Estatura (cm)</string>
     <string name="dialogDonor_negativeButton">@string/_cancel</string>
+    <string name="dialogNewPassword_title">Cambiar contraseña</string>
+    <string name="dialogNewPassword_current">Contraseña actual</string>
+    <string name="dialogNewPassword_newPassword">Nueva contraseña</string>
+    <string name="dialogNewPassword_confNewPassword">Confirmar nueva contraseña</string>
+    <string name="dialogNewPassword_negativeButton">@string/_cancel</string>
+    <string name="dialogNewPassword_positiveButton">@string/_change</string>
+    <string name="dialogDeleteAccount_title">Eliminar cuenta</string>
+    <string name="dialogDeleteAccount_message">¿Desea eliminar su cuenta?\n(Eliminará también sus donantes)</string>
+    <string name="dialogDeleteAccount_positiveButton">@string/_delete</string>
     <string name="cardView_imageButton_dotsDescription">Menu de tres puntos</string>
     <string name="_id_">ID:</string>
     <string name="_age_">EDAD:</string>
@@ -86,4 +96,14 @@
     <string name="main_notifyDeleteDonorCanceled">No se eliminó ningún donante</string>
     <string name="main_notifyEditDonorCanceled">No se editó ningún donante</string>
     <string name="main_checkBoxText">Filtrar por usuario</string>
+    <string name="mainOptions_newPassword">Cambiar contraseña</string>
+    <string name="mainOptions_deleteAccount">Eliminar cuenta</string>
+    <string name="main_notifyNewPasswordCanceled">No se cambio la contraseña</string>
+    <string name="main_successPasswordChanged">Ahora tiene una nueva contraseña</string>
+    <string name="main_errorWrongCurrentPassword">Contraseña actual incorrecta</string>
+    <string name="main_errorTilWrongCurrentPassword">Contraseña incorrecta</string>
+    <string name="main_errorConfPassword">Contraseña de confirmacion incorrecta</string>
+    <string name="main_errorTilConfirmationPassword">Contraseña no coincide</string>
+    <string name="main_notifyDeleteAccountCanceled">No se eliminó ninguna información</string>
+    
 </resources>

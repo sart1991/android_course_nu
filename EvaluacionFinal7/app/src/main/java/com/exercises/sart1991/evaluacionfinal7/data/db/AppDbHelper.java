@@ -176,7 +176,7 @@ public class AppDbHelper implements DbHelper {
     }
 
     private List<User> readCursorUser(Cursor c) {
-        List<User> usersList = new ArrayList<>(1);
+        List<User> usersList = new ArrayList<>();
         if (c.moveToFirst()) {
             do {
                 String userName = c.getString(c.getColumnIndex(""+DbInfo.UserInfo.USER_NAME));
@@ -211,6 +211,4 @@ public class AppDbHelper implements DbHelper {
         c.close();
         return usersList;
     }
-
-
 }

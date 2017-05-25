@@ -13,7 +13,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -38,13 +37,19 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     private Toolbar toolbar;
     private FloatingActionButton fab;
     private Dialog dialogNewDonor;
-    private TextInputLayout tilSearchDonor, tilDialogNewDonorId;
+    private TextInputLayout tilSearchDonor;
     private EditText editSearchDonor;
     private CheckBox checkUserFilter;
     private RecyclerView recyclerDonors;
     private CardDonor cardDonor = new CardDonor();
-    private EditText editDialogDonorId, editDialogDonorName, editDialogDonorLastName, editDialogDonorAge, editDialogDonorWeight, editDialogDonorHeight;
+    //Dialog donor
+    private TextInputLayout tilDialogNewDonorId;
+    private EditText editDialogDonorId, editDialogDonorName, editDialogDonorLastName,
+                        editDialogDonorAge, editDialogDonorWeight, editDialogDonorHeight;
     private Spinner spinnerDialogDonorBloodType, spinnerDialogDonorRh;
+    //Dialog new password
+    private TextInputLayout tilDialogCurrentPasword, tilDialogConfNewPassword;
+    private EditText editDialogCurrentPassword, editDialogNewPassword, editDialogConfNewPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -286,15 +291,17 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     private Dialog makeDialogForConfirmation(
             int resTitle, String message,
-            int positive, DialogInterface.OnClickListener listener) {
+            int positive, DialogInterface.OnCancelListener listenerCancel,
+            DialogInterface.OnClickListener listenerPositive) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(resTitle);
         builder.setMessage(message);
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+        builder.setOnCancelListener(listenerCancel);
+        builder.setNegativeButton(R.string._cancel, new DialogInterface.OnClickListener() {
             @Override
-            public void onCancel(DialogInterface dialog) {
-                PRESENTER.onCancelDeleteDonor();
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
             }
         });
         builder.setNegativeButton(R.string._cancel, new DialogInterface.OnClickListener() {
@@ -303,12 +310,18 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 dialog.cancel();
             }
         });
-        builder.setPositiveButton(positive, listener);
+        builder.setPositiveButton(positive, listenerPositive);
         return builder.create();
     }
 
     private Dialog makeDialogForDeleteDonor(final Donor donor) {
-        DialogInterface.OnClickListener listenerForDeleteDonor = new DialogInterface.OnClickListener() {
+        DialogInterface.OnCancelListener listenerCancel = new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                PRESENTER.onCancelDeleteDonor();
+            }
+        };
+        DialogInterface.OnClickListener listenerPositive = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 PRESENTER.onConfirmDeleteDonor(donor.getId());
@@ -321,13 +334,124 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                         getString(R.string.dialogDeleteDonor_endMessage) + " " +
                         donor.getId(),
                 R.string.dialogDeleteDonor_positiveButton,
-                listenerForDeleteDonor
+                listenerCancel,
+                listenerPositive
         );
     }
 
     @Override
     public void showDialogDeleteDonor(Donor donor) {
         makeDialogForDeleteDonor(donor).show();
+    }
+
+    private Dialog makeDialogForNewPassword() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.dialogNewPassword_title);
+        View view = getLayoutInflater().inflate(R.layout.layout_dialog_newpassword, null);
+        tilDialogCurrentPasword = (TextInputLayout) view.findViewById(R.id.til_dialogNewPassword_current);
+        tilDialogConfNewPassword = (TextInputLayout) view.findViewById(R.id.til_dialogNewPassword_conf);
+        editDialogCurrentPassword = (EditText) view.findViewById(R.id.editText_dialogNewPassword_current);
+        editDialogNewPassword = (EditText) view.findViewById(R.id.editText_dialogNewPassword_new);
+        editDialogConfNewPassword = (EditText) view.findViewById(R.id.ediText_dialogNewPassword_conf);
+        TextWatcher textWatcherCurrentPassword = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                tilDialogCurrentPasword.setErrorEnabled(false);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                PRESENTER.onTypingCurrentPassword(s.toString());
+            }
+        };
+        TextWatcher textWatcherConfPassword = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                tilDialogConfNewPassword.setErrorEnabled(false);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                PRESENTER.onTypingConfPassword(
+                        editDialogNewPassword.getText().toString(),
+                        s.toString()
+                );
+            }
+        };
+        editDialogCurrentPassword.addTextChangedListener(textWatcherCurrentPassword);
+        editDialogConfNewPassword.addTextChangedListener(textWatcherConfPassword);
+        builder.setView(view);
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                PRESENTER.onCancelNewPassword();
+            }
+        });
+        builder.setNegativeButton(R.string.dialogNewPassword_negativeButton, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.setPositiveButton(R.string.dialogNewPassword_positiveButton, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                PRESENTER.onChangeNewPassword(
+                        editDialogCurrentPassword.getText().toString(),
+                        editDialogNewPassword.getText().toString(),
+                        editDialogConfNewPassword.getText().toString()
+                );
+            }
+        });
+        return builder.create();
+    }
+
+    @Override
+    public void showDialogNewPassword() {
+        makeDialogForNewPassword().show();
+    }
+
+    @Override
+    public void onCurrentPasswordTypingError(int resError) {
+        tilDialogCurrentPasword.setError(getString(resError));
+    }
+
+    @Override
+    public void onConfPasswordTypingError(int resError) {
+        tilDialogConfNewPassword.setError(getString(resError));
+    }
+
+    @Override
+    public void showDialogDeleteAccount() {
+        makeDialogForDeleteAccount().show();
+    }
+
+    private Dialog makeDialogForDeleteAccount() {
+        DialogInterface.OnCancelListener listenerCancel = new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                PRESENTER.onCancelDeleteAccount();
+            }
+        };
+        DialogInterface.OnClickListener listenerPositive = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                PRESENTER.onDeleteAccount();
+            }
+        };
+        return makeDialogForConfirmation(
+                R.string.dialogDeleteAccount_title,
+                getString(R.string.dialogDeleteAccount_message),
+                R.string.dialogDeleteAccount_positiveButton,
+                listenerCancel,
+                listenerPositive
+        );
     }
 
     @Override

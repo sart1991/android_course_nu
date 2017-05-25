@@ -29,4 +29,10 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
     void onCancelDeleteDonor();
     void onDonorIdFilterTyping(String id);
     void onTouchClearSearch();
+    void onCancelNewPassword();
+    void onChangeNewPassword(String currentPassword, String newPassword, String confPassword);
+    void onTypingCurrentPassword(String currentPassword);
+    void onTypingConfPassword(String newPassword, String confPassword);
+    void onCancelDeleteAccount();
+    void onDeleteAccount();
 }

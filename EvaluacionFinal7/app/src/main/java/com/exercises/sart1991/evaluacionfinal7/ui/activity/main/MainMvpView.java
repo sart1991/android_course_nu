@@ -23,4 +23,8 @@ interface MainMvpView extends MvpView {
     void showDialogDeleteDonor(Donor donor);
     void clearSearch();
     boolean checkFilterUserState();
+    void showDialogNewPassword();
+    void onCurrentPasswordTypingError(int resError);
+    void onConfPasswordTypingError(int resError);
+    void showDialogDeleteAccount();
 }

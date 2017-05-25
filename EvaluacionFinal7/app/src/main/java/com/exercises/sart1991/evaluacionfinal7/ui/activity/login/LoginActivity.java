@@ -167,6 +167,14 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     }
 
     @Override
+    public void onBackPressed() {
+        Intent intentHome = new Intent(Intent.ACTION_MAIN);
+        intentHome.addCategory(Intent.CATEGORY_HOME);
+        intentHome.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intentHome);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         PRESENTER.onDetach();
