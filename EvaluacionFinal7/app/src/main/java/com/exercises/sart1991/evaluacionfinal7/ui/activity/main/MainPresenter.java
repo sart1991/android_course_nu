@@ -2,6 +2,7 @@ package com.exercises.sart1991.evaluacionfinal7.ui.activity.main;
 
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.exercises.sart1991.evaluacionfinal7.R;
@@ -21,7 +22,9 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void validateSession() {
+        Log.i(TAG, "validateSession: outer");
         if(!isSessionActive()) {
+            Log.i(TAG, "validateSession: inner");
             getMvpView().gotoLogin();
         }
     }
@@ -33,6 +36,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                 " " + getDataManager().getUserName();
         getMvpView().onNotify(message, view);
         this.view = view;
+        getMvpView().setToolbarSubtitle(getCheckedUserName());
     }
 
     @Override
@@ -73,9 +77,11 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void onFirstLoadDonorData() {
-        getMvpView().initializeCards();
-        getDataManager().setDataManagerListener(dataManagerListener);
-        getMvpView().setDonorList(getDataManager().getAllDonors(getDataManager().getUserName()));
+        if (isSessionActive()) {
+            getMvpView().initializeCards();
+            getDataManager().setDataManagerListener(dataManagerListener);
+            getMvpView().setDonorList(getDataManager().getAllDonors(null, getCheckedUserName()));
+        }
     }
 
     @Override
@@ -217,16 +223,27 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void onDonorIdFilterTyping(String id) {
-        if (!"".equals(id)) {
-            getMvpView().setDonorList(getDataManager().getAllDonors(Long.valueOf(id)));
-            getMvpView().onDonorListChanged();
+        getMvpView().setDonorList(getDataManager().getAllDonors(id, getCheckedUserName()));
+        getMvpView().onDonorListChanged();
+    }
+
+    @Override
+    public void onTouchClearSearch() {
+        getMvpView().clearSearch();
+    }
+
+    private String getCheckedUserName() {
+        if (getMvpView().checkFilterUserState()) {
+            Log.i(TAG, "getCheckedUserName: donorCheck");
+            return getDataManager().getUserName();
         }
+        return "";
     }
 
     private DataManager.DataManagerListener dataManagerListener = new DataManager.DataManagerListener() {
         @Override
         public void onDonorDataChanged() {
-            getMvpView().setDonorList(getDataManager().getAllDonors(getDataManager().getUserName()));
+            getMvpView().setDonorList(getDataManager().getAllDonors(null, getCheckedUserName()));
             getMvpView().onDonorListChanged();
         }
     };

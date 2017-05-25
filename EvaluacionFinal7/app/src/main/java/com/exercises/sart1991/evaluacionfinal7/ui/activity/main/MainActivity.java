@@ -13,9 +13,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -29,6 +32,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
     private static final MainMvpPresenter<MainMvpView> PRESENTER = new MainPresenter<>();
 
     private Toolbar toolbar;
@@ -36,6 +40,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     private Dialog dialogNewDonor;
     private TextInputLayout tilSearchDonor, tilDialogNewDonorId;
     private EditText editSearchDonor;
+    private CheckBox checkUserFilter;
     private RecyclerView recyclerDonors;
     private CardDonor cardDonor = new CardDonor();
     private EditText editDialogDonorId, editDialogDonorName, editDialogDonorLastName, editDialogDonorAge, editDialogDonorWeight, editDialogDonorHeight;
@@ -68,10 +73,17 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 listenerForCancelNewDonor, null);
         tilSearchDonor = (TextInputLayout) findViewById(R.id.til_main_searchDonor);
         editSearchDonor = tilSearchDonor.getEditText();
+        checkUserFilter = (CheckBox) findViewById(R.id.checkBox_main_searchAllUsers);
         recyclerDonors = (RecyclerView) findViewById(R.id.recycler_main_donorInfoContainer);
 
         //bind listeners
         editSearchDonor.addTextChangedListener(textWatcherForSearchListener);
+        editSearchDonor.setOnTouchListener(touchListenerForClearSearch);
+    }
+
+    @Override
+    public void setToolbarSubtitle(String subtitle) {
+        toolbar.setSubtitle(subtitle);
     }
 
     private TextWatcher textWatcherForSearchListener = new TextWatcher() {
@@ -86,6 +98,34 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             PRESENTER.onDonorIdFilterTyping(s.toString());
         }
     };
+
+    private View.OnTouchListener touchListenerForClearSearch = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                int xSpace = editSearchDonor.getRight() - editSearchDonor.getTotalPaddingEnd();
+                if (event.getRawX() >= xSpace) {
+                    PRESENTER.onTouchClearSearch();
+                    return true;
+                }
+            }
+            return false;
+        }
+    };
+
+    @Override
+    public void clearSearch() {
+        editSearchDonor.setText("");
+    }
+
+    @Override
+    public boolean checkFilterUserState() {
+        return checkUserFilter.isChecked();
+    }
+
+    public void onClickCheckFilterForUser(View view) {
+        PRESENTER.onDonorIdFilterTyping(editSearchDonor.getText().toString());
+    }
 
     public void gotoLogin() {
         startActivity(new Intent(this, LoginActivity.class));

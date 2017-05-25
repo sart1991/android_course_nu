@@ -66,7 +66,7 @@
     <string name="login_notifyUserCreated">Usuario creado</string>
     <string name="login_notifyUserCanceled">Creación de usuario cancelada</string>
     <string name="login_errorUserCreationError">Error al crear el usuario</string>
-    <string name="login_errorPasswordDontMatch">El password no coincide</string>
+    <string name="login_errorPasswordDontMatch">La contraseña no coincide</string>
     <string name="login_errorUserAlreadyExists">El usuario ya existe</string>
     <string name="login_successUserCreated">El usuario fue creado</string>
     
@@ -85,4 +85,5 @@
     <string name="main_notifyDonorDeleted">El donante fué eliminado</string>
     <string name="main_notifyDeleteDonorCanceled">No se eliminó ningún donante</string>
     <string name="main_notifyEditDonorCanceled">No se editó ningún donante</string>
+    <string name="main_checkBoxText">Filtrar por usuario</string>
 </resources>

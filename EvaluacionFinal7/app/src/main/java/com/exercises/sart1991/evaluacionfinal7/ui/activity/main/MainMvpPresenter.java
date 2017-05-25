@@ -1,5 +1,6 @@
 package com.exercises.sart1991.evaluacionfinal7.ui.activity.main;
 
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.exercises.sart1991.evaluacionfinal7.data.db.model.Donor;
@@ -27,4 +28,5 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
     void onConfirmDeleteDonor(String id);
     void onCancelDeleteDonor();
     void onDonorIdFilterTyping(String id);
+    void onTouchClearSearch();
 }

@@ -12,6 +12,7 @@ import java.util.List;
 interface MainMvpView extends MvpView {
 
     void gotoLogin();
+    void setToolbarSubtitle(String subtitle);
     void showDialogNewDonor();
     void cleanDialogNewDonorData();
     void onDialogDonorIdError(int errorResId);
@@ -20,4 +21,6 @@ interface MainMvpView extends MvpView {
     void onDonorListChanged();
     void showDialogEditDonor(Donor donor);
     void showDialogDeleteDonor(Donor donor);
+    void clearSearch();
+    boolean checkFilterUserState();
 }

@@ -15,24 +15,43 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_weight="4"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/checkBox_main_searchAllUsers"
         app:layout_constraintTop_toTopOf="parent">
         
         <EditText
-            android:inputType="number"
+            android:id="@+id/editText_main_searchDonor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/selector_main_clear"
-            android:hint="@string/main_editHint" />
+            android:hint="@string/main_editHint"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:nextFocusForward="@null" />
     
     </android.support.design.widget.TextInputLayout>
+    
+    <CheckBox
+        android:id="@+id/checkBox_main_searchAllUsers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/main_checkBoxText"
+        app:layout_constraintBottom_toBottomOf="@id/til_main_searchDonor"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toRightOf="@id/til_main_searchDonor"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/til_main_searchDonor"
+        android:onClick="onClickCheckFilterForUser"/>
     
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_main_donorInfoContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

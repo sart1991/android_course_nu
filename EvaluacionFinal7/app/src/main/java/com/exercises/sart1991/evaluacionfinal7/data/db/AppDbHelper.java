@@ -136,35 +136,16 @@ public class AppDbHelper implements DbHelper {
     }
 
     @Override
-    public List<Donor> getAllDonors() {
-        SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery(
-                "SELECT * FROM " + DbInfo.TablesInfo.DONOR_TABLE.getTableName(),
-                null
-        );
-        return readCursorDonor(cursor);
-    }
-
-    @Override
-    public List<Donor> getAllDonors(long donorId) {
+    public List<Donor> getAllDonors(String donorId, String userName) {
+        String addQuery = "";
+        donorId = donorId != null ? donorId : "";
+        if (!"".equals(userName)) {addQuery = " AND user_name = '" + userName + "'";}
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery(
                 "SELECT * FROM " +
                         DbInfo.TablesInfo.DONOR_TABLE.getTableName() +
-                " WHERE id LIKE ?",
+                " WHERE id LIKE ?" + addQuery,
                 new String[] {"%" + donorId + "%"}
-        );
-        return readCursorDonor(cursor);
-    }
-
-    @Override
-    public List<Donor> getAllDonors(String userName) {
-        SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery(
-                "SELECT * FROM " +
-                        DbInfo.TablesInfo.DONOR_TABLE.getTableName() +
-                " WHERE user_name=?",
-                new String[] {userName}
         );
         return readCursorDonor(cursor);
     }

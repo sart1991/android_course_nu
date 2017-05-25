@@ -40,7 +40,9 @@ create table test(id int primary key, name varchar(20), rh nvarchar(2), fName te
 insert into test values(1110234, "sadsadjbncv", "abcdsacsac", "pineapple")
 drop table if exists test;
 select * from test where id=110234;
-select t.* from test t, fruit f where t.fName = f.name;]]></console>
+select t.* from test t, fruit f where t.fName = f.name;
+
+select * from fruit where id like '%%';]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">

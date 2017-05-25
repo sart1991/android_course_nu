@@ -106,18 +106,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public List<Donor> getAllDonors() {
-        return dbHelper.getAllDonors();
-    }
-
-    @Override
-    public List<Donor> getAllDonors(long donorId) {
-        return dbHelper.getAllDonors(donorId);
-    }
-
-    @Override
-    public List<Donor> getAllDonors(String userName) {
-        return dbHelper.getAllDonors(userName);
+    public List<Donor> getAllDonors(String donorId, String userName) {
+        return dbHelper.getAllDonors(donorId, userName);
     }
 
     @Override
