@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Background Tasks</string>
+    
+    <string name="_unit2">Unidad 2</string>
+    <string name="main_buttonUnit2">@string/_unit2</string>
+</resources>
