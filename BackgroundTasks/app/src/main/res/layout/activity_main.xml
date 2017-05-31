@@ -7,10 +7,10 @@
     tools:context="com.exercises.sart1991.backgroundtasks.ui.activity.main.MainActivity">
     
     <Button
-        android:id="@+id/button_main_unit2"
+        android:id="@+id/button_main_http"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClickButtonUnit2"
+        android:onClick="onClickButtonHttp"
         android:text="@string/main_buttonUnit2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

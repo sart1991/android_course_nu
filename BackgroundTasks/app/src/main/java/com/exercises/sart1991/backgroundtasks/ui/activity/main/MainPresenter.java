@@ -9,7 +9,7 @@ import com.exercises.sart1991.backgroundtasks.ui.base.BasePresenter;
 public class MainPresenter<V extends MainMvpView>
         extends BasePresenter<V> implements MainMvpPresenter<V> {
     @Override
-    public void clickButtonUnit2() {
+    public void clickButtonHttp() {
         getMvpView().gotoUnit2();
     }
 }

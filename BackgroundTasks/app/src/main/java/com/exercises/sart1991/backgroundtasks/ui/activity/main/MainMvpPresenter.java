@@ -7,5 +7,5 @@ import com.exercises.sart1991.backgroundtasks.ui.base.MvpPresenter;
  */
 
 public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
-    void clickButtonUnit2();
+    void clickButtonHttp();
 }

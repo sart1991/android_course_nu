@@ -2,12 +2,11 @@ package com.exercises.sart1991.backgroundtasks.ui.activity.main;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.exercises.sart1991.backgroundtasks.R;
-import com.exercises.sart1991.backgroundtasks.ui.activity.unit2.Unit2Activity;
+import com.exercises.sart1991.backgroundtasks.ui.activity.httpurl.HttpActivity;
 import com.exercises.sart1991.backgroundtasks.ui.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
@@ -23,21 +22,21 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public Context getViewContext() {
-        return this;
-    }
-
-    @Override
     protected void initializeComponents() {
 
     }
 
-    public void onClickButtonUnit2(View view) {
-        PRESENTER.clickButtonUnit2();
+    public void onClickButtonHttp(View view) {
+        PRESENTER.clickButtonHttp();
     }
 
     @Override
     public void gotoUnit2() {
-        startActivity(new Intent(this, Unit2Activity.class));
+        startActivity(new Intent(this, HttpActivity.class));
+    }
+
+    @Override
+    public Context getViewContext() {
+        return this;
     }
 }

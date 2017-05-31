@@ -3,4 +3,7 @@
     
     <string name="_unit2">Unidad 2</string>
     <string name="main_buttonUnit2">@string/_unit2</string>
+    <string name="http_toolbarTitle">HttpUrlConnection</string>
+    <string name="_json">Json</string>
+    <string name="dialogGetPeople_wait">Estamos conectando espere por favor</string>
 </resources>
