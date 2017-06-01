@@ -1,4 +1,4 @@
-package com.exercises.sart1991.backgroundtasks.ui.activity.httpurl;
+package com.exercises.sart1991.backgroundtasks.ui.activity.http;
 
 import com.exercises.sart1991.backgroundtasks.ui.base.MvpPresenter;
 
@@ -10,5 +10,5 @@ public interface HttpMvpPresenter<V extends HttpMvpView> extends MvpPresenter<V>
 
     void getPeople();
     void getUsers();
-    void addUser();
+    void selectOptionMenu(int itemId);
 }

@@ -8,5 +8,11 @@
     <string name="dialogGet_wait">Estamos conectando espere por favor</string>
     <string name="http_noConnection">No hay conexión</string>
     <string name="dialogPost_wait">Se esta agregando el Usuario espere por favor</string>
+    <string name="dialogPut_wait">Se esta axtualizando el Usuario espere por favor</string>
+    <string name="dialogDelete_wait">Se esta eliminando el usuario espere por favor</string>
     <string name="http_buttonLoad">Load</string>
+    <string name="http_editIdHint">Ingrese id</string>
+    <string name="_post">post</string>
+    <string name="_put">put</string>
+    <string name="_delete">delete</string>
 </resources>

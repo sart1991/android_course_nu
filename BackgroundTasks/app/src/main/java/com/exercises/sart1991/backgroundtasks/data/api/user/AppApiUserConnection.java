@@ -63,6 +63,48 @@ public class AppApiUserConnection implements ApiUserConnection {
         }
     }
 
+    @Override
+    public void putUser(User user) {
+        HttpURLConnection connection = null;
+        try {
+            connection = connectToUrl(new URL(url + "/users/" + user.getId()));
+            connection.setRequestMethod("PUT");
+            connection.setRequestProperty("Content-Type", "application/json;charset=utf-8");
+            connection.setDoOutput(true);
+            connection.setFixedLengthStreamingMode(user.toString().getBytes().length);
+
+            OutputStream output = connection.getOutputStream();
+            output.write(user.toString().getBytes());
+            output.flush();
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            connection.disconnect();
+        }
+    }
+
+    @Override
+    public void deleteUser(int userId) {
+        HttpURLConnection connection = null;
+        try {
+            connection = connectToUrl(new URL(url + "/users/" + userId));
+            connection.setRequestMethod("DELETE");
+            connection.setRequestProperty("Content-Type", "application/json;charset=utf-8");
+            connection.setDoOutput(true);
+            connection.setFixedLengthStreamingMode(String.valueOf(userId).getBytes().length);
+
+            OutputStream output = connection.getOutputStream();
+            output.write(String.valueOf(userId).getBytes());
+            output.flush();
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            connection.disconnect();
+        }
+    }
+
     private HttpURLConnection connectToUrl(URL url) {
         try {
             return (HttpURLConnection) url.openConnection();

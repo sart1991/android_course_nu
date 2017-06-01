@@ -1,4 +1,4 @@
-package com.exercises.sart1991.backgroundtasks.ui.activity.httpurl;
+package com.exercises.sart1991.backgroundtasks.ui.activity.http;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -6,7 +6,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.exercises.sart1991.backgroundtasks.R;
@@ -19,6 +22,7 @@ public class HttpActivity extends BaseActivity implements HttpMvpView {
     private Toolbar toolbar;
     private FloatingActionButton fab;
     private Dialog dialogProgress;
+    private EditText editId;
     private TextView txtContent;
 
     @Override
@@ -34,7 +38,20 @@ public class HttpActivity extends BaseActivity implements HttpMvpView {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        editId = (EditText) findViewById(R.id.editText_http_id);
         txtContent = (TextView) findViewById(R.id.textView_http_content);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options_http, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        PRESENTER.selectOptionMenu(item.getItemId());
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -65,15 +82,16 @@ public class HttpActivity extends BaseActivity implements HttpMvpView {
     }
 
     public void onClickFab(View view) {
-        PRESENTER.addUser();
+        PRESENTER.getUsers();
+    }
+
+    @Override
+    public String getEditId() {
+        return editId.getText().toString();
     }
 
     @Override
     public Context getViewContext() {
         return this;
-    }
-
-    public void onClickButtonLoad(View view) {
-        PRESENTER.getUsers();
     }
 }

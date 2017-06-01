@@ -20,8 +20,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.httpurl.HttpActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.activity.http.HttpActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">
         
         </activity>
     </application>

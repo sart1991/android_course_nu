@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.exercises.sart1991.backgroundtasks.R;
-import com.exercises.sart1991.backgroundtasks.ui.activity.httpurl.HttpActivity;
+import com.exercises.sart1991.backgroundtasks.ui.activity.http.HttpActivity;
 import com.exercises.sart1991.backgroundtasks.ui.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements MainMvpView {

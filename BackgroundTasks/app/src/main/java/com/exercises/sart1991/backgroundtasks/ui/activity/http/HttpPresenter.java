@@ -1,4 +1,4 @@
-package com.exercises.sart1991.backgroundtasks.ui.activity.httpurl;
+package com.exercises.sart1991.backgroundtasks.ui.activity.http;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -18,6 +18,21 @@ public class HttpPresenter<V extends HttpMvpView>
         extends BasePresenter<V> implements HttpMvpPresenter<V> {
 
     private static final String TAG = HttpPresenter.class.getSimpleName();
+
+    @Override
+    public void selectOptionMenu(int itemId) {
+        switch (itemId) {
+            case R.id.item_httpOptions_post:
+                addUser();
+                break;
+            case R.id.item_httpOptions_put:
+                updateUser();
+                break;
+            case R.id.item_httpOptions_delete:
+                deleteUser();
+                break;
+        }
+    }
 
     @Override
     public void getPeople() {
@@ -85,8 +100,7 @@ public class HttpPresenter<V extends HttpMvpView>
         }.execute();
     }
 
-    @Override
-    public void addUser() {
+    private void addUser() {
         if (!validateConnection()) {
             getMvpView().onError(R.string.http_noConnection, null);
             return;
@@ -118,6 +132,74 @@ public class HttpPresenter<V extends HttpMvpView>
                 Log.i(TAG, "onPostExecute: " + "getUsers()");
             }
         }.execute(getJsonUser());
+    }
+
+    private void updateUser() {
+        if (!validateConnection()) {
+            getMvpView().onError(R.string.http_noConnection, null);
+            return;
+        }
+        new AsyncTask<User, Void, Void>() {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                getMvpView().showProgressDialogForNetwork(R.string.dialogPut_wait);
+            }
+
+            @Override
+            protected Void doInBackground(User... params) {
+                User user = params[0];
+                String tempId = getMvpView().getEditId();
+                int id = 1;
+                if (!"".equals(tempId)) id = Integer.valueOf(tempId);
+                user.setId(id);
+                getDataManager().putUser(user);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                if (getMvpView().dialogForNetworkIsShowing()) {
+                    getMvpView().dismissDialogForNetwork();
+                }
+                getUsers();
+            }
+        }.execute(new User(0, "natalia", "natalia@nextu.com"));
+    }
+
+    private void deleteUser() {
+        if (!validateConnection()) {
+            getMvpView().onError(R.string.http_noConnection, null);
+        }
+
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                getMvpView().showProgressDialogForNetwork(R.string.dialogDelete_wait);
+            }
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                String tempId = getMvpView().getEditId();
+                int id = 1;
+                if (!"".equals(tempId)) id = Integer.valueOf(tempId);
+                getDataManager().deleteUser(id);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                if (getMvpView().dialogForNetworkIsShowing()) {
+                    getMvpView().dismissDialogForNetwork();
+                }
+                getUsers();
+            }
+        }.execute();
     }
 
     private boolean validateConnection() {

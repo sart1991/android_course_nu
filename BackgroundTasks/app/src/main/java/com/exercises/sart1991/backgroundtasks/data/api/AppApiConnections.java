@@ -29,4 +29,14 @@ public class AppApiConnections implements ApiConnections {
     public void postUser(User user) {
         userConnection.postUser(user);
     }
+
+    @Override
+    public void putUser(User user) {
+        userConnection.putUser(user);
+    }
+
+    @Override
+    public void deleteUser(int userId) {
+        userConnection.deleteUser(userId);
+    }
 }

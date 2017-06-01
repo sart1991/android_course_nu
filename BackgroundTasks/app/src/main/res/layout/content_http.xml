@@ -5,30 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.exercises.sart1991.backgroundtasks.ui.activity.httpurl.HttpActivity"
+    tools:context="com.exercises.sart1991.backgroundtasks.ui.activity.http.HttpActivity"
     tools:showIn="@layout/activity_http">
     
-    <TextView
-        android:id="@+id/textView_http_title"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editText_http_id"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/_json"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="@string/http_editIdHint"
+        android:imeOptions="actionDone"
+        android:inputType="number"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
-    
-    <Button
-        android:id="@+id/button_http_loadData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textView_http_title"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="@string/http_buttonLoad"
-        android:onClick="onClickButtonLoad"/>
+        app:layout_constraintVertical_bias="0.01" />
     
     <ScrollView
         android:id="@+id/scrollView_http_content"
@@ -38,7 +32,7 @@
         android:layout_marginRight="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_http_loadData">
+        app:layout_constraintTop_toBottomOf="@id/editText_http_id">
         
         <TextView
             android:id="@+id/textView_http_content"

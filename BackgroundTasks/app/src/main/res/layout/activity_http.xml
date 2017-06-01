@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.exercises.sart1991.backgroundtasks.ui.activity.httpurl.HttpActivity">
+    tools:context="com.exercises.sart1991.backgroundtasks.ui.activity.http.HttpActivity">
     
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
+        android:src="@android:drawable/stat_sys_download"
         android:tint="@android:color/white"
         app:fabSize="normal"
         android:onClick="onClickFab"/>

@@ -1,4 +1,4 @@
-package com.exercises.sart1991.backgroundtasks.ui.activity.httpurl;
+package com.exercises.sart1991.backgroundtasks.ui.activity.http;
 
 import com.exercises.sart1991.backgroundtasks.ui.base.MvpView;
 
@@ -11,4 +11,5 @@ public interface HttpMvpView extends MvpView {
     void dismissDialogForNetwork();
     boolean dialogForNetworkIsShowing();
     void showResult(String result);
+    String getEditId();
 }

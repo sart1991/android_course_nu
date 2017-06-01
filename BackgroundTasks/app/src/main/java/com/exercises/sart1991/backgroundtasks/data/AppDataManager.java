@@ -33,6 +33,16 @@ public class AppDataManager implements  DataManager {
         apiConnections.postUser(user);
     }
 
+    @Override
+    public void putUser(User user) {
+        apiConnections.putUser(user);
+    }
+
+    @Override
+    public void deleteUser(int userId) {
+        apiConnections.deleteUser(userId);
+    }
+
     interface Callback {
         void userDataModified();
     }

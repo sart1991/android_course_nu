@@ -9,4 +9,6 @@ import com.exercises.sart1991.backgroundtasks.data.api.user.model.User;
 public interface ApiUserConnection {
     String getUsers();
     void postUser(User user);
+    void putUser(User user);
+    void deleteUser(int userId);
 }
