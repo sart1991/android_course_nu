@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Background Tasks</string>
     
-    <string name="_unit2">Unidad 2</string>
-    <string name="main_buttonUnit2">@string/_unit2</string>
+    <string name="_http">HTTP</string>
+    <string name="main_buttonHttp">@string/_http</string>
     <string name="http_toolbarTitle">HttpUrlConnection</string>
     <string name="_json">Json</string>
-    <string name="dialogGetPeople_wait">Estamos conectando espere por favor</string>
+    <string name="dialogGet_wait">Estamos conectando espere por favor</string>
+    <string name="http_noConnection">No hay conexión</string>
+    <string name="dialogPost_wait">Se esta agregando el Usuario espere por favor</string>
+    <string name="http_buttonLoad">Load</string>
 </resources>

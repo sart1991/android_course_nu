@@ -7,8 +7,8 @@ import com.exercises.sart1991.backgroundtasks.ui.base.MvpView;
  */
 
 public interface HttpMvpView extends MvpView {
-    void showProgressDialogForGetPeople();
-    void dismissDialogForGetPeople();
-    boolean dialogForGetPeopleIsShowing();
+    void showProgressDialogForNetwork(int resMessage);
+    void dismissDialogForNetwork();
+    boolean dialogForNetworkIsShowing();
     void showResult(String result);
 }

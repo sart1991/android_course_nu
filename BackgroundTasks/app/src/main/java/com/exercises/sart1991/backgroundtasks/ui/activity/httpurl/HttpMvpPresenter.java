@@ -9,4 +9,6 @@ import com.exercises.sart1991.backgroundtasks.ui.base.MvpPresenter;
 public interface HttpMvpPresenter<V extends HttpMvpView> extends MvpPresenter<V> {
 
     void getPeople();
+    void getUsers();
+    void addUser();
 }

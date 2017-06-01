@@ -18,7 +18,7 @@ public class HttpActivity extends BaseActivity implements HttpMvpView {
 
     private Toolbar toolbar;
     private FloatingActionButton fab;
-    private Dialog dialogForGetPeople;
+    private Dialog dialogProgress;
     private TextView txtContent;
 
     @Override
@@ -34,23 +34,23 @@ public class HttpActivity extends BaseActivity implements HttpMvpView {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        dialogForGetPeople = makeProgressDialog(getString(R.string.dialogGetPeople_wait));
         txtContent = (TextView) findViewById(R.id.textView_http_content);
     }
 
     @Override
-    public void showProgressDialogForGetPeople() {
-        dialogForGetPeople.show();
+    public void showProgressDialogForNetwork(int message) {
+        dialogProgress = makeProgressDialog(getString(message));
+        dialogProgress.show();
     }
 
     @Override
-    public boolean dialogForGetPeopleIsShowing() {
-        return dialogForGetPeople.isShowing();
+    public boolean dialogForNetworkIsShowing() {
+        return dialogProgress.isShowing();
     }
 
     @Override
-    public void dismissDialogForGetPeople() {
-        dialogForGetPeople.dismiss();
+    public void dismissDialogForNetwork() {
+        dialogProgress.dismiss();
     }
 
     private Dialog makeProgressDialog(String message) {
@@ -65,11 +65,15 @@ public class HttpActivity extends BaseActivity implements HttpMvpView {
     }
 
     public void onClickFab(View view) {
-        PRESENTER.getPeople();
+        PRESENTER.addUser();
     }
 
     @Override
     public Context getViewContext() {
         return this;
+    }
+
+    public void onClickButtonLoad(View view) {
+        PRESENTER.getUsers();
     }
 }
