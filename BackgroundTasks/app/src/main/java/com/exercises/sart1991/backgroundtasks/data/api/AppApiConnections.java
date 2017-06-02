@@ -10,6 +10,7 @@ import com.exercises.sart1991.backgroundtasks.data.api.user.ApiUserConnection;
 import com.exercises.sart1991.backgroundtasks.data.api.user.AppApiUserConnection;
 import com.exercises.sart1991.backgroundtasks.data.api.user.model.User;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -78,5 +79,10 @@ public class AppApiConnections implements ApiConnections {
                                  Response.ErrorListener errorListener) {
 
         userConnection.deleteVolleyUser(id, listener, errorListener);
+    }
+
+    @Override
+    public void getJsonArrayUsers(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
+        userConnection.getJsonArrayUsers(listener, errorListener);
     }
 }

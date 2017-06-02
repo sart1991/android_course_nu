@@ -3,6 +3,7 @@ package com.exercises.sart1991.backgroundtasks.data.api.user;
 import com.android.volley.Response;
 import com.exercises.sart1991.backgroundtasks.data.api.user.model.User;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -15,6 +16,7 @@ public interface ApiUserConnection {
     void putUser(User user);
     void deleteUser(int userId);
     void getVolleyUsers(Response.Listener<String> listener, Response.ErrorListener errorListener);
+    void getJsonArrayUsers(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener);
     void postVolleyUser(
             JSONObject jsonObject,
             Response.Listener<JSONObject> listener,

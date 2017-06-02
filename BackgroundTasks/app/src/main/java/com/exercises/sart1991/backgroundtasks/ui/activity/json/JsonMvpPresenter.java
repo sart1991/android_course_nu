@@ -7,4 +7,7 @@ import com.exercises.sart1991.backgroundtasks.ui.base.MvpPresenter;
  */
 
 public interface JsonMvpPresenter<V extends JsonMvpView> extends MvpPresenter<V> {
+
+    void loadUserCards();
+
 }

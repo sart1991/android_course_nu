@@ -14,7 +14,7 @@
         layout="@layout/content_top_json"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="0dp" />
     
     <include
         layout="@layout/content_bottom_json"

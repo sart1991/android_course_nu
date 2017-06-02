@@ -7,6 +7,7 @@ import com.exercises.sart1991.backgroundtasks.data.api.ApiConnections;
 import com.exercises.sart1991.backgroundtasks.data.api.AppApiConnections;
 import com.exercises.sart1991.backgroundtasks.data.api.user.model.User;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -77,5 +78,10 @@ public class AppDataManager implements  DataManager {
                                  Response.ErrorListener errorListener) {
 
         apiConnections.deleteVolleyUser(id, listener, errorListener);
+    }
+
+    @Override
+    public void getJsonArrayUsers(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
+        apiConnections.getJsonArrayUsers(listener, errorListener);
     }
 }
