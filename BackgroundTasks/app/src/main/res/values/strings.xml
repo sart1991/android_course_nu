@@ -15,4 +15,18 @@
     <string name="_post">post</string>
     <string name="_put">put</string>
     <string name="_delete">delete</string>
+    <string name="main_buttonVolley">VOLLEY</string>
+    <string name="volley_titleVerbs">Peticiones con Volley</string>
+    <string name="volley_toolbarTitle">Volley</string>
+    <string name="volley_buttonGet">GET</string>
+    <string name="volley_buttonPost">POST</string>
+    <string name="volley_buttonPut">PUT</string>
+    <string name="volley_buttonDelete">DELETE</string>
+    <string name="volley_hintEditId">id</string>
+    <string name="volley_hintEditUsername">Nombre de usuario</string>
+    <string name="volley_hintEditEmail">Correo electrónico</string>
+    <string name="json_toolbarTitle">JSon</string>
+    <string name="json_textViewTitleVerbs">Json raw deserilize</string>
+    <string name="json_buttonGet">GET</string>
+    <string name="main_buttonJson">JSON</string>
 </resources>

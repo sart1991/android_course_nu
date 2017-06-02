@@ -8,6 +8,7 @@ import com.exercises.sart1991.backgroundtasks.ui.base.MvpView;
 
 public interface MainMvpView extends MvpView {
 
-    void gotoUnit2();
-
+    void gotoHttp();
+    void gotoVolley();
+    void gotoJson();
 }

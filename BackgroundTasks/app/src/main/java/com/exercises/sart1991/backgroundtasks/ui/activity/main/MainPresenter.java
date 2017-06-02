@@ -10,6 +10,16 @@ public class MainPresenter<V extends MainMvpView>
         extends BasePresenter<V> implements MainMvpPresenter<V> {
     @Override
     public void clickButtonHttp() {
-        getMvpView().gotoUnit2();
+        getMvpView().gotoHttp();
+    }
+
+    @Override
+    public void clickButtonVolley() {
+        getMvpView().gotoVolley();
+    }
+
+    @Override
+    public void clickButtonJson() {
+        getMvpView().gotoJson();
     }
 }

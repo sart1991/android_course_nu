@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.exercises.sart1991.backgroundtasks.ui.activity.volley.VolleyActivity"
+    tools:showIn="@layout/activity_volley">
+    
+    <TextView
+        android:id="@+id/textView_volley_titleVerbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/volley_titleVerbs"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="@+id/button_volley_get"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/button_volley_get"
+        app:layout_constraintTop_toTopOf="@+id/button_volley_get" />
+    
+    <EditText
+        android:id="@+id/editText_volley_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/volley_hintEditId"
+        android:inputType="number"
+        android:maxLines="1"
+        android:nextFocusDown="@+id/editText_volley_username"
+        app:layout_constraintBottom_toBottomOf="@+id/button_volley_post"
+        app:layout_constraintLeft_toLeftOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintRight_toRightOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintTop_toTopOf="@+id/button_volley_post" />
+    
+    <EditText
+        android:id="@+id/editText_volley_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/volley_hintEditUsername"
+        android:inputType="text"
+        android:maxLines="1"
+        android:nextFocusDown="@+id/editText_volley_email"
+        app:layout_constraintBottom_toBottomOf="@+id/button_volley_put"
+        app:layout_constraintLeft_toLeftOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintRight_toRightOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintTop_toTopOf="@+id/button_volley_put" />
+    
+    <EditText
+        android:id="@+id/editText_volley_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/volley_hintEditEmail"
+        android:imeOptions="actionDone"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@+id/button_volley_delete"
+        app:layout_constraintLeft_toLeftOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintRight_toRightOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintTop_toTopOf="@+id/button_volley_delete" />
+    
+    <Button
+        android:id="@+id/button_volley_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickButtonGet"
+        android:text="@string/volley_buttonGet"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView_volley_content"
+        app:layout_constraintLeft_toRightOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01" />
+    
+    <Button
+        android:id="@+id/button_volley_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickButtonPost"
+        android:text="@string/volley_buttonPost"
+        app:layout_constraintBottom_toTopOf="@+id/button_volley_put"
+        app:layout_constraintLeft_toRightOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_volley_get" />
+    
+    <Button
+        android:id="@+id/button_volley_put"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickButtonPut"
+        android:text="@string/volley_buttonPut"
+        app:layout_constraintBottom_toTopOf="@+id/button_volley_delete"
+        app:layout_constraintLeft_toRightOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_volley_post" />
+    
+    <Button
+        android:id="@+id/button_volley_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickButtonDelete"
+        android:text="@string/volley_buttonDelete"
+        app:layout_constraintBottom_toTopOf="@id/scrollView_volley_content"
+        app:layout_constraintLeft_toRightOf="@id/textView_volley_titleVerbs"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_volley_put" />
+    
+    <ScrollView
+        android:id="@+id/scrollView_volley_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/background_content"
+        android:elevation="8dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_volley_delete">
+        
+        <TextView
+            android:id="@+id/textView_volley_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

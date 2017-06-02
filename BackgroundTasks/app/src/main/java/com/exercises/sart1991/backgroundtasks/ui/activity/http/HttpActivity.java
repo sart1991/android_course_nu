@@ -94,4 +94,10 @@ public class HttpActivity extends BaseActivity implements HttpMvpView {
     public Context getViewContext() {
         return this;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PRESENTER.onDetach();
+    }
 }

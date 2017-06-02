@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.exercises.sart1991.backgroundtasks.R;
 import com.exercises.sart1991.backgroundtasks.ui.activity.http.HttpActivity;
+import com.exercises.sart1991.backgroundtasks.ui.activity.json.JsonActivity;
+import com.exercises.sart1991.backgroundtasks.ui.activity.volley.VolleyActivity;
 import com.exercises.sart1991.backgroundtasks.ui.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
@@ -31,12 +33,36 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void gotoUnit2() {
+    public void gotoHttp() {
         startActivity(new Intent(this, HttpActivity.class));
     }
 
     @Override
     public Context getViewContext() {
         return this;
+    }
+
+    public void onClickButtonVolley(View view) {
+        PRESENTER.clickButtonVolley();
+    }
+
+    @Override
+    public void gotoVolley() {
+        startActivity(new Intent(this, VolleyActivity.class));
+    }
+
+    public void onClickButtonJson(View view) {
+        PRESENTER.clickButtonJson();
+    }
+
+    @Override
+    public void gotoJson() {
+        startActivity(new Intent(this, JsonActivity.class));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PRESENTER.onDetach();
     }
 }
