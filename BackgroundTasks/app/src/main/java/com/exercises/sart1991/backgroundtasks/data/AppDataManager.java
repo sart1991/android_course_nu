@@ -3,6 +3,7 @@ package com.exercises.sart1991.backgroundtasks.data;
 import android.content.Context;
 
 import com.android.volley.Response;
+import com.android.volley.toolbox.ImageLoader;
 import com.exercises.sart1991.backgroundtasks.data.api.ApiConnections;
 import com.exercises.sart1991.backgroundtasks.data.api.AppApiConnections;
 import com.exercises.sart1991.backgroundtasks.data.api.user.model.User;
@@ -83,5 +84,20 @@ public class AppDataManager implements  DataManager {
     @Override
     public void getJsonArrayUsers(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
         apiConnections.getJsonArrayUsers(listener, errorListener);
+    }
+
+    @Override
+    public void cityWeather(Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        apiConnections.cityWeather(listener, errorListener);
+    }
+
+    @Override
+    public ImageLoader getImageLoader() {
+        return apiConnections.getImageLoader();
+    }
+
+    @Override
+    public String getImageUrl(String tag) {
+        return apiConnections.getImageUrl(tag);
     }
 }

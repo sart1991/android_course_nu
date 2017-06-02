@@ -27,9 +27,9 @@ public class JsonPresenter<V extends JsonMvpView>
                     public void onResponse(JSONArray response) {
                         Log.i(TAG, "onResponse: JSONArray: " + response);
                         getMvpView().setUserCards(
-                                JsonUtils.deserealizeJsonUserArray(response)
+                                JsonUtils.deserializeJsonUserArray(response)
                         );
-                        Log.i(TAG, "onResponse: Users: " + JsonUtils.deserealizeJsonUserArray(response));
+                        Log.i(TAG, "onResponse: Users: " + JsonUtils.deserializeJsonUserArray(response));
                     }
                 },
                 new Response.ErrorListener() {

@@ -1,12 +1,15 @@
 package com.exercises.sart1991.backgroundtasks.util.json;
 
 import com.exercises.sart1991.backgroundtasks.data.api.user.model.User;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,7 +34,7 @@ public class JsonUtils {
         return user;
     }
 
-    public static List<User> deserealizeJsonUserArray(JSONArray jsonArray) {
+    public static List<User> deserializeJsonUserArray(JSONArray jsonArray) {
         List<User> users = new ArrayList<>();
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
@@ -43,6 +46,32 @@ public class JsonUtils {
             }
         }
         return users;
+    }
+
+    public static List<User> deserializeGsonJsonUserArray(JSONArray jsonArray) {
+        List<User> users = new ArrayList<>();
+        Gson gson = new Gson();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                users.add(gson.fromJson(jsonArray.getJSONObject(i).toString(), User.class));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return users;
+    }
+
+    public static List<User> deserializeGsonJsonUserArrayFromStrin(String jsonArray) {
+        String jsonAnswer = jsonArray;
+        try {
+            jsonAnswer = new String(jsonArray.getBytes("ISO-8859-1"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        Gson gson =  new Gson();
+
+        return Arrays.asList(gson.fromJson(jsonAnswer, User[].class));
+
     }
 
 }

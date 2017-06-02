@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.exercises.sart1991.backgroundtasks.R;
+import com.exercises.sart1991.backgroundtasks.ui.activity.gson.GsonActivity;
 import com.exercises.sart1991.backgroundtasks.ui.activity.http.HttpActivity;
 import com.exercises.sart1991.backgroundtasks.ui.activity.json.JsonActivity;
 import com.exercises.sart1991.backgroundtasks.ui.activity.volley.VolleyActivity;
@@ -58,6 +59,20 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     public void gotoJson() {
         startActivity(new Intent(this, JsonActivity.class));
+    }
+
+    public void onClickButtonGson(View view) {
+        PRESENTER.clickButtonGson();
+    }
+
+    @Override
+    public void gotoGson() {
+        startActivity(new Intent(this, GsonActivity.class));
+    }
+
+    @Override
+    public void gotoOpenWeather() {
+//        startActivity(new Intent(this, ));
     }
 
     @Override

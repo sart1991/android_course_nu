@@ -25,8 +25,13 @@
     <string name="volley_hintEditId">id</string>
     <string name="volley_hintEditUsername">Nombre de usuario</string>
     <string name="volley_hintEditEmail">Correo electrónico</string>
-    <string name="json_toolbarTitle">JSon</string>
+    <string name="json_toolbarTitle">@string/_json</string>
     <string name="json_textViewTitleVerbs">Json raw deserilize</string>
     <string name="json_buttonGet">GET</string>
     <string name="main_buttonJson">JSON</string>
+    <string name="gson_toolbarTitle">Gson</string>
+    <string name="gson_textViewTitleVerbs">Gson deserialize</string>
+    <string name="gson_buttonGet">GET</string>
+    <string name="main_buttonGson">GSON</string>
+    <string name="gson_buttonGetFromString">GET S</string>
 </resources>

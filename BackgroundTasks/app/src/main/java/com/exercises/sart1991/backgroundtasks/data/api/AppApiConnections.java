@@ -3,7 +3,10 @@ package com.exercises.sart1991.backgroundtasks.data.api;
 import android.content.Context;
 
 import com.android.volley.Response;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
+import com.exercises.sart1991.backgroundtasks.data.api.openweather.ApiOpenWeather;
+import com.exercises.sart1991.backgroundtasks.data.api.openweather.AppApiOpenWeather;
 import com.exercises.sart1991.backgroundtasks.data.api.person.ApiPersonConnection;
 import com.exercises.sart1991.backgroundtasks.data.api.person.AppApiPersonConnection;
 import com.exercises.sart1991.backgroundtasks.data.api.user.ApiUserConnection;
@@ -21,10 +24,12 @@ public class AppApiConnections implements ApiConnections {
 
     private ApiPersonConnection personConnection;
     private ApiUserConnection userConnection;
+    private ApiOpenWeather openWeather;
 
     public AppApiConnections(Context context) {
         personConnection = new AppApiPersonConnection();
         userConnection = new AppApiUserConnection(context);
+        openWeather = new AppApiOpenWeather(context);
     }
 
     @Override
@@ -84,5 +89,20 @@ public class AppApiConnections implements ApiConnections {
     @Override
     public void getJsonArrayUsers(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
         userConnection.getJsonArrayUsers(listener, errorListener);
+    }
+
+    @Override
+    public void cityWeather(Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        openWeather.cityWeather(listener, errorListener);
+    }
+
+    @Override
+    public ImageLoader getImageLoader() {
+        return openWeather.getImageLoader();
+    }
+
+    @Override
+    public String getImageUrl(String tag) {
+        return openWeather.getImageUrl(tag);
     }
 }

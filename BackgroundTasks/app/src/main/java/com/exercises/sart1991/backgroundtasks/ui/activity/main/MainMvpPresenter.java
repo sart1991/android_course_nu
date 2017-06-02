@@ -10,4 +10,6 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
     void clickButtonHttp();
     void clickButtonVolley();
     void clickButtonJson();
+    void clickButtonGson();
+    void clickButtonOpenWeather();
 }

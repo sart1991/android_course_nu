@@ -22,4 +22,14 @@ public class MainPresenter<V extends MainMvpView>
     public void clickButtonJson() {
         getMvpView().gotoJson();
     }
+
+    @Override
+    public void clickButtonGson() {
+        getMvpView().gotoGson();
+    }
+
+    @Override
+    public void clickButtonOpenWeather() {
+        getMvpView().gotoOpenWeather();
+    }
 }

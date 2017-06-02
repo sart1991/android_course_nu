@@ -11,4 +11,6 @@ public interface MainMvpView extends MvpView {
     void gotoHttp();
     void gotoVolley();
     void gotoJson();
+    void gotoGson();
+    void gotoOpenWeather();
 }
