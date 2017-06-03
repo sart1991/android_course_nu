@@ -10,6 +10,7 @@ import com.exercises.sart1991.backgroundtasks.ui.activity.gson.GsonActivity;
 import com.exercises.sart1991.backgroundtasks.ui.activity.http.HttpActivity;
 import com.exercises.sart1991.backgroundtasks.ui.activity.json.JsonActivity;
 import com.exercises.sart1991.backgroundtasks.ui.activity.volley.VolleyActivity;
+import com.exercises.sart1991.backgroundtasks.ui.activity.weather.WeatherActivity;
 import com.exercises.sart1991.backgroundtasks.ui.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
@@ -70,9 +71,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         startActivity(new Intent(this, GsonActivity.class));
     }
 
+    public void onClickButtonOpenWeather(View view) {
+        PRESENTER.clickButtonOpenWeather();
+    }
+
     @Override
     public void gotoOpenWeather() {
-//        startActivity(new Intent(this, ));
+        startActivity(new Intent(this, WeatherActivity.class));
     }
 
     @Override

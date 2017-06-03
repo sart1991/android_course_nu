@@ -7,17 +7,17 @@
     android:background="@color/background_content"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.exercises.sart1991.backgroundtasks.ui.activity.json.JsonActivity"
-    tools:showIn="@layout/activity_json">
+    tools:context="com.exercises.sart1991.backgroundtasks.ui.activity.weather.WeatherActivity"
+    tools:showIn="@layout/activity_weather">
     
     <include
-        layout="@layout/content_json_top"
+        layout="@layout/content_weather_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp" />
+        android:layout_marginBottom="24dp" />
     
     <include
-        layout="@layout/content_json_bottom"
+        layout="@layout/content_weather_bottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

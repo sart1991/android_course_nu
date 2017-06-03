@@ -10,13 +10,13 @@
     tools:showIn="@layout/activity_gson">
     
     <include
-        layout="@layout/content_top_gson"
+        layout="@layout/content_gson_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp" />
     
     <include
-        layout="@layout/content_bottom_gson"
+        layout="@layout/content_gson_bottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

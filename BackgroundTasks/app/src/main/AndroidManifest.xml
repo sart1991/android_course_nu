@@ -32,6 +32,9 @@
         <activity
             android:name=".ui.activity.gson.GsonActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.weather.WeatherActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

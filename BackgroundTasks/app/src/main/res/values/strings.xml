@@ -34,4 +34,8 @@
     <string name="gson_buttonGet">GET</string>
     <string name="main_buttonGson">GSON</string>
     <string name="gson_buttonGetFromString">GET S</string>
+    <string name="main_buttonOpenWeather">OPEN WEATHER</string>
+    <string name="weather_toolbarTitle">Open Weather</string>
+    <string name="weather_textViewTitle">Open Weather From Tunja</string>
+    <string name="textView_weather_city">Tunja</string>
 </resources>
