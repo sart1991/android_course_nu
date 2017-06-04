@@ -38,4 +38,7 @@
     <string name="weather_toolbarTitle">Open Weather</string>
     <string name="weather_textViewTitle">Open Weather From Tunja</string>
     <string name="textView_weather_city">Tunja</string>
+    <string name="main_buttonProvider">PROVIDER</string>
+    <string name="provider_buttonInsert">Insertar</string>
+    <string name="provider_buttonGetData">GET DATA</string>
 </resources>

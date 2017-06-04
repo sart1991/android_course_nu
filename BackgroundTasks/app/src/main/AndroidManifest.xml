@@ -35,6 +35,17 @@
         <activity
             android:name=".ui.activity.weather.WeatherActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.provider.ProviderActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+    
+        <provider
+            android:name=".data.provider.ProviderContainer"
+            android:authorities="com.exercise.sart1991.backgroundtasks.data.provider.ProviderContainer"
+            android:exported="true"
+            android:multiprocess="true">
+            
+        </provider>
     </application>
 
 </manifest>

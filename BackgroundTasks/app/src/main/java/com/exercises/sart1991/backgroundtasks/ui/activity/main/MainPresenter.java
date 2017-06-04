@@ -32,4 +32,9 @@ public class MainPresenter<V extends MainMvpView>
     public void clickButtonOpenWeather() {
         getMvpView().gotoOpenWeather();
     }
+
+    @Override
+    public void clickButtonProvider() {
+        getMvpView().gotoProvider();
+    }
 }

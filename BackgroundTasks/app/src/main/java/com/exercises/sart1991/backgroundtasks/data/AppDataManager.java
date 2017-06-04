@@ -1,12 +1,17 @@
 package com.exercises.sart1991.backgroundtasks.data;
 
 import android.content.Context;
+import android.net.Uri;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.ImageLoader;
 import com.exercises.sart1991.backgroundtasks.data.api.ApiConnections;
 import com.exercises.sart1991.backgroundtasks.data.api.AppApiConnections;
 import com.exercises.sart1991.backgroundtasks.data.api.user.model.User;
+import com.exercises.sart1991.backgroundtasks.data.provider.AppDataProvider;
+import com.exercises.sart1991.backgroundtasks.data.provider.DataProviderHelper;
+import com.exercises.sart1991.backgroundtasks.data.provider.LoaderProvider;
+import com.exercises.sart1991.backgroundtasks.data.provider.ProviderContainer;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,12 +20,14 @@ import org.json.JSONObject;
  * Created by sart1 on 5/30/2017.
  */
 
-public class AppDataManager implements  DataManager {
+public class AppDataManager implements DataManager {
 
     private ApiConnections apiConnections;
+    private DataProviderHelper dataProvider;
 
     public AppDataManager(Context context) {
-         apiConnections = new AppApiConnections(context);
+        apiConnections = new AppApiConnections(context);
+        dataProvider = new AppDataProvider(context);
     }
 
     @Override
@@ -99,5 +106,20 @@ public class AppDataManager implements  DataManager {
     @Override
     public String getImageUrl(String tag) {
         return apiConnections.getImageUrl(tag);
+    }
+
+    @Override
+    public ProviderContainer getContentProvider() {
+        return dataProvider.getContentProvider();
+    }
+
+    @Override
+    public Uri insertProviderData(String data) {
+        return dataProvider.insertProviderData(data);
+    }
+
+    @Override
+    public LoaderProvider getLoaderData(LoaderProvider.Callback callback) {
+        return dataProvider.getLoaderData(callback);
     }
 }
