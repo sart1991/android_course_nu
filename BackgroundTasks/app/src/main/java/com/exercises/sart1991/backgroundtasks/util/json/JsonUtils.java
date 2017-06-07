@@ -61,7 +61,7 @@ public class JsonUtils {
         return users;
     }
 
-    public static List<User> deserializeGsonJsonUserArrayFromStrin(String jsonArray) {
+    public static List<User> deserializeGsonJsonUserArrayFromString(String jsonArray) {
         String jsonAnswer = jsonArray;
         try {
             jsonAnswer = new String(jsonArray.getBytes("ISO-8859-1"));

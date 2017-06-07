@@ -41,7 +41,7 @@ public class GsonPresenter<V extends GsonMvpView>
                     @Override
                     public void onResponse(String response) {
                         getMvpView().setUsers(
-                                JsonUtils.deserializeGsonJsonUserArrayFromStrin(response)
+                                JsonUtils.deserializeGsonJsonUserArrayFromString(response)
                         );
                     }
                 },
