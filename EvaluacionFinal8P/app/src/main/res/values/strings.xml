@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Evaluacion Final 8 P</string>
+    <string name="app_name">Control de Tareas Profesor</string>
+    <string name="login_textView_title">Bienvenido al Control de Tareas</string>
+    <string name="login_textView_subtitle">Inicia sesion para empezar</string>
+    <string name="login_emailHint">Email</string>
+    <string name="login_passwordHint">Password</string>
+    <string name="login_loginButton">Iniciar Sesión</string>
+    <string name="main_toolbarTitle">Control de tareas</string>
+    <string name="menuMainDrawer_courses">Asignaturas</string>
+    <string name="menuMainDrawer_students">Estudiantes</string>
+    <string name="menuMainDrawer_tasks">Tareas</string>
+    <string name="drawerOpen">open</string>
+    <string name="drawerClose">close</string>
+    <string name="cardCourse_code">Código:</string>
+    <string name="cardStudent_code">Código</string>
+    <string name="cardTask_code">Código:</string>
+    <string name="mainOptions_signOut">Cerrar sesión</string>
 </resources>

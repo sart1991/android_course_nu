@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_mainDrawer_courses"
+            android:icon="@drawable/course_black_24dp"
+            android:title="@string/menuMainDrawer_courses" />
+        
+        <item
+            android:id="@+id/item_mainDrawer_students"
+            android:icon="@drawable/students_black_24dp"
+            android:title="@string/menuMainDrawer_students" />
+        
+        <item
+            android:id="@+id/item_mainDrawer_tasks"
+            android:icon="@drawable/tasks_black_24dp"
+            android:title="@string/menuMainDrawer_tasks" />
+    </group>
+</menu>
