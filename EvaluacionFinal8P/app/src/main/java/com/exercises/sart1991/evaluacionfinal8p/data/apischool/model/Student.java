@@ -30,12 +30,11 @@ public class Student {
         this.email = email;
     }
 
-    /*@Override
+    @Override
     public String toString() {
-        return "{" +
-                "\"id\":" + " " + id + ", " +
-                "\"name\":" + " \"" + name + "\", " +
-                "\"email\":" + " \"" + email + "\"" +
-                "}";
-    }*/
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

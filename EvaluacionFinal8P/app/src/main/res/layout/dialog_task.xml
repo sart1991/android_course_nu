@@ -5,20 +5,37 @@
     android:orientation="vertical"
     android:padding="16dp">
     
-    <Spinner
-        android:id="@+id/spinner_dialogTask_course"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_dialogTask_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         
         <EditText
-            android:id="@+id/editText_dialogTask_description"
+            android:id="@+id/editText_dialogTask_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/dialogTask_nameHint"
+            android:inputType="text"
+            android:nextFocusDown="@+id/editText_dialogTask_grade" />
+    
+    </android.support.design.widget.TextInputLayout>
+    
+    <Spinner
+        android:id="@+id/spinner_dialogTask_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dialogTask_grade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <EditText
+            android:id="@+id/editText_dialogTask_grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dialogTask_gradeHint"
+            android:inputType="numberDecimal" />
     
     </android.support.design.widget.TextInputLayout>
 

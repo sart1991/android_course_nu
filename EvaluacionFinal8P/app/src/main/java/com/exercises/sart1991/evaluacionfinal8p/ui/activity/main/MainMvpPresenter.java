@@ -10,6 +10,16 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
 
     void welcome();
 
+    void clickDrawerMenu(int itemId);
+
+    void clickTaskOptionsMenu(int itemId, int taskId);
+
+    void loadCourseCards();
+
+    void loadStudentCards();
+
+    void loadTaskCards();
+
     boolean clickSignOut(int itemId);
 
 }

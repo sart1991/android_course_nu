@@ -105,32 +105,40 @@ public class AppApiSchool implements ApiSchoolHelper {
     @Override
     public void getCourses(final ListenRequest<List<Course>> listener) {
         queue.add(new JsonArrayRequest(
-                url + "/professor_courses",
+                url + "/courses",
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        List<Course> courses = new ArrayList<>();
-                        listener.onSuccess(courses);
+                        Log.i(TAG, "onResponse: courses " + response);
+                        listener.onSuccess(JsonConverter.fromJsonArrayCourses(response));
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.i(TAG, "onErrorResponse: listenCourses " + error.getMessage());
                         listener.onError();
                     }
                 }
-        ));
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
+                headers.put(headerAuth, preferencesHelper.getToken());
+                return headers;
+            }
+        });
     }
 
     @Override
     public void getStudents(final ListenRequest<List<Student>> listener) {
         queue.add(new JsonArrayRequest(
-                url + "/professor_students",
+                url + "/students",
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        List<Student> students = new ArrayList<>();
-                        listener.onSuccess(students);
+                        listener.onSuccess(JsonConverter.fromJsonArrayStudents(response));
                     }
                 },
                 new Response.ErrorListener() {
@@ -145,13 +153,12 @@ public class AppApiSchool implements ApiSchoolHelper {
     @Override
     public void getTasks(final ListenRequest<List<Task>> listener) {
         queue.add(new JsonArrayRequest(
-                url + "/professor_tasks",
+                url + "/tasks",
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.i(TAG, "onResponse: getTasks: " + response);
-                        List<Task> tasks = new ArrayList<>();
-                        listener.onSuccess(tasks);
+                        Log.i(TAG, "onResponse: response: " + response);
+                        listener.onSuccess(JsonConverter.fromJsonArrayTasks(response));
                     }
                 },
                 new Response.ErrorListener() {
@@ -164,7 +171,8 @@ public class AppApiSchool implements ApiSchoolHelper {
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = super.getHeaders();
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
                 headers.put(headerAuth, preferencesHelper.getToken());
                 return headers;
             }
@@ -197,7 +205,8 @@ public class AppApiSchool implements ApiSchoolHelper {
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = super.getHeaders();
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
                 headers.put(headerAuth, preferencesHelper.getToken());
                 return headers;
             }
@@ -230,7 +239,8 @@ public class AppApiSchool implements ApiSchoolHelper {
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = super.getHeaders();
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
                 headers.put(headerAuth, preferencesHelper.getToken());
                 return headers;
             }
@@ -266,7 +276,8 @@ public class AppApiSchool implements ApiSchoolHelper {
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = super.getHeaders();
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
                 headers.put(headerAuth, preferencesHelper.getToken());
                 return headers;
             }

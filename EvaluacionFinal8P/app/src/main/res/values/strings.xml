@@ -16,4 +16,11 @@
     <string name="cardTask_code">Código:</string>
     <string name="mainOptions_signOut">Cerrar sesión</string>
     <string name="login_errorEmailOrPasswordWrong">Email o password incorrecto</string>
+    <string name="error_noInterentConnection">No hay conexión a internet</string>
+    <string name="error_serverError">Error en servidor, inicie sesión nuevamente</string>
+    <string name="dialogTask_gradeHint">Calificación</string>
+    <string name="dialogTask_nameHint">Nombre de la tarea</string>
+    <string name="dialogTask_title">Tarea</string>
+    <string name="dialogTask_posititveEdit">Editar</string>
+    <string name="dialogTask_positiveCreate">Crear</string>
 </resources>

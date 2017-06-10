@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:layout_margin="8dp">
+    android:layout_margin="4dp">
     
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,46 +31,47 @@
             android:layout_height="wrap_content"
             android:text="Test"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            app:layout_constraintBottom_toTopOf="@+id/textView_cardTask_code"
+            app:layout_constraintBottom_toTopOf="@+id/textView_cardTask_studentName"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toRightOf="@id/imageView_cardTask_icon"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintVertical_bias="0.5"
             app:layout_constraintVertical_chainStyle="packed" />
         
         <TextView
-            android:id="@+id/textView_cardTask_code"
+            android:id="@+id/textView_cardTask_studentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/cardTask_code"
+            android:layout_marginTop="8dp"
+            android:text="Test"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textView_cardTask_courseName"
             app:layout_constraintLeft_toRightOf="@id/imageView_cardTask_icon"
             app:layout_constraintTop_toBottomOf="@id/textView_cardTask_name" />
         
         <TextView
-            android:id="@+id/textView_cardTask_codeContent"
+            android:id="@+id/textView_cardTask_courseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Test"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            app:layout_constraintBottom_toBottomOf="@id/textView_cardTask_code"
-            app:layout_constraintLeft_toRightOf="@id/textView_cardTask_code"
-            app:layout_constraintTop_toTopOf="@id/textView_cardTask_code" />
+            app:layout_constraintBottom_toTopOf="@+id/textView_cardTask_grade"
+            app:layout_constraintLeft_toRightOf="@id/imageView_cardTask_icon"
+            app:layout_constraintTop_toBottomOf="@id/textView_cardTask_studentName" />
         
         <TextView
             android:id="@+id/textView_cardTask_grade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="5.0"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageView_cardTask_icon"
-            app:layout_constraintTop_toBottomOf="@id/textView_cardTask_code" />
+            app:layout_constraintTop_toBottomOf="@id/textView_cardTask_courseName" />
         
         <ImageButton
             android:id="@+id/imageButton_cardTask_menu"

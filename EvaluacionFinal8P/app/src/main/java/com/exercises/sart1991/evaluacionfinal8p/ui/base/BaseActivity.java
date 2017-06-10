@@ -1,6 +1,8 @@
 package com.exercises.sart1991.evaluacionfinal8p.ui.base;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -54,6 +56,14 @@ abstract public class BaseActivity extends AppCompatActivity implements MvpView 
 
     private View snackView(View view) {
         return view == null ? findViewById(android.R.id.content) : view;
+    }
+
+    @Override
+    public boolean checkInternetConnection() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
 
     abstract protected void setupComponents();

@@ -63,6 +63,11 @@ abstract public class BaseSubView<C extends MvpSubView.Callback> implements MvpS
     }
 
     @Override
+    public boolean checkInternetConnection() {
+        return mMvpView.checkInternetConnection();
+    }
+
+    @Override
     public Context getViewContext() {
         return mMvpView.getViewContext();
     }

@@ -30,11 +30,11 @@ public class Course {
         this.name = name;
     }
 
-    /*@Override
+    @Override
     public String toString() {
-        return "{" +
-                "\"id\":" + " " + id + "," +
-                "\"name\":" + " \"" + name + '\"' +
-                "}";
-    }*/
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

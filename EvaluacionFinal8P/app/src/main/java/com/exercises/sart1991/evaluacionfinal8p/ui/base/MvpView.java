@@ -20,5 +20,6 @@ public interface MvpView {
     void onSuccess(@StringRes int resId, @Nullable View view);
     void onSuccess(String message, @Nullable View view);
 
+    boolean checkInternetConnection();
     Context getViewContext();
 }
