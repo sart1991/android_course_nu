@@ -43,35 +43,13 @@
             android:id="@+id/textView_cardStudent_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Test"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textStyle="italic|bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView_cardStudent_code"
-            app:layout_constraintLeft_toRightOf="@id/imageView_cardStudent_icon"
-            app:layout_constraintTop_toBottomOf="@id/textView_cardStudent_name" />
-        
-        <TextView
-            android:id="@+id/textView_cardStudent_code"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/cardStudent_code"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageView_cardStudent_icon"
-            app:layout_constraintTop_toBottomOf="@id/textView_cardStudent_email" />
-        
-        <TextView
-            android:id="@+id/textView_cardStudent_codeContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            app:layout_constraintBottom_toBottomOf="@id/textView_cardStudent_code"
-            app:layout_constraintLeft_toRightOf="@id/textView_cardStudent_code"
-            app:layout_constraintTop_toTopOf="@id/textView_cardStudent_code" />
+            app:layout_constraintTop_toBottomOf="@id/textView_cardStudent_name" />
     
     </android.support.constraint.ConstraintLayout>
 

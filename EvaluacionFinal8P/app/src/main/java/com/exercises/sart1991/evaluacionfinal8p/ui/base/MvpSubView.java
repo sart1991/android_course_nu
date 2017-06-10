@@ -9,6 +9,8 @@ public interface MvpSubView<C extends MvpSubView.Callback> extends MvpView {
     void onAttach(C callback);
     void onDetach();
 
+    C getCallback();
+
     interface Callback {
 
     }

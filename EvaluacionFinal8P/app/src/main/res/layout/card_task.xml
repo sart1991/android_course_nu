@@ -61,6 +61,17 @@
             app:layout_constraintLeft_toRightOf="@id/textView_cardTask_code"
             app:layout_constraintTop_toTopOf="@id/textView_cardTask_code" />
         
+        <TextView
+            android:id="@+id/textView_cardTask_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="5.0"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toRightOf="@id/imageView_cardTask_icon"
+            app:layout_constraintTop_toBottomOf="@id/textView_cardTask_code" />
+        
         <ImageButton
             android:id="@+id/imageButton_cardTask_menu"
             android:layout_width="wrap_content"

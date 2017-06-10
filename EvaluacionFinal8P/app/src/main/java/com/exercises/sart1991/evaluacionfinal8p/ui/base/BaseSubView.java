@@ -12,17 +12,24 @@ import android.view.View;
 abstract public class BaseSubView<C extends MvpSubView.Callback> implements MvpSubView<C> {
 
     private MvpView mMvpView;
+    private C callback;
 
     @Override
     public void onAttach(C callback) {
+        this.callback = callback;
         if (callback instanceof MvpView) {
             mMvpView = (MvpView) callback;
         } else {
             throw new ClassCastException(callback.getClass().getSimpleName() +
-                                            " should implement " +
+                                            " should also implement " +
                                             MvpView.class.getSimpleName()
             );
         }
+    }
+
+    @Override
+    public C getCallback() {
+        return callback;
     }
 
     @Override
