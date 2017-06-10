@@ -1,5 +1,7 @@
 package com.exercises.sart1991.evaluacionfinal8p.data.apischool.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by sart1 on 6/7/2017.
  */
@@ -7,11 +9,12 @@ package com.exercises.sart1991.evaluacionfinal8p.data.apischool.model;
 public class Task {
 
     private int id;
-    private String description;
+    private String name;
+    private @SerializedName("grade_point") double gradePoint;
 
     public Task(int id, String description) {
         this.id = id;
-        this.description = description;
+        this.name = description;
     }
 
     public int getId() {
@@ -22,11 +25,27 @@ public class Task {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public double getGradePoint() {
+        return gradePoint;
+    }
+
+    public void setGradePoint(double gradePoint) {
+        this.gradePoint = gradePoint;
+    }
+
+    /*@Override
+    public String toString() {
+        return "{" +
+                "\"id\":" + " " + id + ", " +
+                "\"name\":" + " \"" + name + "\"" +
+                "}";
+    }*/
 }

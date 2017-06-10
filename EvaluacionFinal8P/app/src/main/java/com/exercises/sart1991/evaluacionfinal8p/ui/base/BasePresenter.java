@@ -15,7 +15,7 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     @Override
     public void onAttach(V mvpView) {
         mMvpView = mvpView;
-        mDataManager = AppDataManager.getInstance();
+        mDataManager = new AppDataManager(mvpView.getViewContext());
     }
 
     @Override

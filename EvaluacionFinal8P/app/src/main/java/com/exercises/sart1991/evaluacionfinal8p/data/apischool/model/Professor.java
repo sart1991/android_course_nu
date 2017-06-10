@@ -11,10 +11,9 @@ public class Professor {
     private String email;
     private String password;
 
-    public Professor(int id, String name, String email) {
-        this.id = id;
-        this.name = name;
+    public Professor(String email, String password) {
         this.email = email;
+        this.password = password;
     }
 
     public Professor(int id, String name, String email, String password) {

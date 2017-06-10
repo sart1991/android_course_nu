@@ -10,4 +10,6 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
 
     void welcome();
 
+    boolean clickSignOut(int itemId);
+
 }

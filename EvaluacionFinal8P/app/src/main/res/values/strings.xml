@@ -15,4 +15,5 @@
     <string name="cardStudent_code">Código</string>
     <string name="cardTask_code">Código:</string>
     <string name="mainOptions_signOut">Cerrar sesión</string>
+    <string name="login_errorEmailOrPasswordWrong">Email o password incorrecto</string>
 </resources>

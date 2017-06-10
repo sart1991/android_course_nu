@@ -7,9 +7,9 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.exercises.sart1991.evaluacionfinal8p.R;
@@ -28,6 +28,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         presenter.onAttach(this);
+        presenter.welcome();
         setupComponents();
     }
 
@@ -44,6 +45,17 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(navigationItemSelectedListener);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_options, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return presenter.clickSignOut(item.getItemId());
     }
 
     private NavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
@@ -68,5 +80,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        presenter.onDetach();
     }
 }
