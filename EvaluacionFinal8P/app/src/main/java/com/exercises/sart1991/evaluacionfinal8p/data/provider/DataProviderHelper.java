@@ -13,4 +13,5 @@ public interface DataProviderHelper {
     ProviderContainer getContentProvider();
     Uri insertProviderTask(List<Task> tasks);
     ProviderLoader getLoaderData(ProviderLoader.Callback callback);
+    void deleteProviderTask(int id);
 }

@@ -106,6 +106,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public void deleteProviderTask(int id) {
+        providerHelper.deleteProviderTask(id);
+    }
+
+    @Override
     public ProviderLoader getLoaderData(ProviderLoader.Callback callback) {
         return providerHelper.getLoaderData(callback);
     }

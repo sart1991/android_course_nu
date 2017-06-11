@@ -7,6 +7,7 @@ import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Student;
 import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Task;
 import com.exercises.sart1991.evaluacionfinal8p.ui.base.MvpView;
 import com.exercises.sart1991.evaluacionfinal8p.ui.subview.task.TaskMvpSubView;
+import com.exercises.sart1991.evaluacionfinal8p.ui.subview.taskdelete.TaskDeleteDialogMvpSubView;
 import com.exercises.sart1991.evaluacionfinal8p.ui.subview.taskdialog.TaskDialogMvpSubView;
 
 import java.util.List;
@@ -16,7 +17,8 @@ import java.util.List;
  */
 
 public interface MainMvpView extends MvpView, TaskMvpSubView.Callback,
-                                     TaskDialogMvpSubView.Callback {
+                                     TaskDialogMvpSubView.Callback,
+                                     TaskDeleteDialogMvpSubView.Callback {
 
     List<Course> getCourseList();
     void setCourseList(List<Course> courses);
@@ -38,6 +40,8 @@ public interface MainMvpView extends MvpView, TaskMvpSubView.Callback,
 
     void showDialogNewTask();
     void showDialogEditTask();
+
+    void showDialogDeleteTask(Task task);
 
     void setFabVisibility(int resVisible);
 

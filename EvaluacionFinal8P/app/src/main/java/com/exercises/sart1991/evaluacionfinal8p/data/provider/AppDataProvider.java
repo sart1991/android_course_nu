@@ -44,6 +44,13 @@ public class AppDataProvider implements DataProviderHelper {
     }
 
     @Override
+    public void deleteProviderTask(int id) {
+        context.getContentResolver().delete(
+                ProviderContainer.getContentUri(), " id = ?", new String[]{String.valueOf(id)}
+        );
+    }
+
+    @Override
     public ProviderLoader getLoaderData(ProviderLoader.Callback callback) {
         loaderProvider.provideCallback(callback);
         return loaderProvider;

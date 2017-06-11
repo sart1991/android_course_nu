@@ -26,4 +26,9 @@
     <string name="cardTask_optionDelete">Eliminar</string>
     <string name="cardTask_optionEdit">Editar</string>
     <string name="dialogTask_negative">Cancelar</string>
+    <string name="main_notifyDialogCancel">No se ejecuto ninguna acción</string>
+    <string name="main_dialogDeleteTaskTitle">Elimnar tarea</string>
+    <string name="main_dialogDeleteTaskMessage">Confirme si desea eliminar esta tarea</string>
+    <string name="main_dialogDeleteTaskNegative">Cancelar</string>
+    <string name="main_dialogDeleteTaskPositive">Confirmar</string>
 </resources>

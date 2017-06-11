@@ -28,15 +28,18 @@ public class MainPresenter<V extends MainMvpView>
     private List<Student> students = new ArrayList<>();
     private List<Task> tasks = new ArrayList<>();
     private int persistentCard;
+    private View view;
 
     @Override
     public void welcome() {
+
         getDataManager().checkProfessorLogin(listenLogin);
         getDataManager().getContentProvider();
     }
 
     @Override
-    public void initLists() {
+    public void initComponents(View view) {
+        this.view = view;
         if (courses.size() <= 0) getDataManager().getCourses(listenCourses);
         if (students.size() <= 0) getDataManager().getStudents(listenStudents);
         if (tasks.size() <= 0) getDataManager().getTasks(listenTasks);
@@ -79,8 +82,7 @@ public class MainPresenter<V extends MainMvpView>
                 getMvpView().showDialogEditTask();
                 break;
             case R.id.item_cardTaskOptions_delete:
-                Log.i(TAG, "clickTaskOptionsMenu: listenUpdateTasks: " + listenUpdateTasks);
-                getDataManager().deleteTask(task, listenUpdateTasks);
+                getMvpView().showDialogDeleteTask(task);
                 break;
         }
     }
@@ -131,6 +133,18 @@ public class MainPresenter<V extends MainMvpView>
     }
 
     @Override
+    public void clickCancelDialogTask() {
+        getMvpView().onNotify(R.string.main_notifyDialogCancel, view);
+    }
+
+    @Override
+    public void clickConfirmDeleteTask(Task task) {
+        Log.i(TAG, "clickConfirmDeleteTask: listenUpdateTasks: " + listenUpdateTasks);
+        getDataManager().deleteTask(task, listenUpdateTasks);
+        getDataManager().deleteProviderTask(task.getId());
+    }
+
+    @Override
     public boolean clickSignOut(int itemId) {
         switch (itemId) {
             case R.id.item_mainOptions_signOut:
@@ -156,17 +170,17 @@ public class MainPresenter<V extends MainMvpView>
                 return;
             }
             if(!getMvpView().checkInternetConnection()) {
-                getMvpView().onError(R.string.error_noInterentConnection, null);
+                getMvpView().onError(R.string.error_noInterentConnection, view);
                 return;
             } else {
-                getMvpView().onError(R.string.error_serverError, null);
+                getMvpView().onError(R.string.error_serverError, view);
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         getMvpView().gotoLogin();
                     }
-                }, 1000);
+                }, 2000);
                 return;
             }
         }

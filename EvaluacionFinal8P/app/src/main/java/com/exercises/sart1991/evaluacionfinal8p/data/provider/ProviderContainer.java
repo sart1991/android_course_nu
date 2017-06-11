@@ -82,33 +82,26 @@ public class ProviderContainer extends ContentProvider {
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         long rowId = db.insert(DbHelper.getTableName(), "", values);
-        if (rowId > 0) {
-            Uri cUri = ContentUris.withAppendedId(CONTENT_URI, rowId);
-            getContext().getContentResolver().notifyChange(cUri, null);
-            return cUri;
-        }
-        rowId = db.update(
-                DbHelper.getTableName(), values,
-                " id = " + values.getAsString(DbHelper.getColumnId()), null
-        );
-        if (rowId > 0){
-            Uri cUri = ContentUris.withAppendedId(CONTENT_URI, rowId);
-            getContext().getContentResolver().notifyChange(cUri, null);
-            return cUri;
-        } else {
-            rowId = db.delete(
-                    DbHelper.getTableName(),
+        if (rowId <= 0) {
+            rowId = db.update(
+                    DbHelper.getTableName(), values,
                     " id = " + values.getAsString(DbHelper.getColumnId()), null
             );
-            Uri cUri = ContentUris.withAppendedId(CONTENT_URI, rowId);
-            getContext().getContentResolver().notifyChange(cUri, null);
-            return cUri;
         }
+        Uri cUri = ContentUris.withAppendedId(CONTENT_URI, rowId);
+        getContext().getContentResolver().notifyChange(cUri, null);
+        return cUri;
     }
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection,
                       @Nullable String[] selectionArgs) {
+        long rowId = db.delete(DbHelper.getTableName(), selection, selectionArgs);
+        if (rowId > 0) {
+            Uri cUri = ContentUris.withAppendedId(CONTENT_URI, rowId);
+            getContext().getContentResolver().notifyChange(cUri, null);
+            return 1;
+        }
         return 0;
     }
 

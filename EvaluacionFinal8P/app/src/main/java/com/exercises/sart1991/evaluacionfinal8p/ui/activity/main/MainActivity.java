@@ -28,6 +28,8 @@ import com.exercises.sart1991.evaluacionfinal8p.ui.subview.course.CourseCard;
 import com.exercises.sart1991.evaluacionfinal8p.ui.subview.student.StudentCard;
 import com.exercises.sart1991.evaluacionfinal8p.ui.subview.task.TaskCard;
 import com.exercises.sart1991.evaluacionfinal8p.ui.subview.task.TaskMvpSubView;
+import com.exercises.sart1991.evaluacionfinal8p.ui.subview.taskdelete.TaskDeleteDialog;
+import com.exercises.sart1991.evaluacionfinal8p.ui.subview.taskdelete.TaskDeleteDialogMvpSubView;
 import com.exercises.sart1991.evaluacionfinal8p.ui.subview.taskdialog.TaskDialog;
 import com.exercises.sart1991.evaluacionfinal8p.ui.subview.taskdialog.TaskDialogMvpSubView;
 
@@ -48,6 +50,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     private FloatingActionButton fab;
     private TaskCard<TaskMvpSubView.Callback> taskCard;
     private TaskDialog<TaskDialogMvpSubView.Callback> newTaskDialog, editTaskDialog;
+    private TaskDeleteDialog<TaskDeleteDialogMvpSubView.Callback> deleteTaskDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         taskCard.onAttach(this);
         newTaskDialog.onAttach(this);
         editTaskDialog.onAttach(this);
-        PRESENTER.initLists();
+        deleteTaskDialog.onAttach(this);
+        PRESENTER.initComponents(fab);
     }
 
     @Override
@@ -98,6 +102,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
         newTaskDialog = new TaskDialog<>(R.string.dialogTask_positiveCreate);
         editTaskDialog = new TaskDialog<>(R.string.dialogTask_posititveEdit);
+
+        deleteTaskDialog = new TaskDeleteDialog<>();
     }
 
     @Override
@@ -183,6 +189,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void makeDialogTaskForProfessor(List<Student> students, List<Course> courses) {
         newTaskDialog.makeDialogTask(students, courses);
         editTaskDialog.makeDialogTask(students, courses);
+        deleteTaskDialog.makeDialog();
     }
 
     @Override
@@ -194,6 +201,21 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     public void showDialogEditTask() {
         editTaskDialog.showDialog();
+    }
+
+    @Override
+    public void showDialogDeleteTask(Task task) {
+        deleteTaskDialog.showDialog(task);
+    }
+
+    @Override
+    public void onClickNegativeTaskDelete() {
+        PRESENTER.clickCancelDialogTask();
+    }
+
+    @Override
+    public void onClickPositiveTaskDelete(Task task) {
+        PRESENTER.clickConfirmDeleteTask(task);
     }
 
     @Override
@@ -217,7 +239,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void onCancel() {
-
+        PRESENTER.clickCancelDialogTask();
     }
 
     public void onClickFab(View view) {
@@ -248,5 +270,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         taskCard.onDetach();
         newTaskDialog.onDetach();
         editTaskDialog.onDetach();
+        deleteTaskDialog.onDetach();
     }
 }

@@ -92,8 +92,10 @@ public class TaskDialog<C extends TaskDialogMvpSubView.Callback>
         @Override
         public CharSequence filter(CharSequence source, int start, int end,
                                    Spanned dest, int dstart, int dend) {
+            String typing = dest.toString() + source.toString();
+            if (typing.length() > 3) {return "";}
             try {
-                double input = Double.parseDouble(dest.toString() + source.toString());
+                double input = Double.parseDouble(typing);
                 if (isInRange(0, 5, input))
                     return null;
             } catch (NumberFormatException nfe) { }
@@ -111,10 +113,7 @@ public class TaskDialog<C extends TaskDialogMvpSubView.Callback>
         View view = LayoutInflater.from(getViewContext()).inflate(R.layout.dialog_task, null, false);
         editName = (EditText) view.findViewById(R.id.editText_dialogTask_name);
         editGrade = (EditText) view.findViewById(R.id.editText_dialogTask_grade);
-//        InputFilter[] filters = editGrade.getFilters();
-//        List<InputFilter> lFilters = Arrays.asList(filters);
-//        lFilters.add(inputFilter);
-//        editGrade.setFilters(lFilters.toArray(new InputFilter[lFilters.size()]));
+        editGrade.setFilters(new InputFilter[]{inputFilter});
         spinnerStudents = (Spinner) view.findViewById(R.id.spinner_dialogTask_student);
         adapterStudent = new ArrayAdapter<>(
                 getViewContext(), android.R.layout.simple_spinner_item, getStudentsName()
