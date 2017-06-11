@@ -15,5 +15,7 @@ public interface StudentMvpSubView extends MvpSubView {
 
     void setStudentsList(List<Student> students);
 
+    List<Student> getStudentsList();
+
     RecyclerView.Adapter getStudentsAdapter();
 }

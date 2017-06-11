@@ -7,6 +7,7 @@ import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Student;
 import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Task;
 import com.exercises.sart1991.evaluacionfinal8p.ui.base.MvpView;
 import com.exercises.sart1991.evaluacionfinal8p.ui.subview.task.TaskMvpSubView;
+import com.exercises.sart1991.evaluacionfinal8p.ui.subview.taskdialog.TaskDialogMvpSubView;
 
 import java.util.List;
 
@@ -14,13 +15,29 @@ import java.util.List;
  * Created by sart1 on 6/7/2017.
  */
 
-public interface MainMvpView extends MvpView, TaskMvpSubView.Callback {
+public interface MainMvpView extends MvpView, TaskMvpSubView.Callback,
+                                     TaskDialogMvpSubView.Callback {
 
-    void showCourseCards(List<Course> courses);
+    List<Course> getCourseList();
+    void setCourseList(List<Course> courses);
+    void showCourseCards();
 
-    void showStudentCards(List<Student> students);
+    List<Student> getStudentList();
+    void setStudentList(List<Student> students);
+    void showStudentCards();
 
-    void showTaskCards(List<Task> tasks);
+    List<Task> getTaskList();
+    void setTaskList(List<Task> tasks);
+    void showTaskCards();
+
+    void makeDialogTaskForProfessor(List<Student> students, List<Course> courses);
+    void cleanDialogTask();
+    void fillDialogTask(int id, String name, String studentName, String courseName, double grade);
+
+    void showDialogNewTask();
+    void showDialogEditTask();
+
+    void setFabVisibility(int resVisible);
 
     void gotoLogin();
 

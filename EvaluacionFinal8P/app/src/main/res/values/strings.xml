@@ -23,4 +23,7 @@
     <string name="dialogTask_title">Tarea</string>
     <string name="dialogTask_posititveEdit">Editar</string>
     <string name="dialogTask_positiveCreate">Crear</string>
+    <string name="cardTask_optionDelete">Eliminar</string>
+    <string name="cardTask_optionEdit">Editar</string>
+    <string name="dialogTask_negative">Cancelar</string>
 </resources>

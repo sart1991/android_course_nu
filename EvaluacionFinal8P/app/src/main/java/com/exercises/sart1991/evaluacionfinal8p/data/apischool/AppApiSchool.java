@@ -147,7 +147,15 @@ public class AppApiSchool implements ApiSchoolHelper {
                         listener.onError();
                     }
                 }
-        ));
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
+                headers.put(headerAuth, preferencesHelper.getToken());
+                return headers;
+            }
+        });
     }
 
     @Override
@@ -181,6 +189,7 @@ public class AppApiSchool implements ApiSchoolHelper {
 
     @Override
     public void postTask(Task task, @Nullable final ListenRequest<Task> listener) {
+        Log.i(TAG, "postTask: " + task);
         queue.add(new JsonObjectRequest(
                 Request.Method.POST, url + "/tasks",
                 JsonConverter.toJson(task),
@@ -215,6 +224,7 @@ public class AppApiSchool implements ApiSchoolHelper {
 
     @Override
     public void putTask(Task task, @Nullable final ListenRequest<Task> listener) {
+        Log.i(TAG, "putTask: " + task);
         queue.add(new JsonObjectRequest(
                 Request.Method.PUT, url + "/tasks/" + task.getId(),
                 JsonConverter.toJson(task),
@@ -254,12 +264,16 @@ public class AppApiSchool implements ApiSchoolHelper {
 
     @Override
     public void deleteTask(int taskId, @Nullable final ListenRequest<Task> listener) {
+        Log.i(TAG, "deleteTask: " + taskId);
         queue.add(new JsonObjectRequest(
+                Request.Method.DELETE,
                 url + "/tasks/" + taskId,
-                JsonConverter.toJson(null),
+                null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.i(TAG, "onResponse: listenUpdateTasks: " + listener);
+                        Log.i(TAG, "onResponse: listenUpdateTasks: " + String.valueOf(listener != null));
                         if (listener != null) {
                             listener.onSuccess(JsonConverter.fromJsonTask(response));
                         }
@@ -268,6 +282,8 @@ public class AppApiSchool implements ApiSchoolHelper {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.i(TAG, "onResponse: listenUpdateTasks: errorDelete: " + error.getMessage());
+                        Log.i(TAG, "onResponse: listenUpdateTasks: errorDelete: " + listener);
                         if (listener != null) {
                             listener.onError();
                         }

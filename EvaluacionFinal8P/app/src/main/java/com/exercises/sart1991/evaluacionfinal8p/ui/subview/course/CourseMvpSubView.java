@@ -14,6 +14,7 @@ import java.util.List;
 public interface CourseMvpSubView extends MvpSubView {
 
     void setCoursesList(List<Course> courses);
+    List<Course> getCoursesList();
 
     RecyclerView.Adapter getCoursesAdapter();
 

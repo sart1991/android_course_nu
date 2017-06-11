@@ -2,6 +2,7 @@ package com.exercises.sart1991.evaluacionfinal8p.ui.activity.main;
 
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 
 import com.exercises.sart1991.evaluacionfinal8p.R;
 import com.exercises.sart1991.evaluacionfinal8p.data.apischool.ApiSchoolHelper;
@@ -11,6 +12,7 @@ import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Student;
 import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Task;
 import com.exercises.sart1991.evaluacionfinal8p.ui.base.BasePresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,52 +24,109 @@ public class MainPresenter<V extends MainMvpView>
 
     private static final String TAG = MainPresenter.class.getSimpleName();
 
+    private List<Course> courses = new ArrayList<>();
+    private List<Student> students = new ArrayList<>();
+    private List<Task> tasks = new ArrayList<>();
+    private int persistentCard;
+
     @Override
     public void welcome() {
         getDataManager().checkProfessorLogin(listenLogin);
     }
 
     @Override
+    public void initLists() {
+        if (courses.size() <= 0) getDataManager().getCourses(listenCourses);
+        if (students.size() <= 0) getDataManager().getStudents(listenStudents);
+        if (tasks.size() <= 0) getDataManager().getTasks(listenTasks);
+        loadCardSelection(persistentCard);
+    }
+
+    @Override
     public void clickDrawerMenu(int itemId) {
         Log.i(TAG, "clickDrawerMenu: ");
+        loadCardSelection(itemId);
+    }
+
+    private void loadCardSelection(int itemId) {
         switch (itemId) {
             case R.id.item_mainDrawer_courses:
-                getDataManager().getCourses(listenCourses);
+                loadCourseCards();
+                getMvpView().setFabVisibility(View.GONE);
                 break;
             case R.id.item_mainDrawer_students:
-                getDataManager().getStudents(listenStudents);
+                loadStudentCards();
+                getMvpView().setFabVisibility(View.GONE);
                 break;
             case R.id.item_mainDrawer_tasks:
-                getDataManager().getTasks(listenTasks);
+                loadTaskCards();
+                getMvpView().makeDialogTaskForProfessor(students, courses);
+                getMvpView().setFabVisibility(View.VISIBLE);
+                break;
         }
     }
 
     @Override
-    public void clickTaskOptionsMenu(int itemId, int taskId) {
+    public void clickTaskOptionsMenu(int itemId, Task task) {
         switch (itemId) {
             case R.id.item_cardTaskOptions_edit:
-
+                getMvpView().fillDialogTask(
+                        task.getId(),
+                        task.getName(), task.getStudentName(),
+                        task.getCourseName(), task.getGradePoint()
+                );
+                getMvpView().showDialogEditTask();
                 break;
             case R.id.item_cardTaskOptions_delete:
-                getDataManager().deleteTask(taskId, listenDeleteTask);
+                Log.i(TAG, "clickTaskOptionsMenu: listenUpdateTasks: " + listenUpdateTasks);
+                getDataManager().deleteTask(task, listenUpdateTasks);
                 break;
         }
     }
 
-    @Override
-    public void loadCourseCards() {
-        Log.i(TAG, "loadCourseCards: ");
-        getDataManager().getCourses(listenCourses);
+    private void loadCourseCards() {
+        getMvpView().setCourseList(courses);
+        getMvpView().showCourseCards();
+        persistentCard = R.id.item_mainDrawer_courses;
+    }
+
+    private void loadStudentCards() {
+        getMvpView().setStudentList(students);
+        getMvpView().showStudentCards();
+        persistentCard = R.id.item_mainDrawer_students;
+    }
+
+    private void loadTaskCards() {
+        getMvpView().setTaskList(tasks);
+        getMvpView().showTaskCards();
+        persistentCard = R.id.item_mainDrawer_tasks;
     }
 
     @Override
-    public void loadStudentCards() {
-        getDataManager().getStudents(listenStudents);
+    public void clickFab() {
+        getMvpView().showDialogNewTask();
     }
 
     @Override
-    public void loadTaskCards() {
-        getDataManager().getTasks(listenTasks);
+    public void clickPositiveDialogTask(int method, int id, String name,
+                                        int studentId, int courseId, String grade) {
+
+        double gradeNumber = 0;
+        if (grade != null && !"".equals(grade)) gradeNumber = Double.valueOf(grade);
+
+        Task task = new Task(id, name, gradeNumber, studentId, courseId);
+        Log.i(TAG, "clickPositiveDialogTask: task: " + task);
+        switch (method) {
+            case R.string.dialogTask_positiveCreate:
+                Log.i(TAG, "clickPositiveDialogTask: listenUpdateTasks: " + listenUpdateTasks);
+                getDataManager().postTask(task, listenUpdateTasks);
+                break;
+            case R.string.dialogTask_posititveEdit:
+                Log.i(TAG, "clickPositiveDialogTask: listenUpdateTasks: " + listenUpdateTasks);
+                getDataManager().putTask(task, listenUpdateTasks);
+                break;
+        }
+        getMvpView().cleanDialogTask();
     }
 
     @Override
@@ -114,8 +173,8 @@ public class MainPresenter<V extends MainMvpView>
     private ApiSchoolHelper.ListenRequest<List<Course>> listenCourses =  new ApiSchoolHelper.ListenRequest<List<Course>>() {
         @Override
         public void onSuccess(List<Course> result) {
-            Log.i(TAG, "onSuccess: courseCards: " + result);
-            getMvpView().showCourseCards(result);
+            courses = result;
+            loadCourseCards();
         }
 
         @Override
@@ -127,7 +186,7 @@ public class MainPresenter<V extends MainMvpView>
     private ApiSchoolHelper.ListenRequest<List<Student>> listenStudents = new ApiSchoolHelper.ListenRequest<List<Student>>() {
         @Override
         public void onSuccess(List<Student> result) {
-            getMvpView().showStudentCards(result);
+            students = result;
         }
 
         @Override
@@ -139,7 +198,8 @@ public class MainPresenter<V extends MainMvpView>
     private ApiSchoolHelper.ListenRequest<List<Task>> listenTasks =  new ApiSchoolHelper.ListenRequest<List<Task>>() {
         @Override
         public void onSuccess(List<Task> result) {
-            getMvpView().showTaskCards(result);
+            tasks = result;
+            getMvpView().setTaskList(tasks);
         }
 
         @Override
@@ -148,15 +208,16 @@ public class MainPresenter<V extends MainMvpView>
         }
     };
 
-    private ApiSchoolHelper.ListenRequest<Task> listenUpdateTask = new ApiSchoolHelper.ListenRequest<Task>() {
+    private ApiSchoolHelper.ListenRequest<Task> listenUpdateTasks = new ApiSchoolHelper.ListenRequest<Task>() {
         @Override
         public void onSuccess(Task result) {
-
+            Log.i(TAG, "onSuccess: listenUpdateTasks: " + result);
+            getDataManager().getTasks(listenTasks);
         }
 
         @Override
         public void onError() {
-
+            getDataManager().getTasks(listenTasks);
         }
     };
 

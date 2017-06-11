@@ -21,6 +21,11 @@
     </android.support.design.widget.TextInputLayout>
     
     <Spinner
+        android:id="@+id/spinner_dialogTask_student"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <Spinner
         android:id="@+id/spinner_dialogTask_course"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -31,6 +31,11 @@ public class CourseCard extends BaseSubView implements CourseMvpSubView {
     }
 
     @Override
+    public List<Course> getCoursesList() {
+        return courses;
+    }
+
+    @Override
     public RecyclerView.Adapter getCoursesAdapter() {
         return adapter;
     }

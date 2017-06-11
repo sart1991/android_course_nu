@@ -31,6 +31,12 @@ public class TaskCard<C extends TaskMvpSubView.Callback>
     @Override
     public void setTasksList(List<Task> tasks) {
         this.tasks = tasks;
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public List<Task> getTasksList() {
+        return tasks;
     }
 
     @Override
@@ -90,7 +96,7 @@ public class TaskCard<C extends TaskMvpSubView.Callback>
                 @Override
                 public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
                     getCallback().onClickTaskOptionsMenu(
-                            item.getItemId(), tasks.get(getAdapterPosition()).getId()
+                            item.getItemId(), tasks.get(getAdapterPosition())
                     );
                     return true;
                 }

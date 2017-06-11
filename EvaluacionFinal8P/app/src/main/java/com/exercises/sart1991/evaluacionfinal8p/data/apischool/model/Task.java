@@ -10,9 +10,11 @@ public class Task {
 
     private int id;
     private String name;
-    private double gradePoint;
+    private @SerializedName("grade_point") double gradePoint;
     private transient String studentName;
     private transient String courseName;
+    private @SerializedName("student_id") int studentId;
+    private @SerializedName("course_id") int courseId;
 
     public Task(int id, String name, String studentName, String courseName, double gradePoint) {
         this.id = id;
@@ -20,6 +22,14 @@ public class Task {
         this.gradePoint = gradePoint;
         this.studentName = studentName;
         this.courseName = courseName;
+    }
+
+    public Task(int id, String name, double gradePoint, int studentId, int courseId) {
+        this.id = id;
+        this.name = name;
+        this.gradePoint = gradePoint;
+        this.studentId = studentId;
+        this.courseId = courseId;
     }
 
     public int getId() {
@@ -60,6 +70,22 @@ public class Task {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     @Override

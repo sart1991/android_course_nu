@@ -28,6 +28,11 @@ public class StudentCard extends BaseSubView implements StudentMvpSubView {
     }
 
     @Override
+    public List<Student> getStudentsList() {
+        return students;
+    }
+
+    @Override
     public RecyclerView.Adapter getStudentsAdapter() {
         return adapter;
     }

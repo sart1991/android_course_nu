@@ -4,11 +4,11 @@
     <item
         android:id="@+id/item_cardTaskOptions_edit"
         android:icon="@drawable/edit_black_24dp"
-        android:title="@null" />
+        android:title="@string/cardTask_optionEdit" />
     
     <item
         android:id="@+id/item_cardTaskOptions_delete"
         android:icon="@drawable/delete_black_24dp"
-        android:title="@null" />
+        android:title="@string/cardTask_optionDelete" />
 
 </menu>

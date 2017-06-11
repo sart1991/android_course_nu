@@ -15,11 +15,13 @@ public interface TaskMvpSubView<C extends TaskMvpSubView.Callback> extends MvpSu
 
     void setTasksList(List<Task> tasks);
 
+    List<Task> getTasksList();
+
     RecyclerView.Adapter getTasksAdapter();
 
     interface Callback extends MvpSubView.Callback {
 
-        void onClickTaskOptionsMenu(int itemId, int taskId);
+        void onClickTaskOptionsMenu(int itemId, Task task);
 
     }
 }
