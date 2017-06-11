@@ -2,6 +2,8 @@ package com.exercises.sart1991.evaluacionfinal8p.ui.subview.taskdialog;
 
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Student;
 import com.exercises.sart1991.evaluacionfinal8p.ui.base.BaseSubView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -85,12 +88,33 @@ public class TaskDialog<C extends TaskDialogMvpSubView.Callback>
         return names;
     }
 
+    private InputFilter inputFilter = new InputFilter() {
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end,
+                                   Spanned dest, int dstart, int dend) {
+            try {
+                double input = Double.parseDouble(dest.toString() + source.toString());
+                if (isInRange(0, 5, input))
+                    return null;
+            } catch (NumberFormatException nfe) { }
+            return "";
+        }
+
+        private boolean isInRange(double a, double b, double c) {
+            return b > a ? c >= a && c <= b : c >= b && c <= a;
+        }
+    };
+
     private AlertDialog makeDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getViewContext());
         builder.setTitle(R.string.dialogTask_title);
         View view = LayoutInflater.from(getViewContext()).inflate(R.layout.dialog_task, null, false);
         editName = (EditText) view.findViewById(R.id.editText_dialogTask_name);
         editGrade = (EditText) view.findViewById(R.id.editText_dialogTask_grade);
+//        InputFilter[] filters = editGrade.getFilters();
+//        List<InputFilter> lFilters = Arrays.asList(filters);
+//        lFilters.add(inputFilter);
+//        editGrade.setFilters(lFilters.toArray(new InputFilter[lFilters.size()]));
         spinnerStudents = (Spinner) view.findViewById(R.id.spinner_dialogTask_student);
         adapterStudent = new ArrayAdapter<>(
                 getViewContext(), android.R.layout.simple_spinner_item, getStudentsName()

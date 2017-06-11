@@ -30,6 +30,8 @@ public interface MainMvpView extends MvpView, TaskMvpSubView.Callback,
     void setTaskList(List<Task> tasks);
     void showTaskCards();
 
+    void setNavViewProfessorData(String name, String email);
+
     void makeDialogTaskForProfessor(List<Student> students, List<Course> courses);
     void cleanDialogTask();
     void fillDialogTask(int id, String name, String studentName, String courseName, double grade);

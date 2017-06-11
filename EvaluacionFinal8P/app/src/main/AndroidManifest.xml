@@ -24,6 +24,15 @@
         <activity
             android:name=".ui.activity.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        
+        <provider
+            android:name=".data.provider.ProviderContainer"
+            android:authorities="com.exercises.sart1991.evaluacionfinal8p.data.provider.ProviderContainer"
+            android:exported="true"
+            android:multiprocess="true">
+            
+        </provider>
+        
     </application>
 
 </manifest>

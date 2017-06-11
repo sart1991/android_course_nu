@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.exercises.sart1991.evaluacionfinal8p.R;
 import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Course;
@@ -42,6 +43,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     private CourseCard courseCard;
     private StudentCard studentCard;
     private RecyclerView recycler;
+    private NavigationView navigationView;
+    private TextView txtProfessorName, txtProfessorEmail;
     private FloatingActionButton fab;
     private TaskCard<TaskMvpSubView.Callback> taskCard;
     private TaskDialog<TaskDialogMvpSubView.Callback> newTaskDialog, editTaskDialog;
@@ -75,9 +78,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         );
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(navigationItemSelectedListener);
         navigationView.setCheckedItem(0);
+
+        View view = navigationView.getHeaderView(0);
+        txtProfessorName = (TextView) view.findViewById(R.id.textView_mainHeader_name);
+        txtProfessorEmail = (TextView) view.findViewById(R.id.textView_mainHeader_email);
 
         recycler = (RecyclerView) findViewById(R.id.recycler_main_cardsContainer);
         LinearLayoutManager manager = new LinearLayoutManager(
@@ -114,6 +121,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                     return true;
                 }
             };
+
+    @Override
+    public void setNavViewProfessorData(String name, String email) {
+        txtProfessorName.setText(name);
+        txtProfessorEmail.setText(email);
+    }
 
     @Override
     public void onClickTaskOptionsMenu(int itemId, Task task) {

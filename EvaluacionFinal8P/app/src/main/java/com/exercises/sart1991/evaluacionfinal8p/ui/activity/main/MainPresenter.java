@@ -32,6 +32,7 @@ public class MainPresenter<V extends MainMvpView>
     @Override
     public void welcome() {
         getDataManager().checkProfessorLogin(listenLogin);
+        getDataManager().getContentProvider();
     }
 
     @Override
@@ -144,6 +145,7 @@ public class MainPresenter<V extends MainMvpView>
         @Override
         public void onSuccess(Professor result) {
             Log.i(TAG, "onSuccess: login: " + result);
+            getMvpView().setNavViewProfessorData(result.getName(), result.getEmail());
         }
 
         @Override
@@ -200,6 +202,7 @@ public class MainPresenter<V extends MainMvpView>
         public void onSuccess(List<Task> result) {
             tasks = result;
             getMvpView().setTaskList(tasks);
+            getDataManager().insertProviderTask(tasks);
         }
 
         @Override
@@ -218,18 +221,6 @@ public class MainPresenter<V extends MainMvpView>
         @Override
         public void onError() {
             getDataManager().getTasks(listenTasks);
-        }
-    };
-
-    private ApiSchoolHelper.ListenRequest<Task> listenDeleteTask = new ApiSchoolHelper.ListenRequest<Task>() {
-        @Override
-        public void onSuccess(Task result) {
-
-        }
-
-        @Override
-        public void onError() {
-
         }
     };
 }
