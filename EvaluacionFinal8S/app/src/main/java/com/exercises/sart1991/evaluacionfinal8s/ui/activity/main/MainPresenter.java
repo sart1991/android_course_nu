@@ -48,6 +48,16 @@ public class MainPresenter<V extends MainMvpView>
         loaderManager.initLoader(1, null, loader);
     }
 
+    @Override
+    public void clickOptionsMenu(int itemId) {
+        switch (itemId) {
+            case R.id.item_main_signOutOption:
+                getDataManager().setToken("");
+                getMvpView().gotoLogin();
+                break;
+        }
+    }
+
     private ApiSchoolHelper.ListenRequest<Student> listenLogin = new ApiSchoolHelper.ListenRequest<Student>() {
         @Override
         public void onSuccess(Student result) {

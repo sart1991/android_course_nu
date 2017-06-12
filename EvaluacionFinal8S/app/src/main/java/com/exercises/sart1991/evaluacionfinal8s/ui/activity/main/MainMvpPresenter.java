@@ -12,6 +12,8 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
 
     void welcome();
 
+    void clickOptionsMenu(int itemId);
+
     void getProviderData(LoaderManager loaderManager);
 
 }

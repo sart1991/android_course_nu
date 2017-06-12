@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.exercises.sart1991.evaluacionfinal8s.R;
 import com.exercises.sart1991.evaluacionfinal8s.data.apischool.model.Task;
@@ -48,6 +50,18 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
         taskCardMvpSubview = new TaskCard();
         recyclerView.setAdapter(taskCardMvpSubview.getTasksAdapter());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_options, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        PRESENTER.clickOptionsMenu(item.getItemId());
+        return true;
     }
 
     @Override
