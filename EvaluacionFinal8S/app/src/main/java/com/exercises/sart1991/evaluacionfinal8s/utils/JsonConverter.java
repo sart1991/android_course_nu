@@ -1,9 +1,7 @@
-package com.exercises.sart1991.evaluacionfinal8p.utils;
+package com.exercises.sart1991.evaluacionfinal8s.utils;
 
-import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Course;
-import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Professor;
-import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Student;
-import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Task;
+import com.exercises.sart1991.evaluacionfinal8s.data.apischool.model.Student;
+import com.exercises.sart1991.evaluacionfinal8s.data.apischool.model.Task;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -33,18 +31,6 @@ public class JsonConverter {
         }
     }
 
-    public static Professor fromJsonProfessor(JSONObject json) {
-        return gson.fromJson(json.toString(), Professor.class);
-    }
-
-    public static Course fromJsonCourse(JSONObject json) {
-        return gson.fromJson(json.toString(), Course.class);
-    }
-
-    public static List<Course> fromJsonArrayCourses(JSONArray jsonArray) {
-        return Arrays.asList(gson.fromJson(jsonArray.toString(), Course[].class));
-    }
-
     public static Student fromJsonStudent(JSONObject json) {
         return gson.fromJson(json.toString(), Student.class);
     }
@@ -59,7 +45,6 @@ public class JsonConverter {
             task = new Task(
                     json.getInt("id"),
                     json.getString("name"),
-                    json.getInt("student_id"),
                     json.getJSONObject("Student").getString("name"),
                     json.getJSONObject("Course").getString("name"),
                     json.getDouble("grade_point")

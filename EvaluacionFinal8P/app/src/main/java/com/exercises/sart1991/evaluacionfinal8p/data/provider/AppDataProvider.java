@@ -3,6 +3,7 @@ package com.exercises.sart1991.evaluacionfinal8p.data.provider;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 
 import com.exercises.sart1991.evaluacionfinal8p.data.apischool.model.Task;
 
@@ -13,6 +14,8 @@ import java.util.List;
  */
 
 public class AppDataProvider implements DataProviderHelper {
+
+    private static final String TAG = AppDataProvider.class.getSimpleName();
 
     private ProviderContainer providerContainer =  new ProviderContainer();
     private ProviderLoader loaderProvider;
@@ -31,6 +34,7 @@ public class AppDataProvider implements DataProviderHelper {
     @Override
     public Uri insertProviderTask(List<Task> tasks) {
         Uri uri = null;
+        Log.i(TAG, "insertProviderTask: appDtaProvider: " + tasks);
         for (Task task: tasks) {
             ContentValues values = new ContentValues();
             values.put(DbHelper.getColumnId(), task.getId());
@@ -44,9 +48,36 @@ public class AppDataProvider implements DataProviderHelper {
     }
 
     @Override
+    public void insertProviderTask(Task task) {
+        Log.i(TAG, "insertProviderTask: " + task);
+        ContentValues values = new ContentValues();
+        values.put(DbHelper.getColumnId(), task.getId());
+        values.put(DbHelper.getColumnName(), task.getName());
+        values.put(DbHelper.getColumnGrade(), task.getGradePoint());
+        values.put(DbHelper.getColumnStudent(), task.getStudentId());
+        values.put(DbHelper.getColumnCourse(), task.getCourseName());
+        context.getContentResolver().insert(ProviderContainer.getContentUri(), values);
+    }
+
+    @Override
     public void deleteProviderTask(int id) {
         context.getContentResolver().delete(
-                ProviderContainer.getContentUri(), " id = ?", new String[]{String.valueOf(id)}
+                ProviderContainer.getContentUri(), " id = ? ", new String[]{String.valueOf(id)}
+        );
+    }
+
+    @Override
+    public void updateProviderTasks(Task task) {
+        ContentValues values = new ContentValues();
+        values.put(DbHelper.getColumnId(), task.getId());
+        values.put(DbHelper.getColumnName(), task.getName());
+        values.put(DbHelper.getColumnGrade(), task.getGradePoint());
+        values.put(DbHelper.getColumnStudent(), task.getStudentId());
+        values.put(DbHelper.getColumnCourse(), task.getCourseName());
+        context.getContentResolver().update(
+                ProviderContainer.getContentUri(),
+                values, " id = ? ",
+                new String[]{String.valueOf(task.getId())}
         );
     }
 

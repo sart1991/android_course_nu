@@ -3,7 +3,7 @@
     <string name="login_textView_title">Bienvenido al Control de Tareas</string>
     <string name="login_textView_subtitle">Inicia sesion para empezar</string>
     <string name="login_emailHint">Email</string>
-    <string name="login_passwordHint">Password</string>
+    <string name="login_passwordHint">Contraseña</string>
     <string name="login_loginButton">Iniciar Sesión</string>
     <string name="main_toolbarTitle">Control de tareas</string>
     <string name="menuMainDrawer_courses">Asignaturas</string>

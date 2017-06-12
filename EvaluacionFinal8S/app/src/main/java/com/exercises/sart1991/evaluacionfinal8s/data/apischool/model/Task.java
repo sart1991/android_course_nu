@@ -1,4 +1,4 @@
-package com.exercises.sart1991.evaluacionfinal8p.data.apischool.model;
+package com.exercises.sart1991.evaluacionfinal8s.data.apischool.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -16,11 +16,10 @@ public class Task {
     private @SerializedName("student_id") int studentId;
     private @SerializedName("course_id") int courseId;
 
-    public Task(int id, String name, int studentId, String studentName, String courseName, double gradePoint) {
+    public Task(int id, String name, String studentName, String courseName, double gradePoint) {
         this.id = id;
         this.name = name;
         this.gradePoint = gradePoint;
-        this.studentId = studentId;
         this.studentName = studentName;
         this.courseName = courseName;
     }

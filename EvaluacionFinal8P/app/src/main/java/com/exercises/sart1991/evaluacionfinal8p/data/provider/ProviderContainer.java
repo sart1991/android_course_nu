@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -19,6 +20,8 @@ import java.util.HashMap;
  */
 
 public class ProviderContainer extends ContentProvider {
+
+    private static final String TAG = ProviderContainer.class.getSimpleName();
 
     private static final String PROVIDER_NAME =
             "com.exercises.sart1991.evaluacionfinal8p.data.provider.ProviderContainer";
@@ -81,16 +84,16 @@ public class ProviderContainer extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        long rowId = db.insert(DbHelper.getTableName(), "", values);
-        if (rowId <= 0) {
-            rowId = db.update(
-                    DbHelper.getTableName(), values,
-                    " id = " + values.getAsString(DbHelper.getColumnId()), null
-            );
+        Log.i(TAG, "insert: " + values);
+        long rowId = db.insertWithOnConflict(
+                DbHelper.getTableName(), "", values, SQLiteDatabase.CONFLICT_IGNORE
+        );
+        if (rowId > 0) {
+            Uri cUri = ContentUris.withAppendedId(CONTENT_URI, rowId);
+            getContext().getContentResolver().notifyChange(cUri, null);
+            return cUri;
         }
-        Uri cUri = ContentUris.withAppendedId(CONTENT_URI, rowId);
-        getContext().getContentResolver().notifyChange(cUri, null);
-        return cUri;
+        return uri;
     }
 
     @Override
@@ -108,6 +111,15 @@ public class ProviderContainer extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection,
                       @Nullable String[] selectionArgs) {
+        int rowId = db.update(
+                DbHelper.getTableName(), values,
+                " id = " + values.getAsString(DbHelper.getColumnId()), null
+        );
+        if (rowId > 0) {
+            Uri cUri = ContentUris.withAppendedId(CONTENT_URI, rowId);
+            getContext().getContentResolver().notifyChange(cUri, null);
+            return rowId;
+        }
         return 0;
     }
 

@@ -123,10 +123,12 @@ public class MainPresenter<V extends MainMvpView>
             case R.string.dialogTask_positiveCreate:
                 Log.i(TAG, "clickPositiveDialogTask: listenUpdateTasks: " + listenUpdateTasks);
                 getDataManager().postTask(task, listenUpdateTasks);
+                getDataManager().insertProviderTask(task);
                 break;
             case R.string.dialogTask_posititveEdit:
                 Log.i(TAG, "clickPositiveDialogTask: listenUpdateTasks: " + listenUpdateTasks);
                 getDataManager().putTask(task, listenUpdateTasks);
+                getDataManager().updateProviderTasks(task);
                 break;
         }
         getMvpView().cleanDialogTask();
@@ -214,6 +216,7 @@ public class MainPresenter<V extends MainMvpView>
     private ApiSchoolHelper.ListenRequest<List<Task>> listenTasks =  new ApiSchoolHelper.ListenRequest<List<Task>>() {
         @Override
         public void onSuccess(List<Task> result) {
+            Log.i(TAG, "onSuccess: getTasks: " + result);
             tasks = result;
             getMvpView().setTaskList(tasks);
             getDataManager().insertProviderTask(tasks);

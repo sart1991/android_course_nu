@@ -12,6 +12,8 @@ import java.util.List;
 public interface DataProviderHelper {
     ProviderContainer getContentProvider();
     Uri insertProviderTask(List<Task> tasks);
+    void insertProviderTask(Task task);
     ProviderLoader getLoaderData(ProviderLoader.Callback callback);
     void deleteProviderTask(int id);
+    void updateProviderTasks(Task task);
 }

@@ -114,4 +114,14 @@ public class AppDataManager implements DataManager {
     public ProviderLoader getLoaderData(ProviderLoader.Callback callback) {
         return providerHelper.getLoaderData(callback);
     }
+
+    @Override
+    public void insertProviderTask(Task task) {
+        providerHelper.insertProviderTask(task);
+    }
+
+    @Override
+    public void updateProviderTasks(Task task) {
+        providerHelper.updateProviderTasks(task);
+    }
 }

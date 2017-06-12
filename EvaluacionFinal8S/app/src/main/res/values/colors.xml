@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#014379</color>
+    <color name="primary_dark">#00325A</color>
+    <color name="accent">#00B8D4</color>
+    <color name="accent_dark">#00B8D4</color>
+    <color name="error">#D32F2F</color>
+    <color name="notify">@color/primary_dark</color>
+    <color name="success">@color/accent</color>
+</resources>
