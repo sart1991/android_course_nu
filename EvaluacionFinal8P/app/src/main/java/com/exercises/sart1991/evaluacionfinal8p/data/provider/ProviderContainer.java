@@ -86,7 +86,7 @@ public class ProviderContainer extends ContentProvider {
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         Log.i(TAG, "insert: " + values);
         long rowId = db.insertWithOnConflict(
-                DbHelper.getTableName(), "", values, SQLiteDatabase.CONFLICT_IGNORE
+                DbHelper.getTableName(), "", values, SQLiteDatabase.CONFLICT_REPLACE
         );
         if (rowId > 0) {
             Uri cUri = ContentUris.withAppendedId(CONTENT_URI, rowId);

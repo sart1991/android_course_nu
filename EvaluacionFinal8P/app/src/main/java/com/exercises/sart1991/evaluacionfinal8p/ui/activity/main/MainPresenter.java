@@ -32,7 +32,6 @@ public class MainPresenter<V extends MainMvpView>
 
     @Override
     public void welcome() {
-
         getDataManager().checkProfessorLogin(listenLogin);
         getDataManager().getContentProvider();
     }
@@ -152,6 +151,9 @@ public class MainPresenter<V extends MainMvpView>
             case R.id.item_mainOptions_signOut:
                 getDataManager().setToken("");
                 getMvpView().gotoLogin();
+                courses = new ArrayList<>();
+                students = new ArrayList<>();
+                tasks = new ArrayList<>();
                 return true;
         }
         return false;

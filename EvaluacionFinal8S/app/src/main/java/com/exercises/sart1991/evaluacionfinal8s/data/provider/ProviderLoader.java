@@ -43,7 +43,7 @@ public class ProviderLoader implements LoaderManager.LoaderCallbacks<Cursor> {
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         cursorLoader = new CursorLoader(
-                context, CONTENT_URI, null, " student_id = ? ", new String[]{String.valueOf(studentId)}, null
+                context, CONTENT_URI, null, " student_id = ? AND id > 0", new String[]{String.valueOf(studentId)}, null
         );
         return cursorLoader;
     }
@@ -54,16 +54,6 @@ public class ProviderLoader implements LoaderManager.LoaderCallbacks<Cursor> {
             StringBuilder sb = new StringBuilder();
             List<Task> tasks = new ArrayList<>();
             do {
-                /*sb.append("\n")
-                        .append(data.getInt(data.getColumnIndex("id")))
-                        .append(" - ")
-                        .append(data.getString(data.getColumnIndex("name")))
-                        .append(" - ")
-                        .append(data.getString(data.getColumnIndex("student_id")))
-                        .append(" - ")
-                        .append(data.getString(data.getColumnIndex("course_id")))
-                        .append(" - ")
-                        .append(data.getString(data.getColumnIndex("grade_point")));*/
                 tasks.add(new Task(
                         data.getInt(data.getColumnIndex("id")),
                         data.getString(data.getColumnIndex("name")),

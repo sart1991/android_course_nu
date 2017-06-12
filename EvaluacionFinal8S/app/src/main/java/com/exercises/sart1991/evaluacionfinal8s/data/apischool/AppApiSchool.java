@@ -29,7 +29,7 @@ public class AppApiSchool implements ApiSchoolHelper {
 
     private static final String TAG = AppApiSchool.class.getSimpleName();
 
-    private final String url = "http://192.168.1.58:8080/api-school";
+    private final String url = "http://sart1991.cleverapps.io/api-school";
     private final String headerAuth = "Authorization";
     private RequestQueue queue;
     private PreferencesHelper preferencesHelper;

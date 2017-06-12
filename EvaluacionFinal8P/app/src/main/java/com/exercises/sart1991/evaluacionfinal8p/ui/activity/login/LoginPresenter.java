@@ -36,6 +36,7 @@ public class LoginPresenter<V extends LoginMvpView>
         public void onSuccess(String result) {
             Log.i(TAG, "onSuccess: testApiSchool: " + result);
             getDataManager().setToken(result);
+            Log.i(TAG, "onSuccess: token preferences: " + getDataManager().getToken());
             getMvpView().gotoMain();
         }
 
