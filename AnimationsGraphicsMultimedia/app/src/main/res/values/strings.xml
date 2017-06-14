@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Animations Graphics Multimedia</string>
+    <string name="main_buttonAnimation">Animation</string>
+    <string name="animation_buttonAnimate">Animate</string>
+    <string name="animation_buttonFirst">First</string>
+    <string name="animation_buttonSecond">Second</string>
+</resources>
