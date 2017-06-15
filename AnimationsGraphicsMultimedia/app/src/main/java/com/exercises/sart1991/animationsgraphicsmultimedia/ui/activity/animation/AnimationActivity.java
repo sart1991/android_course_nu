@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +23,8 @@ public class AnimationActivity extends BaseActivity implements AnimationMvpView 
     private static final AnimationMvpPresenter<AnimationMvpView> PRESENTER = new AnimationPresenter<>();
 
     private ImageView imgBall;
-    AnimatorSet mAnimatorSet;
+    private AnimatorSet mAnimatorSet;
+    private ImageView imgBird;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,9 @@ public class AnimationActivity extends BaseActivity implements AnimationMvpView 
                 (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.animation_ball);
         mAnimatorSet.setTarget(imgBall);
         mAnimatorSet.addListener(animatorListener);
+        imgBird = (ImageView) findViewById(R.id.imageView_animation_animationBird);
+        AnimationDrawable animation = (AnimationDrawable) imgBird.getDrawable();
+        animation.start();
     }
 
     public void onClickButtonAnimate(View view) {
