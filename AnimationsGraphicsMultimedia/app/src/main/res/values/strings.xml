@@ -4,4 +4,6 @@
     <string name="animation_buttonAnimate">Animate</string>
     <string name="animation_buttonFirst">First</string>
     <string name="animation_buttonSecond">Second</string>
+    <string name="animation_buttonCancel">Cancel</string>
+    <string name="animation_buttonThird">Third</string>
 </resources>

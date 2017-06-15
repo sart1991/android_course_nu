@@ -12,4 +12,8 @@ public interface AnimationMvpView extends MvpView {
 
     void animateSecond();
 
+    void animationThird();
+
+    void animateCancel();
+
 }

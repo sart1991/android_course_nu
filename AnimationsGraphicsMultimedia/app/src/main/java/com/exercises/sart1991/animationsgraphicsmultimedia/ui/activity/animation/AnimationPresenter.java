@@ -19,6 +19,17 @@ public class AnimationPresenter<V extends AnimationMvpView>
             case R.id.button_animation_animate2:
                 getMvpView().animateSecond();
                 break;
+            case R.id.button_animation_third:
+                getMvpView().animationThird();
+                break;
+            case R.id.button_animation_cancel:
+                getMvpView().animateCancel();
+                break;
         }
+    }
+
+    @Override
+    public void animationCanceled() {
+        getMvpView().onNotify("Animation canceled", null);
     }
 }

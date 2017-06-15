@@ -10,4 +10,6 @@ public interface AnimationMvpPresenter<V extends AnimationMvpView> extends MvpPr
 
     void clickButtonAnimate(int id);
 
+    void animationCanceled();
+
 }
