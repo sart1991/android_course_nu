@@ -8,4 +8,5 @@ import com.exercises.sart1991.animationsgraphicsmultimedia.ui.base.MvpView;
 
 public interface MainMvpView extends MvpView {
     void gotoAnimation();
+    void gotoOpenGl();
 }

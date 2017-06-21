@@ -1,4 +1,4 @@
-package com.exercises.sart1991.animationsgraphicsmultimedia.ui.data;
+package com.exercises.sart1991.animationsgraphicsmultimedia.data;
 
 import android.content.Context;
 

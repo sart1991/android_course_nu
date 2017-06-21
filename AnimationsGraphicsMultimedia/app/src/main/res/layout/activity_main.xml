@@ -10,13 +10,22 @@
         android:id="@+id/button_main_animation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClickButtonAnimation"
         android:text="@string/main_buttonAnimation"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        android:onClick="onClickButtonAnimation"/>
+        app:layout_constraintVertical_bias="0.1" />
     
+    <Button
+        android:id="@+id/button_main_openGl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_main_animation"
+        android:text="@string/main_buttonOpenGL"
+        android:onClick="onClickButtonOpenGl"/>
 
 </android.support.constraint.ConstraintLayout>

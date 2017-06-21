@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.exercises.sart1991.animationsgraphicsmultimedia.R;
 import com.exercises.sart1991.animationsgraphicsmultimedia.ui.activity.animation.AnimationActivity;
+import com.exercises.sart1991.animationsgraphicsmultimedia.ui.activity.opengl.OpenGLActivity;
 import com.exercises.sart1991.animationsgraphicsmultimedia.ui.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
@@ -31,9 +32,18 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         PRESENTER.clickButtonAnimation();
     }
 
+    public void onClickButtonOpenGl(View view) {
+        PRESENTER.clickButtonOpenGl();
+    }
+
     @Override
     public void gotoAnimation() {
         startActivity(new Intent(this, AnimationActivity.class));
+    }
+
+    @Override
+    public void gotoOpenGl() {
+        startActivity(new Intent(this, OpenGLActivity.class));
     }
 
     @Override

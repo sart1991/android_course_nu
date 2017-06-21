@@ -6,4 +6,5 @@
     <string name="animation_buttonSecond">Second</string>
     <string name="animation_buttonCancel">Cancel</string>
     <string name="animation_buttonThird">Third</string>
+    <string name="main_buttonOpenGL">Open GL</string>
 </resources>

@@ -9,4 +9,6 @@ import com.exercises.sart1991.animationsgraphicsmultimedia.ui.base.MvpPresenter;
 public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
 
     void clickButtonAnimation();
+
+    void clickButtonOpenGl();
 }

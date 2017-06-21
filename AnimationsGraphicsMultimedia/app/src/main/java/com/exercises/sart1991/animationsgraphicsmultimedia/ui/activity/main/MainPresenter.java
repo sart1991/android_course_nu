@@ -13,4 +13,9 @@ public class MainPresenter<V extends MainMvpView>
     public void clickButtonAnimation() {
         getMvpView().gotoAnimation();
     }
+
+    @Override
+    public void clickButtonOpenGl() {
+        getMvpView().gotoOpenGl();
+    }
 }

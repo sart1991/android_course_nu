@@ -7,7 +7,7 @@ import android.view.View;
  * Created by sart1 on 6/13/2017.
  */
 
-abstract public class BaseSubView<C extends MvpSubview.Callback> implements MvpSubview<C> {
+abstract public class BaseSubView<C extends MvpSubView.Callback> implements MvpSubView<C> {
 
     private MvpView mMvpView;
 
