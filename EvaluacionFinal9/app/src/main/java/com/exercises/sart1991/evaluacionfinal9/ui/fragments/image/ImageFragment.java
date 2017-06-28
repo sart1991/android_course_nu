@@ -23,14 +23,14 @@ import com.exercises.sart1991.evaluacionfinal9.R;
 import com.exercises.sart1991.evaluacionfinal9.ui.base.BaseFragment;
 
 import java.io.File;
-import java.net.URI;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ImageFragment extends BaseFragment implements ImageMvpView {
 
-    private static final int REQUEST_CODE = 1;
+    private static final int REQUEST_CODE_TAKE = 1;
+    private static final int REQUEST_CODE_OPEN = 2;
     private static final String TAG = ImageFragment.class.getSimpleName();
 
     private Button buttonOpen, buttonTake;
@@ -69,7 +69,7 @@ public class ImageFragment extends BaseFragment implements ImageMvpView {
             Intent selectIntent = new Intent(
                     Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             );
-            startActivityForResult(selectIntent, REQUEST_CODE);
+            startActivityForResult(selectIntent, REQUEST_CODE_OPEN);
         }
     };
 
@@ -85,7 +85,7 @@ public class ImageFragment extends BaseFragment implements ImageMvpView {
                 File image = new File(imageFolder, "photo.jpg");
                 Uri imageUri = Uri.fromFile(image);
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                startActivityForResult(cameraIntent, REQUEST_CODE);
+                startActivityForResult(cameraIntent, REQUEST_CODE_TAKE);
             } else {
                 onNotify("Error al iniciar cámara");
             }
@@ -96,8 +96,8 @@ public class ImageFragment extends BaseFragment implements ImageMvpView {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String pathImage = "";
-        if (requestCode == REQUEST_CODE && resultCode == getActivity().RESULT_OK) {
-            if (data != null) {
+        if (resultCode == getActivity().RESULT_OK) {
+            if (data != null && requestCode == REQUEST_CODE_OPEN) {
                 Uri selectedImage = data.getData();
                 String[] path = {MediaStore.Images.Media.DATA};
                 Cursor cursor = getActivity().getContentResolver().query(
@@ -106,7 +106,7 @@ public class ImageFragment extends BaseFragment implements ImageMvpView {
                 cursor.moveToFirst();
                 pathImage = cursor.getString(cursor.getColumnIndex(path[0]));
                 cursor.close();
-            } else {
+            } else if(requestCode == REQUEST_CODE_TAKE) {
                 pathImage = Environment.getExternalStorageDirectory() + "/ImageFolder/photo.jpg";
             }
             Bitmap bitmap = BitmapFactory.decodeFile(pathImage);

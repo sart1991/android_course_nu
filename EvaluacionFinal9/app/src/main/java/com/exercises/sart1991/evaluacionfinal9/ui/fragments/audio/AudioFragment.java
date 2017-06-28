@@ -119,6 +119,7 @@ public class AudioFragment extends BaseFragment implements AudioMvpView {
         mediaRecorder = null;
         buttonControl.setEnabled(true);
         buttonOpen.setEnabled(true);
+        txtPath.setText(pathAudio);
     }
 
     private void startPlayingAudio() {

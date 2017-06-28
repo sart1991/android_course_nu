@@ -23,17 +23,26 @@
         android:text="@string/video_route"
         app:layout_constraintBottom_toTopOf="@+id/button_video_open"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/videoView_video_icon" />
+        app:layout_constraintTop_toBottomOf="@id/videoView_video_icon"
+        app:layout_constraintRight_toLeftOf="@+id/scrollView_video_path"/>
     
-    <TextView
-        android:id="@+id/textView_video_routeContainer"
-        android:layout_width="wrap_content"
+    <HorizontalScrollView
+        android:id="@+id/scrollView_video_path"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="@string/video_routeContainer"
         app:layout_constraintBottom_toBottomOf="@id/textView_video_route"
         app:layout_constraintLeft_toRightOf="@id/textView_video_route"
-        app:layout_constraintTop_toTopOf="@id/textView_video_route" />
+        app:layout_constraintTop_toTopOf="@id/textView_video_route"
+        app:layout_constraintRight_toRightOf="parent">
+    
+        <TextView
+            android:id="@+id/textView_video_routeContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/video_routeContainer" />
+    
+    </HorizontalScrollView>
     
     <Button
         android:id="@+id/button_video_open"

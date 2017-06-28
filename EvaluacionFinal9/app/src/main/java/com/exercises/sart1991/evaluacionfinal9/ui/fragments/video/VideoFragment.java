@@ -3,9 +3,6 @@ package com.exercises.sart1991.evaluacionfinal9.ui.fragments.video;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,7 +26,8 @@ import java.io.File;
  */
 public class VideoFragment extends BaseFragment implements VideoMvpView {
 
-    private static final int REQUEST_CODE = 1;
+    private static final int REQUEST_CODE_TAKE = 1;
+    private static final int REQUEST_CODE_OPEN = 2;
     private static final String TAG = VideoFragment.class.getSimpleName();
 
     private Button buttonOpen, buttonTake;
@@ -68,7 +66,7 @@ public class VideoFragment extends BaseFragment implements VideoMvpView {
             Intent selectIntent = new Intent(
                     Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI
             );
-            startActivityForResult(selectIntent, REQUEST_CODE);
+            startActivityForResult(selectIntent, REQUEST_CODE_OPEN);
         }
     };
 
@@ -84,7 +82,7 @@ public class VideoFragment extends BaseFragment implements VideoMvpView {
                 File video = new File(videoFolder, "video.mp4");
                 videoUri = Uri.fromFile(video);
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, videoUri);
-                startActivityForResult(cameraIntent, REQUEST_CODE);
+                startActivityForResult(cameraIntent, REQUEST_CODE_TAKE);
             } else {
                 onNotify("Error al iniciar cámara");
             }
@@ -95,10 +93,10 @@ public class VideoFragment extends BaseFragment implements VideoMvpView {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String pathVideo = "";
-        if (requestCode == REQUEST_CODE && resultCode == getActivity().RESULT_OK) {
+        if (resultCode == getActivity().RESULT_OK) {
             MediaController mediaController = new MediaController(getViewContext());
             videoView.setMediaController(mediaController);
-            if (data != null) {
+            if (data != null && requestCode == REQUEST_CODE_OPEN) {
                 videoUri = data.getData();
                 String[] path = {MediaStore.Images.Media.DATA};
                 Cursor cursor = getActivity().getContentResolver().query(
@@ -107,13 +105,19 @@ public class VideoFragment extends BaseFragment implements VideoMvpView {
                 cursor.moveToFirst();
                 pathVideo = cursor.getString(cursor.getColumnIndex(path[0]));
                 cursor.close();
-            } else {
+            } else if (requestCode == REQUEST_CODE_TAKE) {
                 pathVideo = Environment.getExternalStorageDirectory() + "/VideoFolder/video.mp4";
             }
             videoView.setVideoURI(videoUri);
             videoView.start();
             txtPath.setText(pathVideo);
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        videoView.stopPlayback();
     }
 
     @Override

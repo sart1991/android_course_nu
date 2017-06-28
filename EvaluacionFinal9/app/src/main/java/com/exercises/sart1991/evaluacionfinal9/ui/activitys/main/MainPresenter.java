@@ -1,6 +1,7 @@
 package com.exercises.sart1991.evaluacionfinal9.ui.activitys.main;
 
 import android.Manifest;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 
 import com.exercises.sart1991.evaluacionfinal9.R;
@@ -26,9 +27,13 @@ public class MainPresenter<V extends MainMvpView>
 
     @Override
     public void welcome() {
+
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
         getMvpView().showFragment(animationFragment);
 
-        if (getMvpView().hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        if (!getMvpView().hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
             getMvpView().requestPermissionsSafely(
                     new String[]{
                             Manifest.permission.READ_EXTERNAL_STORAGE
@@ -37,7 +42,7 @@ public class MainPresenter<V extends MainMvpView>
             );
         }
 
-        if (getMvpView().hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (!getMvpView().hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             getMvpView().requestPermissionsSafely(
                     new String[]{
                             Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -46,7 +51,7 @@ public class MainPresenter<V extends MainMvpView>
             );
         }
 
-        if (getMvpView().hasPermission(Manifest.permission.RECORD_AUDIO)) {
+        if (!getMvpView().hasPermission(Manifest.permission.RECORD_AUDIO)) {
             getMvpView().requestPermissionsSafely(
                     new String[]{
                             Manifest.permission.RECORD_AUDIO
