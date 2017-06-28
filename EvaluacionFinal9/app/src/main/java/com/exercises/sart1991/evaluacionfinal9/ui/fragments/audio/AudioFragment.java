@@ -57,13 +57,8 @@ public class AudioFragment extends BaseFragment implements AudioMvpView {
         buttonControl.setOnClickListener(listenerPlay);
         buttonControl.setEnabled(false);
         txtPath = (TextView) view.findViewById(R.id.textView_audio_routeContainer);
-        pathAudio = Environment.getExternalStorageDirectory() + "/AudioFolder/audio.3gp";
-        mediaRecorder = new MediaRecorder();
-        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-        mediaRecorder.setOutputFile(pathAudio);
-        mediaPlayer = new MediaPlayer();
+        pathAudio = Environment.getExternalStorageDirectory().getAbsolutePath() +
+                    "/audio.3gp";
     }
 
     private View.OnClickListener listenerOpen = new View.OnClickListener() {
@@ -101,6 +96,11 @@ public class AudioFragment extends BaseFragment implements AudioMvpView {
     private void startRecordingAudio() {
         recording = true;
         buttonTake.setText(R.string.audio_buttonTake_stop);
+        mediaRecorder = new MediaRecorder();
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mediaRecorder.setOutputFile(pathAudio);
+        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         try {
             mediaRecorder.prepare();
         } catch (IOException e) {
@@ -108,6 +108,7 @@ public class AudioFragment extends BaseFragment implements AudioMvpView {
         }
         mediaRecorder.start();
         buttonControl.setEnabled(false);
+        buttonOpen.setEnabled(false);
     }
 
     private void stopRecordingAudio() {
@@ -115,12 +116,18 @@ public class AudioFragment extends BaseFragment implements AudioMvpView {
         buttonTake.setText(R.string.audio_buttonTake);
         mediaRecorder.stop();
         mediaRecorder.release();
+        mediaRecorder = null;
         buttonControl.setEnabled(true);
+        buttonOpen.setEnabled(true);
     }
 
     private void startPlayingAudio() {
         playing = true;
+        buttonTake.setEnabled(false);
+        buttonOpen.setEnabled(false);
         buttonControl.setText(R.string.audio_buttonPlay_stop);
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setOnCompletionListener(completionListener);
         try {
             mediaPlayer.setDataSource(pathAudio);
             mediaPlayer.prepare();
@@ -130,11 +137,24 @@ public class AudioFragment extends BaseFragment implements AudioMvpView {
         }
     }
 
+    private MediaPlayer.OnCompletionListener completionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            playing = false;
+            buttonControl.setText(R.string.audio_buttonPlay);
+            buttonTake.setEnabled(true);
+            buttonOpen.setEnabled(true);
+        }
+    };
+
     private void stopPlayingAudio() {
         playing = false;
         buttonControl.setText(R.string.audio_buttonPlay);
         mediaPlayer.stop();
         mediaPlayer.release();
+        mediaPlayer = null;
+        buttonTake.setEnabled(true);
+        buttonOpen.setEnabled(true);
     }
 
     @Override
@@ -161,9 +181,11 @@ public class AudioFragment extends BaseFragment implements AudioMvpView {
         super.onPause();
         if (mediaRecorder != null) {
             mediaRecorder.release();
+            mediaRecorder = null;
         }
         if (mediaPlayer != null) {
             mediaPlayer.release();
+            mediaPlayer = null;
         }
     }
 
