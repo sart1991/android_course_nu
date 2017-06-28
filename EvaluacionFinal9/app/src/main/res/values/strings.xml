@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Media Cloud</string>
+    
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    
+    <string name="action_settings">Settings</string>
+    <string name="main_drawer_animation">Animaciones</string>
+    <string name="main_drawer_graphics">Gráficos</string>
+    <string name="main_drawer_image">Imagen</string>
+    <string name="main_drawer_audio">Audio</string>
+    <string name="main_drawer_video">Video</string>
+    
+    
+    <string name="graphics_route">Ruta:</string>
+    <string name="graphics_routeContainer">ningún archivo seleccionado</string>
+    <string name="graphics_buttonOpen">Abrir</string>
+    <string name="graphics_buttonTake">Capturar</string>
+    <string name="audio_route">Ruta:</string>
+    <string name="audio_routeContainer">ningún archivo seleccionado</string>
+    <string name="audio_buttonOpen">Abrir</string>
+    <string name="audio_buttonTake">Grabar</string>
+    <string name="audio_buttonPlay">Reproducir audio</string>
+    <string name="video_route">Ruta:</string>
+    <string name="video_routeContainer">ninún archivo seleccionado</string>
+    <string name="video_buttonOpen">Abrir</string>
+    <string name="video_buttonTake">Capturar</string>
+    <string name="image_route">Ruta:</string>
+    <string name="image_routeContainer">ningún archivo seleccionado</string>
+    <string name="image_buttonOpen">Abrir</string>
+    <string name="image_buttonTake">Capturar</string>
+    
+    <string name="audio_buttonTake_stop">Detener Grabación</string>
+    <string name="audio_buttonPlay_stop">Detener Audio</string>
+</resources>

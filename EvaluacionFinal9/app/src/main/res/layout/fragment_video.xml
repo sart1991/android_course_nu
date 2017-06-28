@@ -1,0 +1,60 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.exercises.sart1991.evaluacionfinal9.ui.fragments.video.VideoFragment"
+    android:padding="16dp">
+    
+    <VideoView
+        android:id="@+id/videoView_video_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_video_route"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <TextView
+        android:id="@+id/textView_video_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/video_route"
+        app:layout_constraintBottom_toTopOf="@+id/button_video_open"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/videoView_video_icon" />
+    
+    <TextView
+        android:id="@+id/textView_video_routeContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/video_routeContainer"
+        app:layout_constraintBottom_toBottomOf="@id/textView_video_route"
+        app:layout_constraintLeft_toRightOf="@id/textView_video_route"
+        app:layout_constraintTop_toTopOf="@id/textView_video_route" />
+    
+    <Button
+        android:id="@+id/button_video_open"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/video_buttonOpen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/button_video_take"
+        app:layout_constraintTop_toBottomOf="@id/textView_video_route" />
+    
+    <Button
+        android:id="@+id/button_video_take"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/video_buttonTake"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/button_video_open"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_video_route" />
+
+</android.support.constraint.ConstraintLayout>

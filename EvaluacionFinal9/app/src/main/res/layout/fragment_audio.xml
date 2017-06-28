@@ -1,0 +1,74 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.exercises.sart1991.evaluacionfinal9.ui.fragments.audio.AudioFragment"
+    android:padding="16dp">
+    
+    <ImageView
+        android:id="@+id/imageView_audio_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="8dp"
+        android:src="@drawable/ic_mic"
+        android:tint="@color/colorAccent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView_audio_route"/>
+    
+    <TextView
+        android:id="@+id/textView_audio_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/audio_route"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_audio_play"
+        app:layout_constraintTop_toBottomOf="@id/imageView_audio_icon" />
+    
+    <TextView
+        android:id="@+id/textView_audio_routeContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/audio_routeContainer"
+        app:layout_constraintBottom_toBottomOf="@id/textView_audio_route"
+        app:layout_constraintLeft_toRightOf="@id/textView_audio_route"
+        app:layout_constraintTop_toTopOf="@id/textView_audio_route" />
+    
+    <Button
+        android:id="@+id/button_audio_play"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_audio_route"
+        app:layout_constraintBottom_toTopOf="@+id/button_audio_open"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
+        android:text="@string/audio_buttonPlay"/>
+    
+    <Button
+        android:id="@+id/button_audio_open"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/audio_buttonOpen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/button_audio_take"
+        app:layout_constraintTop_toBottomOf="@id/button_audio_play" />
+    
+    <Button
+        android:id="@+id/button_audio_take"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/audio_buttonTake"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/button_audio_open"
+        app:layout_constraintLeft_toRightOf="@id/button_audio_open"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/button_audio_open" />
+
+</android.support.constraint.ConstraintLayout>

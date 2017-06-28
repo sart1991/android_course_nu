@@ -1,0 +1,62 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.exercises.sart1991.evaluacionfinal9.ui.fragments.image.ImageFragment">
+    
+    <ImageView
+        android:id="@+id/imageView_image_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="8dp"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView_image_route"/>
+    
+    <TextView
+        android:id="@+id/textView_image_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/image_route"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_image_open"
+        app:layout_constraintTop_toBottomOf="@id/imageView_image_icon" />
+    
+    <TextView
+        android:id="@+id/textView_image_routeContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/image_routeContainer"
+        app:layout_constraintBottom_toBottomOf="@id/textView_image_route"
+        app:layout_constraintLeft_toRightOf="@id/textView_image_route"
+        app:layout_constraintTop_toTopOf="@id/textView_image_route" />
+    
+    <Button
+        android:id="@+id/button_image_open"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/image_buttonOpen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/button_image_take"
+        app:layout_constraintTop_toBottomOf="@id/textView_image_route" />
+    
+    <Button
+        android:id="@+id/button_image_take"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/image_buttonTake"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/button_image_open"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_image_route" />
+
+</android.support.constraint.ConstraintLayout>
