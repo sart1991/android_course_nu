@@ -24,6 +24,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -34,6 +39,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Location mLastKnownLocation;
     private CameraPosition mCameraPosition;
     private LatLng mDefaultLocation = new LatLng(-34, 151);
+    //private PolylineOptions mPolylineOptions;
+    private Polyline mPolyline;
+    private List<LatLng> mListPolyline = new ArrayList<>();
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1234;
     private static final float DEFAULT_ZOOM = 10.0f;
 
@@ -55,8 +63,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .addApi(Places.PLACE_DETECTION_API)
                 .build();
         mGoogleApiClient.connect();
-
-
     }
 
 
@@ -78,7 +84,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        PolylineOptions polylineOptions = new PolylineOptions();
+        mPolyline = mMap.addPolyline(polylineOptions);
         // Add a marker in Sydney and move the camera
         //LatLng sydney = new LatLng(-34, 151);
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
@@ -113,6 +120,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mMap.addMarker(new MarkerOptions().position(location)
                     .title(getString(R.string.main_markerCurrentLocation_title)));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, DEFAULT_ZOOM));
+            mListPolyline.add(location);
+            mListPolyline.add(mDefaultLocation);
+            mListPolyline.set(1, new LatLng(0, 0));
+            mPolyline.setPoints(mListPolyline);
         } else {
             Log.d(TAG, "Using default location");
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
