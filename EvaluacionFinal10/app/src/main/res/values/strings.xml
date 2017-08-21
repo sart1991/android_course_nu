@@ -4,4 +4,12 @@
     <string name="main_toolbar_title">Aeropuerto</string>
     <string name="mainOptions_temp">Consultar Temperatura</string>
     <string name="main_markerCurrentLocation_title">Mi ubicación</string>
+    <string name="main_snack_temperatureSensor">Sensor de temperatura activado</string>
+    <string name="main_snack_noTemperatureSensor">No tiene sensor de temperatura</string>
+    <string name="mainDialogTemperature_Title">Temperatura Ambiente</string>
+    <string name="mainDialogTemperature_positive">Ok</string>
+    <string name="mainDialogTemperature_test">0.0</string>
+    <string name="mainDialogTemperature_cIndicator">ºC</string>
+    <string name="mainDialogTemperature_fIndicator">ºF</string>
+    <string name="mainDialogTemperature_kIndicator">ºK</string>
 </resources>
