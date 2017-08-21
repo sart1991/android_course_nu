@@ -153,11 +153,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void addPolylinePoint(LatLng point) {
-        if (mListPolyline.size() > 1) {
-            mListPolyline.set(1, point);
-        } else {
-            mListPolyline.add(point);
-        }
+        mListPolyline.add(point);
     }
 
     FloatingActionButton.OnClickListener onFabClick = new View.OnClickListener() {
