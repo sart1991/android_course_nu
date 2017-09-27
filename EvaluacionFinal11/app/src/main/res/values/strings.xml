@@ -2,4 +2,10 @@
     <string name="app_name">EvaluacionFinal11</string>
     
     <string name="facebook_app_id">121236095178615</string>
+    
+    
+    <!-- MainActivity -->
+    <string name="mainActivity_loginButton">Iniciar Sesión</string>
+    <string name="mainActivity_subtitle">Inicia sesion con tus redes sociales para empezar</string>
+    <string name="mainActivity_title">Bienvenido a tu Asistente de Seguridad</string>
 </resources>

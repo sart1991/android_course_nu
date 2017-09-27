@@ -3,11 +3,6 @@
 
     <item android:drawable="@color/colorAccent"/>
     
-    <item>
-        <bitmap
-            android:src="@drawable/ic_map"
-            android:tint="@android:color/white"
-            android:gravity="center" />
-    </item>
+    <item android:drawable="@drawable/ic_map_splash" android:gravity="center" />
     
 </layer-list>
