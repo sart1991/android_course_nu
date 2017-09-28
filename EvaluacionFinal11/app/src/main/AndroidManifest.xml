@@ -3,6 +3,8 @@
     package="com.exercises.sart1991.evaluacionfinal11">
     
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     
     <application
         android:allowBackup="true"
@@ -16,7 +18,7 @@
             android:value="@string/facebook_app_id" />
         
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".ui.SplashScreenActivity"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +27,9 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ContentActivity" />
-        <activity android:name=".ContactsActivity" />
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.ContentActivity" />
+        <activity android:name=".ui.ContactsActivity" />
     </application>
 
 </manifest>

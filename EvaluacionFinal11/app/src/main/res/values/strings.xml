@@ -8,4 +8,12 @@
     <string name="mainActivity_loginButton">Iniciar Sesión</string>
     <string name="mainActivity_subtitle">Inicia sesion con tus redes sociales para empezar</string>
     <string name="mainActivity_title">Bienvenido a tu Asistente de Seguridad</string>
+    <string name="internet_permission_granted">El permiso de internet ya fue otorgado</string>
+    
+    <!-- ContentActivity -->
+    <string name="location_permission_granted">El permiso de ubicación ya fue otorgado</string>
+    
+    <!-- ContactsActivity -->
+    <string name="contacts_permission_granted">El permiso de contactos ya fue otorgado</string>
+    
 </resources>
