@@ -1,9 +1,11 @@
 package com.exercises.sart1991.evaluacionfinal11.ui.adapters;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -34,6 +36,7 @@ public class ContactCardAdapter extends RecyclerView.Adapter<ContactCardAdapter.
     public void onBindViewHolder(ContactViewHolder holder, int position) {
         holder.txtName.setText(contacts.get(position).getName());
         holder.txtNumber.setText(contacts.get(position).getNumber());
+        holder.selectSwitch.setChecked(contacts.get(position).isSelected());
     }
 
     @Override
@@ -52,6 +55,32 @@ public class ContactCardAdapter extends RecyclerView.Adapter<ContactCardAdapter.
             txtName = itemView.findViewById(R.id.textView_contactCard_name);
             txtNumber = itemView.findViewById(R.id.textView_contactCard_number);
             selectSwitch = itemView.findViewById(R.id.switch_contactCard_selected);
+            selectSwitch.setOnClickListener(selectedClickListener);
+        }
+
+        private Switch.OnClickListener selectedClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                contacts.get(getAdapterPosition()).setSelected(selectSwitch.isChecked());
+                showSnackForSelected(selectSwitch.isChecked(),
+                                     contacts.get(getAdapterPosition()).getName());
+            }
+        };
+
+        private void showSnackForSelected(boolean selected, String name) {
+            String message = "El contacto " + name + " será alertado en caso de emergencia.";
+            int resource = android.R.color.holo_green_dark;
+            if (!selected) {
+                message = "El contacto " + name + " ya no será alertado en caso de emergencia.";
+                resource = android.R.color.holo_red_dark;
+            }
+            showSnackBar(message, resource);
+        }
+
+        private void showSnackBar(String message, int resColor) {
+            Snackbar snack = Snackbar.make(txtName, message, Snackbar.LENGTH_LONG);
+            snack.getView().setBackgroundResource(resColor);
+            snack.show();
         }
     }
 }

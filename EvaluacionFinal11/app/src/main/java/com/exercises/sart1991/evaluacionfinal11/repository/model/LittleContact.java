@@ -12,6 +12,8 @@ public class LittleContact {
 
     private String number;
 
+    private boolean selected = false;
+
     public String getContactId() {
         return contactId;
     }
@@ -34,6 +36,14 @@ public class LittleContact {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     @Override
