@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.exercises.sart1991.evaluacionfinal11.ui.MainActivity">
+    tools:context="com.exercises.sart1991.evaluacionfinal11.ui.activities.MainActivity">
     
     <ImageView
         android:id="@+id/imageView_contentActivity_mainIcon"

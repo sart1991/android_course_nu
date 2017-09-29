@@ -1,4 +1,4 @@
-package com.exercises.sart1991.evaluacionfinal11.ui;
+package com.exercises.sart1991.evaluacionfinal11.ui.activities;
 
 import android.Manifest;
 import android.content.Intent;

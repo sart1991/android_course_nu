@@ -18,7 +18,7 @@
             android:value="@string/facebook_app_id" />
         
         <activity
-            android:name=".ui.SplashScreenActivity"
+            android:name=".ui.activities.SplashScreenActivity"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +27,9 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.ContentActivity" />
-        <activity android:name=".ui.ContactsActivity" />
+        <activity android:name=".ui.activities.MainActivity" />
+        <activity android:name=".ui.activities.ContentActivity" />
+        <activity android:name=".ui.activities.ContactsActivity" />
     </application>
 
 </manifest>
