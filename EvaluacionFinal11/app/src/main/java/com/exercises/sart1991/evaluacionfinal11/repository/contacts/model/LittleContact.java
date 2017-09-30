@@ -1,4 +1,4 @@
-package com.exercises.sart1991.evaluacionfinal11.repository.model;
+package com.exercises.sart1991.evaluacionfinal11.repository.contacts.model;
 
 /**
  * Created by sart1 on 9/28/2017.

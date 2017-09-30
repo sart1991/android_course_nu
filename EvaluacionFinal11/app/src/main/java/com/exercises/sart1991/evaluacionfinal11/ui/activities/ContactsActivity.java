@@ -20,7 +20,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.exercises.sart1991.evaluacionfinal11.R;
-import com.exercises.sart1991.evaluacionfinal11.repository.model.LittleContact;
+import com.exercises.sart1991.evaluacionfinal11.repository.contacts.model.LittleContact;
 import com.exercises.sart1991.evaluacionfinal11.ui.adapters.ContactCardAdapter;
 
 import java.util.List;

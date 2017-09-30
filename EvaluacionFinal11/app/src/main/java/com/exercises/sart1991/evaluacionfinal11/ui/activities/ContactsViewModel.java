@@ -1,16 +1,14 @@
 package com.exercises.sart1991.evaluacionfinal11.ui.activities;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
 import android.util.Log;
 
-import com.exercises.sart1991.evaluacionfinal11.repository.ContactsRepository;
-import com.exercises.sart1991.evaluacionfinal11.repository.model.LittleContact;
+import com.exercises.sart1991.evaluacionfinal11.repository.contacts.ContactsRepository;
+import com.exercises.sart1991.evaluacionfinal11.repository.contacts.model.LittleContact;
 
 import java.util.List;
 

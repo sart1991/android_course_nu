@@ -5,12 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.exercises.sart1991.evaluacionfinal11.R;
-import com.exercises.sart1991.evaluacionfinal11.repository.model.LittleContact;
+import com.exercises.sart1991.evaluacionfinal11.repository.contacts.model.LittleContact;
 
 import java.util.List;
 

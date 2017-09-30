@@ -1,4 +1,4 @@
-package com.exercises.sart1991.evaluacionfinal11.repository;
+package com.exercises.sart1991.evaluacionfinal11.repository.contacts;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 
-import com.exercises.sart1991.evaluacionfinal11.repository.model.LittleContact;
+import com.exercises.sart1991.evaluacionfinal11.repository.contacts.model.LittleContact;
 
 import java.util.ArrayList;
 import java.util.List;
