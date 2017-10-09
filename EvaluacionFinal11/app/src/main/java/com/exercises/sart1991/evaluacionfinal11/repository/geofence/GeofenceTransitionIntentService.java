@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.exercises.sart1991.evaluacionfinal11.utils.EVConstants;
 import com.google.android.gms.common.ConnectionResult;
@@ -21,6 +23,8 @@ import java.util.concurrent.TimeUnit;
 
 public class GeofenceTransitionIntentService extends IntentService implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+    private static final String  TAG = GeofenceTransitionIntentService.class.getSimpleName();
 
     private GoogleApiClient mGoogleApiClient;
 
@@ -41,8 +45,9 @@ public class GeofenceTransitionIntentService extends IntentService implements
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         GeofencingEvent geoEvent = GeofencingEvent.fromIntent(intent);
-        if (geoEvent.hasError()) {
-            //TODO: Show error
+        if (geoEvent == null || geoEvent.hasError()) {
+            Log.i(TAG, "onHandleIntent: mensaje error");
+            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
         } else  {
             int transitionType = geoEvent.getGeofenceTransition();
             if (Geofence.GEOFENCE_TRANSITION_ENTER == transitionType) {
@@ -50,14 +55,16 @@ public class GeofenceTransitionIntentService extends IntentService implements
                                                  TimeUnit.MICROSECONDS);
                 String triggerGeofence = geoEvent.getTriggeringGeofences().get(0).getRequestId();
 
-                //TODO: mostrar mensaje entrada al usuario
+                Log.i(TAG, "onHandleIntent: mensaje entrada");
+                Toast.makeText(this, "Entrada", Toast.LENGTH_LONG).show();
 
                 mGoogleApiClient.disconnect();
             } else if (Geofence.GEOFENCE_TRANSITION_EXIT == transitionType) {
                 mGoogleApiClient.blockingConnect(EVConstants.CONNECTION_TIME_OUT_MS,
                         TimeUnit.MICROSECONDS);
 
-                //TODO: mostrar mensaje salida al usuario
+                Log.i(TAG, "onHandleIntent: mensaje salida");
+                Toast.makeText(this, "Salida", Toast.LENGTH_LONG).show();
 
                 mGoogleApiClient.disconnect();
             }

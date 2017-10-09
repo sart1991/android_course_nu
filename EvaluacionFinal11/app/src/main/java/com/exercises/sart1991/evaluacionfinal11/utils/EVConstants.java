@@ -14,7 +14,7 @@ public class EVConstants {
     public static final String ANDROID_ID = "1";
     public static final double ANDROID_LATITUDE = 10.406443;
     public static final double ANDROID_LONGITUDE = -75.512955;
-    public static final float ANDROID_RADIUS = 10;
+    public static final float ANDROID_RADIUS = 1000;
 
     public static final String FACEBOOK_LOGIN = "FACEBOOK_LOGIN";
     public static final String GOOGLE_LOGIN = "GOOGLE_LOGIN";

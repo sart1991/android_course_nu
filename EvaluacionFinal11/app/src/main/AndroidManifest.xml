@@ -30,6 +30,7 @@
         <activity android:name=".ui.activities.MainActivity" />
         <activity android:name=".ui.activities.ContentActivity" />
         <activity android:name=".ui.activities.ContactsActivity" />
+        <service android:name=".repository.geofence.GeofenceTransitionIntentService"/>
     </application>
 
 </manifest>

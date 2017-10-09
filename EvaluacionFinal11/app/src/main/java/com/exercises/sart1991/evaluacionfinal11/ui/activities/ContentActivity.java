@@ -3,6 +3,7 @@ package com.exercises.sart1991.evaluacionfinal11.ui.activities;
 import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
@@ -47,17 +48,21 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
     private PendingIntent mGeofenceRequestIntent;
     private GoogleApiClient mGoogleApiCleint;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
         setUp();
+        requestMyPermissions();
+        createGoogleApiClient();
+        createGeofences();
     }
 
     private void setUp() {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         bindViews();
-        //requestPermissions();
+        //requestMyPermissions();
 
         fab.setOnClickListener(fabListener);
         profileTracker = new ProfileTracker() {
@@ -77,7 +82,7 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
         txtEmail = findViewById(R.id.textView_contentActivity_email);
     }
 
-    private void requestPermissions() {
+    private void requestMyPermissions() {
         int leer = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         if (leer != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -95,7 +100,7 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
     }
 
     private void createGoogleApiClient() {
-        if (!availableGoogleApiServies()) {
+        if (!availableGoogleApiServices()) {
             return;
         }
         mGoogleApiCleint = new GoogleApiClient.Builder(this).addApi(LocationServices.API)
@@ -137,11 +142,18 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        requestPermissions();
+        int leer = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        if (leer != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
+                    43
+            );
+        }
         mGeofenceRequestIntent = getGeofenceTransitionPendingIntent();
         LocationServices.GeofencingApi.addGeofences(mGoogleApiCleint, geofences, mGeofenceRequestIntent);
 
-        //TODO: show message iniciando geofence
+        Snackbar.make(fab, "Iniciando geofences", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
@@ -151,13 +163,21 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        if(connectionResult.hasResolution()) {
+            try {
+                connectionResult.startResolutionForResult(this, EVConstants.CONNECTION_FAILURE_RESOLUTION_REQUEST);
+            } catch (IntentSender.SendIntentException sie) {
+                Snackbar.make(fab, "Error ejecutando google play services", Snackbar.LENGTH_LONG).show();
+            }
+        } else {
+            Snackbar.make(fab, "Error ejecutando google play services", Snackbar.LENGTH_LONG).show();
+        }
     }
 
-    private boolean availableGoogleApiServies() {
+    private boolean availableGoogleApiServices() {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if (ConnectionResult.SUCCESS == resultCode) {
-            Snackbar.make(fab, "", BaseTransientBottomBar.LENGTH_LONG).show();
+            Snackbar.make(fab, "Servicios de Google Play disponibles", BaseTransientBottomBar.LENGTH_LONG).show();
             return true;
         }
         Snackbar.make(fab, "Servicios de Google Play no disponibles", BaseTransientBottomBar.LENGTH_LONG).show();
