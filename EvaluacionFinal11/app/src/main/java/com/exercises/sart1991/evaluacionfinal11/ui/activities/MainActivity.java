@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     private void bindViews() {
-        loginButton = findViewById(R.id.loginButton_mainActivity_facebook);
-        signInButton = findViewById(R.id.signIn_mainActivity_google);
+        loginButton = (LoginButton) findViewById(R.id.loginButton_mainActivity_facebook);
+        signInButton = (SignInButton) findViewById(R.id.signIn_mainActivity_google);
     }
 
     private void requestMyPermissions() {

@@ -12,8 +12,8 @@ public class EVConstants {
     public static final long CONNECTION_TIME_OUT_MS = 300;
     public static final long GEOFENCE_EXPIRATION_TIME = 5;
     public static final String ANDROID_ID = "1";
-    public static final double ANDROID_LATITUDE = 10.406443;
-    public static final double ANDROID_LONGITUDE = -75.512955;
+    public static final double ANDROID_LATITUDE = 5.5566657;
+    public static final double ANDROID_LONGITUDE = -73.3413947;
     public static final float ANDROID_RADIUS = 1000;
 
     public static final String FACEBOOK_LOGIN = "FACEBOOK_LOGIN";

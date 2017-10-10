@@ -3,12 +3,10 @@ package com.exercises.sart1991.evaluacionfinal11.ui.activities;
 import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,20 +18,23 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.exercises.sart1991.evaluacionfinal11.R;
-import com.exercises.sart1991.evaluacionfinal11.repository.geofence.GeofenceTransitionIntentService;
+import com.exercises.sart1991.evaluacionfinal11.repository.geofence.GeofenceTransitionsIntentService;
 import com.exercises.sart1991.evaluacionfinal11.utils.EVConstants;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.Geofence;
+import com.google.android.gms.location.GeofencingClient;
+import com.google.android.gms.location.GeofencingRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContentActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class ContentActivity extends AppCompatActivity {
 
     private static final String TAG = ContentActivity.class.getSimpleName();
 
@@ -43,11 +44,9 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
     private SharedPreferences preferences;
     private ProfileTracker profileTracker;
 
-    private Geofence mAndroidGeofence;
-    private List<Geofence> geofences;
-    private PendingIntent mGeofenceRequestIntent;
-    private GoogleApiClient mGoogleApiCleint;
-
+    private GeofencingClient mGeofencingClient;
+    private List<Geofence> mGeofencesList;
+    private PendingIntent mGeofencePendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +54,15 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
         setContentView(R.layout.activity_content);
         setUp();
         requestMyPermissions();
-        createGoogleApiClient();
         createGeofences();
+        assignGeofencing();
     }
 
     private void setUp() {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         bindViews();
+        mGeofencingClient = LocationServices.getGeofencingClient(this);
+        mGeofencesList = new ArrayList<>();
         //requestMyPermissions();
 
         fab.setOnClickListener(fabListener);
@@ -78,8 +79,8 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
     }
 
     private void bindViews() {
-        fab = findViewById(R.id.fab);
-        txtEmail = findViewById(R.id.textView_contentActivity_email);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        txtEmail = (TextView) findViewById(R.id.textView_contentActivity_email);
     }
 
     private void requestMyPermissions() {
@@ -99,28 +100,15 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
         }
     }
 
-    private void createGoogleApiClient() {
-        if (!availableGoogleApiServices()) {
-            return;
-        }
-        mGoogleApiCleint = new GoogleApiClient.Builder(this).addApi(LocationServices.API)
-                                                            .addConnectionCallbacks(this)
-                                                            .addOnConnectionFailedListener(this)
-                                                            .build();
-        mGoogleApiCleint.connect();
-        geofences = new ArrayList<>();
-
-    }
-
     public void createGeofences() {
 
         Geofence geofence = new Geofence.Builder()
                 .setRequestId(EVConstants.ANDROID_ID)
                 .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT)
                 .setCircularRegion(EVConstants.ANDROID_LATITUDE, EVConstants.ANDROID_LONGITUDE, EVConstants.ANDROID_RADIUS)
-                .setExpirationDuration(Geofence.NEVER_EXPIRE)
+                .setExpirationDuration(5000)
                 .build();
-        geofences.add(geofence);
+        mGeofencesList.add(geofence);
     }
 
     private FloatingActionButton.OnClickListener fabListener = new View.OnClickListener() {
@@ -134,14 +122,25 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
         startActivity(new Intent(this, ContactsActivity.class));
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        profileTracker.stopTracking();
+    private PendingIntent getGeofencePendingIntent() {
+        if (mGeofencePendingIntent != null) {
+            return mGeofencePendingIntent;
+        }
+
+        Intent intent = new Intent(this, GeofenceTransitionsIntentService.class);
+        mGeofencePendingIntent = PendingIntent.getService(this, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        return mGeofencePendingIntent;
     }
 
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
+    private GeofencingRequest getGeofencingRequest() {
+        GeofencingRequest.Builder builder = new GeofencingRequest.Builder();
+        builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER);
+        builder.addGeofences(mGeofencesList);
+        return builder.build();
+    }
+
+    private void assignGeofencing() {
         int leer = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         if (leer != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -150,42 +149,25 @@ public class ContentActivity extends AppCompatActivity implements GoogleApiClien
                     43
             );
         }
-        mGeofenceRequestIntent = getGeofenceTransitionPendingIntent();
-        LocationServices.GeofencingApi.addGeofences(mGoogleApiCleint, geofences, mGeofenceRequestIntent);
-
-        Snackbar.make(fab, "Iniciando geofences", Snackbar.LENGTH_LONG).show();
+        mGeofencingClient.addGeofences(getGeofencingRequest(), getGeofencePendingIntent())
+                         .addOnSuccessListener(this, new OnSuccessListener<Void>() {
+                             @Override
+                             public void onSuccess(Void aVoid) {
+                                 Snackbar.make(fab, "Success", BaseTransientBottomBar.LENGTH_LONG).show();
+                             }
+                         })
+                         .addOnFailureListener(this, new OnFailureListener() {
+                             @Override
+                             public void onFailure(@NonNull Exception e) {
+                                 Log.e(TAG, "onFailure: ", e);
+                                 Snackbar.make(fab, "Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                             }
+                         });
     }
 
     @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        if(connectionResult.hasResolution()) {
-            try {
-                connectionResult.startResolutionForResult(this, EVConstants.CONNECTION_FAILURE_RESOLUTION_REQUEST);
-            } catch (IntentSender.SendIntentException sie) {
-                Snackbar.make(fab, "Error ejecutando google play services", Snackbar.LENGTH_LONG).show();
-            }
-        } else {
-            Snackbar.make(fab, "Error ejecutando google play services", Snackbar.LENGTH_LONG).show();
-        }
-    }
-
-    private boolean availableGoogleApiServices() {
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (ConnectionResult.SUCCESS == resultCode) {
-            Snackbar.make(fab, "Servicios de Google Play disponibles", BaseTransientBottomBar.LENGTH_LONG).show();
-            return true;
-        }
-        Snackbar.make(fab, "Servicios de Google Play no disponibles", BaseTransientBottomBar.LENGTH_LONG).show();
-        return false;
-    }
-
-    private PendingIntent getGeofenceTransitionPendingIntent() {
-        Intent intent = new Intent(this, GeofenceTransitionIntentService.class);
-        return PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+    protected void onDestroy() {
+        super.onDestroy();
+        profileTracker.stopTracking();
     }
 }

@@ -46,8 +46,8 @@ public class ContactsActivity extends AppCompatActivity {
     }
 
     private void bindViews() {
-        fab = findViewById(R.id.fab);
-        recycler = findViewById(R.id.recycler_contactsActivity_contacts);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        recycler = (RecyclerView) findViewById(R.id.recycler_contactsActivity_contacts);
     }
 
     private void requestPermissions() {

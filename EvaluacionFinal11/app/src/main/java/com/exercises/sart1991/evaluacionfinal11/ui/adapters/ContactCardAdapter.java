@@ -51,9 +51,9 @@ public class ContactCardAdapter extends RecyclerView.Adapter<ContactCardAdapter.
 
         public ContactViewHolder(View itemView) {
             super(itemView);
-            txtName = itemView.findViewById(R.id.textView_contactCard_name);
-            txtNumber = itemView.findViewById(R.id.textView_contactCard_number);
-            selectSwitch = itemView.findViewById(R.id.switch_contactCard_selected);
+            txtName = (TextView) itemView.findViewById(R.id.textView_contactCard_name);
+            txtNumber = (TextView) itemView.findViewById(R.id.textView_contactCard_number);
+            selectSwitch = (Switch) itemView.findViewById(R.id.switch_contactCard_selected);
             selectSwitch.setOnClickListener(selectedClickListener);
         }
 
