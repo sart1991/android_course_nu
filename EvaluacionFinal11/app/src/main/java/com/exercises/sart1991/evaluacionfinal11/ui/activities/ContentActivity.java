@@ -66,7 +66,7 @@ public class ContentActivity extends AppCompatActivity {
         //requestMyPermissions();
 
         fab.setOnClickListener(fabListener);
-        profileTracker = new ProfileTracker() {
+        /*profileTracker = new ProfileTracker() {
             @Override
             protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
                 Log.i(TAG, "onCurrentProfileChanged: name: " + currentProfile.getFirstName());
@@ -74,13 +74,13 @@ public class ContentActivity extends AppCompatActivity {
                         .apply();
             }
         };
-        profileTracker.startTracking();
+        profileTracker.startTracking();*/
         txtEmail.setText(preferences.getString(EVConstants.EMAIL, "nn"));
     }
 
     private void bindViews() {
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        txtEmail = (TextView) findViewById(R.id.textView_contentActivity_email);
+        fab = findViewById(R.id.fab);
+        txtEmail = findViewById(R.id.textView_contentActivity_email);
     }
 
     private void requestMyPermissions() {
@@ -106,7 +106,7 @@ public class ContentActivity extends AppCompatActivity {
                 .setRequestId(EVConstants.ANDROID_ID)
                 .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT)
                 .setCircularRegion(EVConstants.ANDROID_LATITUDE, EVConstants.ANDROID_LONGITUDE, EVConstants.ANDROID_RADIUS)
-                .setExpirationDuration(5000)
+                .setExpirationDuration(600000)
                 .build();
         mGeofencesList.add(geofence);
     }
@@ -153,14 +153,14 @@ public class ContentActivity extends AppCompatActivity {
                          .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                              @Override
                              public void onSuccess(Void aVoid) {
-                                 Snackbar.make(fab, "Success", BaseTransientBottomBar.LENGTH_LONG).show();
+                                 Snackbar.make(fab, "Servicio de geofence activo", BaseTransientBottomBar.LENGTH_LONG).show();
                              }
                          })
                          .addOnFailureListener(this, new OnFailureListener() {
                              @Override
                              public void onFailure(@NonNull Exception e) {
                                  Log.e(TAG, "onFailure: ", e);
-                                 Snackbar.make(fab, "Error", BaseTransientBottomBar.LENGTH_LONG).show();
+                                 Snackbar.make(fab, "Error en servicio de geofence", BaseTransientBottomBar.LENGTH_LONG).show();
                              }
                          });
     }
@@ -168,6 +168,6 @@ public class ContentActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        profileTracker.stopTracking();
+        //profileTracker.stopTracking();
     }
 }

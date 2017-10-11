@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     private void bindViews() {
-        loginButton = (LoginButton) findViewById(R.id.loginButton_mainActivity_facebook);
-        signInButton = (SignInButton) findViewById(R.id.signIn_mainActivity_google);
+        loginButton = findViewById(R.id.loginButton_mainActivity_facebook);
+        signInButton = findViewById(R.id.signIn_mainActivity_google);
     }
 
     private void requestMyPermissions() {
@@ -186,10 +186,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     };
 
     private void tryToGoContentActivity() {
-        if (preferences.getBoolean(EVConstants.FACEBOOK_LOGIN, false) &&
-            preferences.getBoolean(EVConstants.GOOGLE_LOGIN, false)) {
+        //if (preferences.getBoolean(EVConstants.FACEBOOK_LOGIN, false) &&
+            //preferences.getBoolean(EVConstants.GOOGLE_LOGIN, false)) {
             startActivity(new Intent(this, ContentActivity.class));
-        }
+        //}
     }
 
     @Override

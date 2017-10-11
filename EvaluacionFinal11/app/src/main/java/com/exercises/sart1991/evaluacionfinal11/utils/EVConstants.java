@@ -10,11 +10,11 @@ public class EVConstants {
 
     public static final int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     public static final long CONNECTION_TIME_OUT_MS = 300;
-    public static final long GEOFENCE_EXPIRATION_TIME = 5;
-    public static final String ANDROID_ID = "1";
-    public static final double ANDROID_LATITUDE = 5.5566657;
-    public static final double ANDROID_LONGITUDE = -73.3413947;
-    public static final float ANDROID_RADIUS = 1000;
+    public static final long GEOFENCE_EXPIRATION_TIME = 600000;
+    public static final String ANDROID_ID = "Plaza España";
+    public static final double ANDROID_LATITUDE = 4.604546;
+    public static final double ANDROID_LONGITUDE = -74.085647;
+    public static final float ANDROID_RADIUS = 100;
 
     public static final String FACEBOOK_LOGIN = "FACEBOOK_LOGIN";
     public static final String GOOGLE_LOGIN = "GOOGLE_LOGIN";
