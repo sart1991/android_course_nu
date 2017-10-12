@@ -186,10 +186,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     };
 
     private void tryToGoContentActivity() {
-        //if (preferences.getBoolean(EVConstants.FACEBOOK_LOGIN, false) &&
-            //preferences.getBoolean(EVConstants.GOOGLE_LOGIN, false)) {
+        if (preferences.getBoolean(EVConstants.FACEBOOK_LOGIN, false) &&
+            preferences.getBoolean(EVConstants.GOOGLE_LOGIN, false)) {
             startActivity(new Intent(this, ContentActivity.class));
-        //}
+        }
     }
 
     @Override

@@ -52,8 +52,8 @@ public class ContentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
-        setUp();
         requestMyPermissions();
+        setUp();
         createGeofences();
         assignGeofencing();
     }
@@ -61,12 +61,12 @@ public class ContentActivity extends AppCompatActivity {
     private void setUp() {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         bindViews();
+        //requestMyPermissions();
         mGeofencingClient = LocationServices.getGeofencingClient(this);
         mGeofencesList = new ArrayList<>();
-        //requestMyPermissions();
 
         fab.setOnClickListener(fabListener);
-        /*profileTracker = new ProfileTracker() {
+        profileTracker = new ProfileTracker() {
             @Override
             protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
                 Log.i(TAG, "onCurrentProfileChanged: name: " + currentProfile.getFirstName());
@@ -74,7 +74,7 @@ public class ContentActivity extends AppCompatActivity {
                         .apply();
             }
         };
-        profileTracker.startTracking();*/
+        profileTracker.startTracking();
         txtEmail.setText(preferences.getString(EVConstants.EMAIL, "nn"));
     }
 
@@ -93,7 +93,7 @@ public class ContentActivity extends AppCompatActivity {
             );
         } else {
             Snackbar.make(
-                    fab,
+                    findViewById(R.id.fab),
                     R.string.location_permission_granted,
                     BaseTransientBottomBar.LENGTH_LONG)
                     .show();
@@ -168,6 +168,6 @@ public class ContentActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //profileTracker.stopTracking();
+        profileTracker.stopTracking();
     }
 }
