@@ -41,16 +41,15 @@ public class ContactsActivity extends AppCompatActivity {
 
     private void setUp() {
         bindViews();
-        requestPermissions();
-        setUpViews();
+        requestMyPermissions();
     }
 
     private void bindViews() {
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        recycler = (RecyclerView) findViewById(R.id.recycler_contactsActivity_contacts);
+        fab = findViewById(R.id.fab);
+        recycler = findViewById(R.id.recycler_contactsActivity_contacts);
     }
 
-    private void requestPermissions() {
+    private void requestMyPermissions() {
         int leer = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
         if (leer != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -64,7 +63,9 @@ public class ContactsActivity extends AppCompatActivity {
                     R.string.contacts_permission_granted,
                     BaseTransientBottomBar.LENGTH_LONG)
                     .show();
+            setUpViews();
         }
+        if (leer != PackageManager.PERMISSION_GRANTED) { requestMyPermissions(); }
     }
 
     private void setUpViews() {

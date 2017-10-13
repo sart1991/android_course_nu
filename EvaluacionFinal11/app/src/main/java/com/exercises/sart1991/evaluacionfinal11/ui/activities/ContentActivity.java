@@ -54,16 +54,12 @@ public class ContentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_content);
         requestMyPermissions();
         setUp();
-        createGeofences();
-        assignGeofencing();
     }
 
     private void setUp() {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         bindViews();
-        //requestMyPermissions();
-        mGeofencingClient = LocationServices.getGeofencingClient(this);
-        mGeofencesList = new ArrayList<>();
+        requestMyPermissions();
 
         fab.setOnClickListener(fabListener);
         profileTracker = new ProfileTracker() {
@@ -84,6 +80,8 @@ public class ContentActivity extends AppCompatActivity {
     }
 
     private void requestMyPermissions() {
+        mGeofencingClient = LocationServices.getGeofencingClient(this);
+        mGeofencesList = new ArrayList<>();
         int leer = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         if (leer != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -97,7 +95,10 @@ public class ContentActivity extends AppCompatActivity {
                     R.string.location_permission_granted,
                     BaseTransientBottomBar.LENGTH_LONG)
                     .show();
+            createGeofences();
+            assignGeofencing();
         }
+        if (leer != PackageManager.PERMISSION_GRANTED) { requestMyPermissions(); }
     }
 
     public void createGeofences() {
