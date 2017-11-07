@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:windowSoftInputMode="adjustPan"
+    android:padding="8dp"
+    tools:context="com.exercise.nextu.evaluacionfinal12.ui.activities.main.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide_mainActivity_verticalMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:id="@+id/hBarChart_mainActivity_chart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guide_mainActivity_verticalMiddle"/>
+
+
+    <Spinner
+        android:id="@+id/spinner_mainActivity_dayOfWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/spinner_mainActivity_typeOfMovement"
+        app:layout_constraintTop_toBottomOf="@id/hBarChart_mainActivity_chart"
+        app:layout_constraintBottom_toTopOf="@+id/til_mainActivity_value"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.2"/>
+
+    <Spinner
+        android:id="@+id/spinner_mainActivity_typeOfMovement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/spinner_mainActivity_dayOfWeek"
+        app:layout_constraintTop_toTopOf="@id/spinner_mainActivity_dayOfWeek"
+        app:layout_constraintBottom_toBottomOf="@id/spinner_mainActivity_dayOfWeek"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_mainActivity_value"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_mainActivity_dayOfWeek"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/mainActivity_editValue_hint"
+            android:gravity="center"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+</android.support.constraint.ConstraintLayout>

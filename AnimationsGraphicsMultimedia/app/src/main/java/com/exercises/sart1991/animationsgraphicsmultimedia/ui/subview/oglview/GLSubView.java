@@ -91,7 +91,7 @@ public class GLSubView<C extends GlMvpSubView.Callback>
 
         @Override
         public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-            //set the background frame color
+            //set the background frame colors
             GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
             //initialize triangle
@@ -118,7 +118,7 @@ public class GLSubView<C extends GlMvpSubView.Callback>
 
             float[] scratch = new float[16];
 
-            //redraw background color
+            //redraw background colors
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
 
             // Set the camera position (View matrix)
@@ -180,7 +180,12 @@ public class GLSubView<C extends GlMvpSubView.Callback>
         private final int vertexCount = triangleCoords.length / COORDS_PER_VERTEX;
         private final int vertexStride = COORDS_PER_VERTEX * 4; // 4 bytes per vertex
 
-        float color[] = { 0.63671875f, 0.76953125f, 0.22265625f, 0.0f };
+        float colors[] = {
+                0.63671875f, 0.76953125f, 0.22265625f, 1.0f,
+                0.234f, 0.128f, 0.987f, 1.0f,
+                0.546f, 0.7538f, 0.78494f, 1.0f
+        };
+        //float colors[] = { 0.63671875f, 0.76953125f, 0.22265625f, 0.0f };
 
         /**
          * Sets up the drawing object data for use in an OpenGL ES context.
@@ -238,8 +243,8 @@ public class GLSubView<C extends GlMvpSubView.Callback>
             // get handle to fragment shader's vColor member
             mColorHandle = GLES20.glGetUniformLocation(mProgram, "vColor");
 
-            // Set color for drawing the triangle
-            GLES20.glUniform4fv(mColorHandle, 1, color, 0);
+            // Set colors for drawing the triangle
+            GLES20.glUniform4fv(mColorHandle, 1, colors, 0);
 
             // get handle to shape's transformation matrix
             mMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");

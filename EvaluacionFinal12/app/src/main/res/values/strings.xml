@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Control de Gastos</string>
+
+    <!-- Days of Week -->
+    <string name="day_monday">Lunes</string>
+    <string name="day_tuesday">Martes</string>
+    <string name="day_wednesday">Miercoles</string>
+    <string name="day_thursday">Jueves</string>
+    <string name="day_friday">Viernes</string>
+    <string name="day_saturday">Sábado</string>
+    <string name="day_sunday">Domingo</string>
+    <string name="mainActivity_editValue_hint">Valor del movimiento</string>
+
+    <!-- Type of Movement -->
+    <string-array name="type_of_movement">
+        <item>@string/_egress</item>
+        <item>@string/_entry</item>
+    </string-array>
+    <string name="_egress">Gasto</string>
+    <string name="_entry">Ingreso</string>
+    <string name="mainActivity_messageError_invalidValue">Ingrese un valor valido</string>
+
+</resources>
