@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Control de Gastos</string>
 
+    <string name="interstitial_ad_key">ca-app-pub-3940256099942544/1033173712</string>
+
     <!-- Days of Week -->
     <string name="day_monday">Lunes</string>
     <string name="day_tuesday">Martes</string>
@@ -18,6 +20,10 @@
     </string-array>
     <string name="_egress">Gasto</string>
     <string name="_entry">Ingreso</string>
+    <string name="_ad">Anuncio</string>
     <string name="mainActivity_messageError_invalidValue">Ingrese un valor valido</string>
+    
+    <string name="mainActivity_snack_timer">Publicidad cargada en:</string>
+    <string name="mainActivity_snack_adNotLoaded">La publicidad aun no ha cargado</string>
 
 </resources>
